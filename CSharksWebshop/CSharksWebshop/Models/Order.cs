@@ -45,11 +45,11 @@ namespace CSharksWebshop.Models
             set { orderStatus = value; }
         }
 
-        public Order(string customerName, Address adress, string customerEmail) : this(OrderStatusEnum.ACTIVE, customerName, adress, customerEmail)
+        public Order(string userId, List<Product> products,string customerName, Address adress, string customerEmail) : this(userId, products, OrderStatusEnum.ACTIVE, customerName, adress, customerEmail)
         {
         }
 
-        public Order(Enum orderStatus, string customerName, Address adress, string customerEmail)
+        public Order(string userId, List<Product> products, Enum orderStatus, string customerName, Address adress, string customerEmail) : base(userId, products)
         {
             this.orderStatus = OrderStatus;
             this.customerName = customerName;

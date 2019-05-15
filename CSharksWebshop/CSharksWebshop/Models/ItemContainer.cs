@@ -22,6 +22,12 @@ namespace CSharksWebshop.Models
             set { userId = value; }
         }
 
+        public ItemContainer(string userId, List<Product> products)
+        {
+            this.userId = userId;
+            this.products = products;
+        }
+
         public void RemoveContainerItem(int productId)
         {
             foreach (Product prod in Products)
