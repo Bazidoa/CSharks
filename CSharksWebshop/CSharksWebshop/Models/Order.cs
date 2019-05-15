@@ -10,15 +10,15 @@ namespace CSharksWebshop.Models
     public class Order : ItemContainer
     {
         private Enum orderStatus;
-        private string costumerName;
+        private string customerName;
         private DateTime orderDate;
         private Address adress;
-        private string costumerEmail;
+        private string customerEmail;
 
-        public string CostumerEmail
+        public string CustomerEmail
         {
-            get { return costumerEmail; }
-            set { costumerEmail = value; }
+            get { return customerEmail; }
+            set { customerEmail = value; }
         }
 
         public Address Adress
@@ -33,30 +33,29 @@ namespace CSharksWebshop.Models
             set { orderDate = value; }
         }
 
-        public string CostumerName
+        public string CustomerName
         {
-            get { return costumerName; }
-            set { costumerName = value; }
+            get { return customerName; }
+            set { customerName = value; }
         }
 
         public Enum OrderStatus
         {
             get { return orderStatus; }
             set { orderStatus = value; }
-        }
-        s
+        }        
 
-        public Order(string costumerName, Address adress, string costumerEmail) : this(costumerName,adress,costumerEmail)
+        public Order(string costumerName, Address adress, string costumerEmail)
         {
 
         }
 
-        public Order( string costumerName, Address adress, string costumerEmail, Enum orderStatus)
+        public Order( string customerName, Address adress, string customerEmail, Enum orderStatus)
         {
             this.orderStatus = orderStatus;
-            this.costumerName = costumerEmail;
+            this.customerName = customerName;
             this.adress = adress;
-            this.costumerEmail = costumerEmail;
+            this.customerEmail = customerEmail;
             this.OrderDate = DateTime.Now;
         }
         public void ConfirmOrder()
