@@ -21,9 +21,13 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <!--  4. paraméter id lenne ||| null ->5. paraméter html be beszúrandó dolgok-->
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Products" ,"Index" , "Product")</li>
+
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
