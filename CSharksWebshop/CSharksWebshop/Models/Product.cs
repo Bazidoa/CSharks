@@ -14,6 +14,7 @@ namespace CSharksWebshop.Models
         public bool IsAvailable { get; set; }
         public string ProductDescription { get; set; }
         public int InStock { get; set; }
-
+        public string UrlFriendlyName { get; set; }
+        public string Manufacturer { get; set; }
     }
 }
