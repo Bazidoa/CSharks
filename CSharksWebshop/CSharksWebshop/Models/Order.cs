@@ -5,7 +5,7 @@ using System.Web;
 
 namespace CSharksWebshop.Models
 {
-    public enum OrderStatus { ACTIVE = 1, DELETED, SHIPPING, SHIPPED }
+    public enum OrderStatusEnum { ACTIVE = 1, DELETED, SHIPPING, SHIPPED }
 
     public class Order : ItemContainer
     {
@@ -43,16 +43,15 @@ namespace CSharksWebshop.Models
         {
             get { return orderStatus; }
             set { orderStatus = value; }
-        }        
-
-        public Order(string costumerName, Address adress, string costumerEmail)
-        {
-
         }
 
-        public Order( string customerName, Address adress, string customerEmail, Enum orderStatus)
+        public Order(string customerName, Address adress, string customerEmail) : this(OrderStatusEnum.ACTIVE, customerName, adress, customerEmail)
         {
-            this.orderStatus = orderStatus;
+        }
+
+        public Order(Enum orderStatus, string customerName, Address adress, string customerEmail)
+        {
+            this.orderStatus = OrderStatus;
             this.customerName = customerName;
             this.adress = adress;
             this.customerEmail = customerEmail;
@@ -60,11 +59,20 @@ namespace CSharksWebshop.Models
         }
         public void ConfirmOrder()
         {
-
+            if ((OrderStatusEnum)OrderStatus != OrderStatusEnum.DELETED)
+            {
+                if ((OrderStatusEnum)OrderStatus == OrderStatusEnum.ACTIVE)
+                {
+                    OrderStatus = OrderStatusEnum.SHIPPING;
+                }else if ((OrderStatusEnum)OrderStatus == OrderStatusEnum.SHIPPING)
+                {
+                    OrderStatus = OrderStatusEnum.SHIPPED;
+                }
+            }
         }
         public void CancelOrder()
         {
-
+            OrderStatus = OrderStatusEnum.DELETED;
         }
         //public Address ChangeAddress()
         //{
