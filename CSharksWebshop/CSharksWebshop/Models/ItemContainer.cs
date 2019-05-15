@@ -32,7 +32,7 @@ namespace CSharksWebshop.Models
         }
         public int SumItemsPrice()
         {
-
+            return 1;
         }
     }
 }
