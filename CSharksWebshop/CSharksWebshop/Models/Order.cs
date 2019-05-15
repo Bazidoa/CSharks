@@ -45,9 +45,13 @@ namespace CSharksWebshop.Models
             set { orderStatus = value; }
         }
 
-        public void Order()
+        public Order(Enum orderStatus, string costumerName, Address adress, string costumerEmail)
         {
-
+            this.orderStatus = orderStatus;
+            this.costumerName = costumerEmail;
+            this.adress = adress;
+            this.costumerEmail = costumerEmail;
+            this.OrderDate = DateTime.Now;
         }
         public void ConfirmOrder()
         {
