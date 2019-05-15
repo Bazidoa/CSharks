@@ -22,17 +22,31 @@ namespace CSharksWebshop.Models
             set { userId = value; }
         }
 
-        public void RemoveContainerItem()
+        public void RemoveContainerItem(int productId)
         {
-
+            foreach (Product prod in Products)
+            {
+                if (productId == prod.ID)
+                {
+                    products.Remove(prod);
+                    break;
+                }
+            }
         }
+
         public void EmptyContainer()
         {
-
+            products.Clear();
         }
+
         public int SumItemsPrice()
         {
-            return 1;
+            int result = 0;
+            foreach (Product prod in products)
+            {
+                result += prod.ProductPrice;
+            }
+            return result;
         }
     }
 }
