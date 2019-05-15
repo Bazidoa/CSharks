@@ -44,10 +44,20 @@ namespace CSharksWebshop.Models
             get { return orderStatus; }
             set { orderStatus = value; }
         }
+        s
 
-        public void Order()
+        public Order(string costumerName, Address adress, string costumerEmail) : this(costumerName,adress,costumerEmail)
         {
 
+        }
+
+        public Order( string costumerName, Address adress, string costumerEmail, Enum orderStatus)
+        {
+            this.orderStatus = orderStatus;
+            this.costumerName = costumerEmail;
+            this.adress = adress;
+            this.costumerEmail = costumerEmail;
+            this.OrderDate = DateTime.Now;
         }
         public void ConfirmOrder()
         {
