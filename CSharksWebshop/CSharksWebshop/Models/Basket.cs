@@ -18,26 +18,26 @@ namespace CSharksWebshop.Models
         }
 
         //Ezeket a metódusokat örökli az ItemContainer abstract osztályból
-       /* 
-        public void RemoveProduct(Product productToRemove)
-        {
+        /* 
+         public void RemoveProduct(Product productToRemove)
+         {
 
-        }
+         }
 
-        public void EmptyBasket()
-        {
-            this.basketProducts = new List<Product>();
-        }
+         public void EmptyBasket()
+         {
+             this.basketProducts = new List<Product>();
+         }
 
-        public int SumBasketPrice()
-        {
-            int sum = 0;
-            foreach (Product product in basketProducts)
-            {
-                sum += product.ProductPrice;
-            }
-            return sum;
-        }
-        */
+         public int SumBasketPrice()
+         {
+             int sum = 0;
+             foreach (Product product in basketProducts)
+             {
+                 sum += product.ProductPrice;
+             }
+             return sum;
+         }
+         */
     }
 }
