@@ -13,16 +13,29 @@ namespace CSharksWebshop.Models
         //[Key]
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
+
+        private string productName;
         [Required]
-        public string ProductName { get; set; }
+        public string ProductName
+        {
+            get
+            {
+                return productName;
+            }
+            set
+            {
+                this.productName = value;
+                this.UrlFriendlyName = UrlFriendlyNameConverter(value);
+            }
+        }
         //public string ProductCategory { get; set; } Nem kell mert majd Category-k lesznek és ott felsoroljuk a ProductID-kat
         public int ProductPrice { get; set; }
         public bool IsAvailable { get; set; }
         public string ProductDescription { get; set; }
         public int InStock { get; set; }
-        [Required]
+        //[Required]
         public string UrlFriendlyName { get; set; }
-        
+
         public string Manufacturer { get; set; }
 
         public Product()
@@ -38,13 +51,13 @@ namespace CSharksWebshop.Models
             this.ProductDescription = ProductDescription;
             this.InStock = InStock;
             this.Manufacturer = Manufacturer;
-            UrlFriendlyNameConverter();
+            this.UrlFriendlyName = UrlFriendlyNameConverter(ProductName);
+
         }
 
-        public void UrlFriendlyNameConverter()
+        public string UrlFriendlyNameConverter(string name)
         {
-            string name = ProductName.ToLower();
-
+            name = name.ToLower();
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < name.Length; i++)
             {
@@ -68,6 +81,9 @@ namespace CSharksWebshop.Models
                     case 'ű':
                         sb.Append('u');
                         break;
+                    case 'í':
+                        sb.Append('i');
+                        break;
                     case ' ':
                         sb.Append('-');
                         break;
@@ -76,7 +92,7 @@ namespace CSharksWebshop.Models
                         break;
                 }
             }
-            UrlFriendlyName = sb.ToString();
+            return sb.ToString();
         }
     }
 }

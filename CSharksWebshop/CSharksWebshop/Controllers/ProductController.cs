@@ -21,6 +21,15 @@ namespace CSharksWebshop.Controllers
             return View(db.Products.ToList());
         }
 
+        //GET -ezt írtam Stackről
+       /* public ActionResult CreateNewMyEntity(string default_value)
+        {
+            Product  newMyEntity = new Product();
+            newMyEntity.UrlFriendlyName = newMyEntity.UrlFriendlyNameConverter(newMyEntity.ProductName);
+
+            return View(newMyEntity);
+        }*/
+
         // GET: Product/Details/5
         public ActionResult Details(int? id)
         {
