@@ -8,7 +8,7 @@ namespace CSharksWebshop.Models
     public abstract class ItemContainer
     {
         private string userId;
-        private List<Product> products;
+        private List<Product> products = new List<Product>();
 
         public List<Product> Products
         {
