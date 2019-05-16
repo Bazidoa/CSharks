@@ -12,6 +12,7 @@ namespace CSharksWebshop.Models
     {
         //[Key]
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //Guid = Global Unique Identifier
         public int ID { get; set; }
 
         private string productName;

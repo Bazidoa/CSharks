@@ -30,14 +30,14 @@ namespace CSharksWebshop.Models
 
         public void RemoveContainerItem(int productId)
         {
-            foreach (Product prod in Products)
+          /*  foreach (Product prod in Products)
             {
                 if (productId == prod.ID)
                 {
                     products.Remove(prod);
                     break;
                 }
-            }
+            }*/
         }
 
         public void EmptyContainer()

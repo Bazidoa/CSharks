@@ -26,7 +26,7 @@ namespace CSharksWebshop.DataModels
         //public virtual DbSet<Address> Addresses { get; set; }
         //public virtual DbSet<Order> Orders { get; set; }
         //public virtual DbSet<Basket> Baskets { get; set; }
-          
+        public virtual DbSet<BasketEntry> BasketEntries { get; set; }
     }
 
     //public class MyEntity

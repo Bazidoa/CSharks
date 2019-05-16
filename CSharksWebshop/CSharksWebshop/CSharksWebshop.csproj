@@ -176,6 +176,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BasketEntryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -191,10 +192,23 @@
     <Compile Include="Migrations\201905161228229_urlfriendlyNotRequired.Designer.cs">
       <DependentUpon>201905161228229_urlfriendlyNotRequired.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905161349469_BasketDBset_IDAdded.cs" />
+    <Compile Include="Migrations\201905161349469_BasketDBset_IDAdded.Designer.cs">
+      <DependentUpon>201905161349469_BasketDBset_IDAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905161424175_removeBasket.cs" />
+    <Compile Include="Migrations\201905161424175_removeBasket.Designer.cs">
+      <DependentUpon>201905161424175_removeBasket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905161434064_BasketEntryDB.cs" />
+    <Compile Include="Migrations\201905161434064_BasketEntryDB.Designer.cs">
+      <DependentUpon>201905161434064_BasketEntryDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Basket.cs" />
+    <Compile Include="Models\BasketEntry.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ItemContainer.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -265,6 +279,11 @@
     <Content Include="Views\Product\Details.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\BasketEntry\Create.cshtml" />
+    <Content Include="Views\BasketEntry\Delete.cshtml" />
+    <Content Include="Views\BasketEntry\Details.cshtml" />
+    <Content Include="Views\BasketEntry\Edit.cshtml" />
+    <Content Include="Views\BasketEntry\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -288,6 +307,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905161228229_urlfriendlyNotRequired.resx">
       <DependentUpon>201905161228229_urlfriendlyNotRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905161349469_BasketDBset_IDAdded.resx">
+      <DependentUpon>201905161349469_BasketDBset_IDAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905161424175_removeBasket.resx">
+      <DependentUpon>201905161424175_removeBasket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905161434064_BasketEntryDB.resx">
+      <DependentUpon>201905161434064_BasketEntryDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

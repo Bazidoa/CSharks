@@ -11,6 +11,9 @@ namespace CSharksWebshop.Models
         //public List<Product> basketProducts = new List<Product>();
         //public string UserID { get; set; }
 
+        //ez kell az adatbázisnak, hogy tudjon Auto Incrementelni.
+        public int ID { get; set; }
+
         public Basket(string userId, List<Product> products) : base(userId, products)
         {
 
