@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Text;
 using System.Web;
 
 namespace CSharksWebshop.Models
@@ -23,5 +24,54 @@ namespace CSharksWebshop.Models
         public string UrlFriendlyName { get; set; }
         
         public string Manufacturer { get; set; }
+
+        public Product(string ProductName, int ProductPrice, bool IsAvailable, string ProductDescription, int InStock, string Manufacturer)
+        {
+            this.ProductName = ProductName;
+            this.ProductPrice = ProductPrice;
+            this.IsAvailable = IsAvailable;
+            this.ProductDescription = ProductDescription;
+            this.InStock = InStock;
+            this.Manufacturer = Manufacturer;
+            UrlFriendlyNameConverter();
+        }
+
+        public void UrlFriendlyNameConverter()
+        {
+            string name = ProductName.ToLower();
+
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < name.Length; i++)
+            {
+
+                switch (name[i])
+                {
+                    case 'á':
+                    case 'ä':
+                        sb.Append('a');
+                        break;
+                    case 'é':
+                        sb.Append('e');
+                        break;
+                    case 'ó':
+                    case 'ö':
+                    case 'ő':
+                        sb.Append('o');
+                        break;
+                    case 'ú':
+                    case 'ü':
+                    case 'ű':
+                        sb.Append('u');
+                        break;
+                    case ' ':
+                        sb.Append('-');
+                        break;
+                    default:
+                        sb.Append(name[i]);
+                        break;
+                }
+            }
+            UrlFriendlyName = sb.ToString();
+        }
     }
 }
