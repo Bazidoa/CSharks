@@ -1,4 +1,5 @@
-﻿@model IEnumerable<CSharksWebshop.Models.Product>
+﻿@using CSharksWebshop.Models;
+@model IEnumerable<CSharksWebshop.Models.Product>
 
 @{
     ViewBag.Title = "Index";
@@ -6,6 +7,8 @@
 
 
 <h2>Index</h2>
+
+
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -38,7 +41,7 @@
 
     @foreach (var item in Model)
     {
-        
+
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.ProductName)
@@ -65,8 +68,49 @@
                 @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.ID }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                <input type="button" onclick="ShowProductData();" name="@item.ID" value="Add to Basket" />
             </td>
         </tr>
     }
 
 </table>
+
+<div>
+    A kosarad tartalma:
+    <ul>
+        @{
+            SessionBasketEntry sb = Session["Kosár"] as SessionBasketEntry;
+        }
+        @if (sb != null)
+        {
+
+            <li>@sb.ID</li>
+            <li>@sb.ProductID</li>
+
+        }
+
+    </ul>
+</div>
+
+<script type="text/javascript">
+
+
+    function ShowProductData() {
+
+
+    //kosár létrehozása
+    @{
+        SessionBasketEntry sbe = new SessionBasketEntry()
+        {
+            ID = Session.SessionID,
+
+            ProductID = 5
+        };
+
+
+        Session.Add("Kosár", sbe);
+    }
+
+
+}
+</script>
