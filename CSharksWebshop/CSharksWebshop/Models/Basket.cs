@@ -8,18 +8,13 @@ namespace CSharksWebshop.Models
     public class Basket : ItemContainer
     {
 
-        //public List<Product> basketProducts = new List<Product>();
-        //public string UserID { get; set; }
-
-        public Basket(string userId, List<Product> products) : base(userId, products)
-        {
-
-        }
+        public List<Product> basketProducts = new List<Product>();
+        public string UserID { get; set; }
 
 
         public void AddProduct(Product productToAdd)
         {
-            this.Products.Add(productToAdd);
+            basketProducts.Add(productToAdd);
         }
 
         //Ezeket a metódusokat örökli az ItemContainer abstract osztályból
