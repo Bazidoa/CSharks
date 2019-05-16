@@ -25,6 +25,11 @@ namespace CSharksWebshop.Models
         
         public string Manufacturer { get; set; }
 
+        public Product()
+        {
+
+        }
+
         public Product(string ProductName, int ProductPrice, bool IsAvailable, string ProductDescription, int InStock, string Manufacturer)
         {
             this.ProductName = ProductName;
