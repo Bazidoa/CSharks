@@ -46,6 +46,7 @@ namespace CSharksWebshop.Controllers
         }
 
         // GET: Product/Create
+        [Authorize(Roles = "Admin,RootAdmin")]
         public ActionResult Create()
         {
             return View();
@@ -69,6 +70,7 @@ namespace CSharksWebshop.Controllers
         }
 
         // GET: Product/Edit/5
+        [Authorize(Roles = "Admin,RootAdmin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -100,6 +102,7 @@ namespace CSharksWebshop.Controllers
         }
 
         // GET: Product/Delete/5
+        [Authorize(Roles = "Admin,RootAdmin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
