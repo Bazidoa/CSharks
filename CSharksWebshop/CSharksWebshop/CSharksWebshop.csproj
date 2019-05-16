@@ -183,9 +183,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905141234527_WebshopModel_Product_Created.cs" />
-    <Compile Include="Migrations\201905141234527_WebshopModel_Product_Created.Designer.cs">
-      <DependentUpon>201905141234527_WebshopModel_Product_Created.cs</DependentUpon>
+    <Compile Include="Migrations\201905160836546_ProductsRecreated.cs" />
+    <Compile Include="Migrations\201905160836546_ProductsRecreated.Designer.cs">
+      <DependentUpon>201905160836546_ProductsRecreated.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -279,8 +279,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905141234527_WebshopModel_Product_Created.resx">
-      <DependentUpon>201905141234527_WebshopModel_Product_Created.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905160836546_ProductsRecreated.resx">
+      <DependentUpon>201905160836546_ProductsRecreated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

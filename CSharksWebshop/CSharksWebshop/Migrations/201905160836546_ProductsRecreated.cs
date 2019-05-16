@@ -3,7 +3,7 @@ namespace CSharksWebshop.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class WebshopModel_Product_Created : DbMigration
+    public partial class ProductsRecreated : DbMigration
     {
         public override void Up()
         {
@@ -11,12 +11,14 @@ namespace CSharksWebshop.Migrations
                 "dbo.Products",
                 c => new
                     {
-                        ID = c.String(nullable: false, maxLength: 128),
-                        ProductName = c.String(),
+                        ID = c.Int(nullable: false, identity: true),
+                        ProductName = c.String(nullable: false),
                         ProductPrice = c.Int(nullable: false),
                         IsAvailable = c.Boolean(nullable: false),
                         ProductDescription = c.String(),
                         InStock = c.Int(nullable: false),
+                        UrlFriendlyName = c.String(nullable: false),
+                        Manufacturer = c.String(),
                     })
                 .PrimaryKey(t => t.ID);
             

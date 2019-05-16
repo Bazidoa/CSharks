@@ -15,6 +15,7 @@ namespace CSharksWebshop.Models
         private Address adress;
         private string customerEmail;
 
+
         public string CustomerEmail
         {
             get { return customerEmail; }

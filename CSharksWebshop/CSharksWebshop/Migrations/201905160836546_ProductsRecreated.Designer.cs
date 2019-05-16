@@ -7,13 +7,13 @@ namespace CSharksWebshop.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class WebshopModel_Product_Created : IMigrationMetadata
+    public sealed partial class ProductsRecreated : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(WebshopModel_Product_Created));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ProductsRecreated));
         
         string IMigrationMetadata.Id
         {
-            get { return "201905141234527_WebshopModel_Product_Created"; }
+            get { return "201905160836546_ProductsRecreated"; }
         }
         
         string IMigrationMetadata.Source
