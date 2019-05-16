@@ -187,6 +187,10 @@
     <Compile Include="Migrations\201905160836546_ProductsRecreated.Designer.cs">
       <DependentUpon>201905160836546_ProductsRecreated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905161228229_urlfriendlyNotRequired.cs" />
+    <Compile Include="Migrations\201905161228229_urlfriendlyNotRequired.Designer.cs">
+      <DependentUpon>201905161228229_urlfriendlyNotRequired.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -281,6 +285,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201905160836546_ProductsRecreated.resx">
       <DependentUpon>201905160836546_ProductsRecreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905161228229_urlfriendlyNotRequired.resx">
+      <DependentUpon>201905161228229_urlfriendlyNotRequired.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

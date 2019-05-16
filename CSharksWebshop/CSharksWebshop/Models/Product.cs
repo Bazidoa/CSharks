@@ -13,14 +13,27 @@ namespace CSharksWebshop.Models
         //[Key]
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
+
+        private string productName;
         [Required]
-        public string ProductName { get; set; }
+        public string ProductName
+        {
+            get
+            {
+                return productName;
+            }
+            set
+            {
+                this.productName = value;
+                this.UrlFriendlyName = UrlFriendlyNameConverter(value);
+            }
+        }
         //public string ProductCategory { get; set; } Nem kell mert majd Category-k lesznek és ott felsoroljuk a ProductID-kat
         public int ProductPrice { get; set; }
         public bool IsAvailable { get; set; }
         public string ProductDescription { get; set; }
         public int InStock { get; set; }
-        [Required]
+        //[Required]
         public string UrlFriendlyName { get; set; }
 
         public string Manufacturer { get; set; }
@@ -39,6 +52,7 @@ namespace CSharksWebshop.Models
             this.InStock = InStock;
             this.Manufacturer = Manufacturer;
             this.UrlFriendlyName = UrlFriendlyNameConverter(ProductName);
+
         }
 
         public string UrlFriendlyNameConverter(string name)
