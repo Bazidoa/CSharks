@@ -2,13 +2,9 @@
 
 @{
     ViewBag.Title = "ShowBasket";
+    int BasketSum = 0;
 }
-
-<h2>ShowBasket</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>Your Basket:</h2>
 <table class="table">
     <tr>
         <th>
@@ -35,35 +31,41 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsAvailable)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InStock)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UrlFriendlyName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Manufacturer)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAvailable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UrlFriendlyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.ID }) |*@
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+
+            </td>
+        </tr>
+        BasketSum += item.ProductPrice;
+    }
 
 </table>
+
+<b>Total Sum of your Basket</b>
+@BasketSum $
