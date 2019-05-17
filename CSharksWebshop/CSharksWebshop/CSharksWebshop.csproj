@@ -208,6 +208,10 @@
     <Compile Include="Migrations\201905171002032_BasketEntryDateTime.Designer.cs">
       <DependentUpon>201905171002032_BasketEntryDateTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905171052013_BasketView_kerdojel.cs" />
+    <Compile Include="Migrations\201905171052013_BasketView_kerdojel.Designer.cs">
+      <DependentUpon>201905171052013_BasketView_kerdojel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -289,6 +293,8 @@
     <Content Include="Views\BasketEntry\Details.cshtml" />
     <Content Include="Views\BasketEntry\Edit.cshtml" />
     <Content Include="Views\BasketEntry\Index.cshtml" />
+    <Content Include="Views\Product\AddToBasket.cshtml" />
+    <Content Include="Views\Product\ShowBasket.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -324,6 +330,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905171002032_BasketEntryDateTime.resx">
       <DependentUpon>201905171002032_BasketEntryDateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905171052013_BasketView_kerdojel.resx">
+      <DependentUpon>201905171052013_BasketView_kerdojel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

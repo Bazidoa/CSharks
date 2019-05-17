@@ -14,21 +14,66 @@ namespace CSharksWebshop.Controllers
     public class ProductController : Controller
     {
         private WebshopModel db = new WebshopModel();
+        //megnézed az indexet, kapsz egy kosarat
+
+        Basket basket = new Basket();
 
         // GET: Product
         public ActionResult Index()
         {
+            basket.UserID = Session.SessionID;
+            // basket.BasketProducts = new List<Product>();
             return View(db.Products.ToList());
+
+
+        }
+
+        public ActionResult AddToBasket(int? id)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+
+            basket.AddProduct(product);
+            db.BasketEntries.Add(new BasketEntry(Session.SessionID, product.ID));
+            //TODo: metódus: ha benne van már a termék(SessionID && ProductID && OrderTime==null alapján) akkor Quantity++
+            db.SaveChanges();
+
+            return View(basket.BasketProducts);
+        }
+
+        //todo később ha mennyiségek vannak akkor majd figyelni kell hogy többet kell beletenni
+        public ActionResult ShowBasket()
+        {
+            List<Product> basketProducts = new List<Product>();
+            List<BasketEntry> basketEntries = new List<BasketEntry>();
+
+            string SessionID = Session.SessionID;
+
+            basketEntries = db.BasketEntries.Where(x => x.UserID == SessionID && x.OrderTime == null).ToList();
+            for (int i = 0; i < basketEntries.Count; i++)
+            {
+                basketProducts.Add(db.Products.Find(basketEntries[i].ProductID));
+            }
+            
+            return View(basketProducts);
         }
 
         //GET -ezt írtam Stackről
-       /* public ActionResult CreateNewMyEntity(string default_value)
-        {
-            Product  newMyEntity = new Product();
-            newMyEntity.UrlFriendlyName = newMyEntity.UrlFriendlyNameConverter(newMyEntity.ProductName);
+        /* public ActionResult CreateNewMyEntity(string default_value)
+         {
+             Product  newMyEntity = new Product();
+             newMyEntity.UrlFriendlyName = newMyEntity.UrlFriendlyNameConverter(newMyEntity.ProductName);
 
-            return View(newMyEntity);
-        }*/
+             return View(newMyEntity);
+         }*/
 
         // GET: Product/Details/5
         public ActionResult Details(int? id)

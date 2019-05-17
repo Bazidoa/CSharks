@@ -67,50 +67,54 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                <input type="button" onclick="ShowProductData();" name="@item.ID" value="Add to Basket" />
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID }) |
+                @Html.ActionLink("Add To Basket", "AddToBasket", new { id = item.ID })
+
+
+                <!--<input type="button" onclick="ShowProductData();" name="@item.ID" value="Add to Basket" />-->
             </td>
         </tr>
     }
 
 </table>
+@Html.ActionLink("Show Basket", "ShowBasket")
 
-<div>
-    A kosarad tartalma:
-    <ul>
+@*<div>
+        A kosarad tartalma:
+        <ul>
+            @{
+                SessionBasketEntry sb = Session["Kosár"] as SessionBasketEntry;
+            }
+            @if (sb != null)
+            {
+
+                <li>@sb.ID</li>
+                <li>@sb.ProductID</li>
+
+            }
+
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+
+
+        function ShowProductData() {
+
+
+        //kosár létrehozása
         @{
-            SessionBasketEntry sb = Session["Kosár"] as SessionBasketEntry;
+            SessionBasketEntry sbe = new SessionBasketEntry()
+            {
+                ID = Session.SessionID,
+
+                ProductID = 5
+            };
+
+
+            Session.Add("Kosár", sbe);
         }
-        @if (sb != null)
-        {
-
-            <li>@sb.ID</li>
-            <li>@sb.ProductID</li>
-
-        }
-
-    </ul>
-</div>
-
-<script type="text/javascript">
 
 
-    function ShowProductData() {
-
-
-    //kosár létrehozása
-    @{
-        SessionBasketEntry sbe = new SessionBasketEntry()
-        {
-            ID = Session.SessionID,
-
-            ProductID = 5
-        };
-
-
-        Session.Add("Kosár", sbe);
     }
-
-
-}
-</script>
+    </script>*@

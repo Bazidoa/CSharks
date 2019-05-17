@@ -19,5 +19,15 @@ namespace CSharksWebshop.Models
         public int Quantity { get; set; }
 
         public DateTime? OrderTime { get; set; }
+
+        public BasketEntry()
+        {
+
+        }
+        public BasketEntry(string UserID, int ProductID)
+        {
+            this.UserID = UserID;
+            this.ProductID = ProductID;
+        }
     }
 }

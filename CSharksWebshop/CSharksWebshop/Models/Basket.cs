@@ -2,49 +2,60 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using CSharksWebshop.DataModels;
 
 namespace CSharksWebshop.Models
 {
     public class Basket
     {
 
-        public List<Product> basketProducts { get; set; }
+        public List<Product> BasketProducts { get;set; } = new List<Product>();
         public string UserID { get; set; }
 
         //ez kell az adatbázisnak, hogy tudjon Auto Incrementelni.
         public int ID { get; set; }
 
+        public Basket()
+        {
+
+        }
         public Basket(string userId, List<Product> products)
         {
 
         }
 
-        public void AddProduct(Product productToAdd, int quantity)
+        public void AddProduct(Product productToAdd)
         {
-            this.basketProducts.Add(productToAdd);
+            this.BasketProducts.Add(productToAdd);
         }
 
-        //Ezeket a metódusokat örökli az ItemContainer abstract osztályból
-        /* 
-         public void RemoveProduct(Product productToRemove)
-         {
 
-         }
+        public void RemoveProduct(Product productToRemove)
+        {
+            foreach (Product prod in BasketProducts)
+            {
+                if (productToRemove.ID == prod.ID)
+                {
+                    BasketProducts.Remove(prod);
+                    break;
+                }
+            }
+        }
 
-         public void EmptyBasket()
-         {
-             this.basketProducts = new List<Product>();
-         }
+        public void EmptyBasket()
+        {
+            this.BasketProducts.Clear();
+        }
 
-         public int SumBasketPrice()
-         {
-             int sum = 0;
-             foreach (Product product in basketProducts)
-             {
-                 sum += product.ProductPrice;
-             }
-             return sum;
-         }
-         */
+        public int SumBasketPrice()
+        {
+            int sum = 0;
+            foreach (Product product in BasketProducts)
+            {
+                sum += product.ProductPrice;
+            }
+            return sum;
+        }
+
     }
 }
