@@ -5,23 +5,23 @@ using System.Web;
 
 namespace CSharksWebshop.Models
 {
-    public class Basket : ItemContainer
+    public class Basket
     {
 
-        //public List<Product> basketProducts = new List<Product>();
-        //public string UserID { get; set; }
+        public List<Product> basketProducts { get; set; }
+        public string UserID { get; set; }
 
         //ez kell az adatbázisnak, hogy tudjon Auto Incrementelni.
         public int ID { get; set; }
 
-        public Basket(string userId, List<Product> products) : base(userId, products)
+        public Basket(string userId, List<Product> products)
         {
 
         }
 
-        public void AddProduct(Product productToAdd)
+        public void AddProduct(Product productToAdd, int quantity)
         {
-            this.Products.Add(productToAdd);
+            this.basketProducts.Add(productToAdd);
         }
 
         //Ezeket a metódusokat örökli az ItemContainer abstract osztályból

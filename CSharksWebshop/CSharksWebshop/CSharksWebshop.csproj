@@ -204,6 +204,10 @@
     <Compile Include="Migrations\201905161434064_BasketEntryDB.Designer.cs">
       <DependentUpon>201905161434064_BasketEntryDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905171002032_BasketEntryDateTime.cs" />
+    <Compile Include="Migrations\201905171002032_BasketEntryDateTime.Designer.cs">
+      <DependentUpon>201905171002032_BasketEntryDateTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -317,6 +321,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905161434064_BasketEntryDB.resx">
       <DependentUpon>201905161434064_BasketEntryDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905171002032_BasketEntryDateTime.resx">
+      <DependentUpon>201905171002032_BasketEntryDateTime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
