@@ -36,14 +36,31 @@ namespace CSharksWebshop.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Product product = db.Products.Find(id);
+            BasketEntry entryToAddToBasket = new BasketEntry(Session.SessionID, product.ID);
             if (product == null)
             {
                 return HttpNotFound();
             }
+            //TODo: if benne van már a termék(SessionID && ProductID && OrderTime==null alapján) akkor Quantity++
+            var query = (from a in db.BasketEntries
+                         where a.UserID == Session.SessionID && a.ProductID == product.ID
+                         select a).FirstOrDefault();
 
-            basket.AddProduct(product);
-            db.BasketEntries.Add(new BasketEntry(Session.SessionID, product.ID));
-            //TODo: metódus: ha benne van már a termék(SessionID && ProductID && OrderTime==null alapján) akkor Quantity++
+            if (query != null)
+            {
+                var result = db.BasketEntries.SingleOrDefault(b => b.UserID == Session.SessionID && b.ProductID == product.ID);
+                result.Quantity++;
+            }
+
+            //(db.BasketEntries.Contains(entryToAddToBasket))
+
+            else
+            {
+                basket.AddProduct(product);
+                entryToAddToBasket.Quantity = 1;
+                db.BasketEntries.Add(entryToAddToBasket);
+                
+            }
             db.SaveChanges();
 
             return View(basket.BasketProducts);
@@ -62,7 +79,7 @@ namespace CSharksWebshop.Controllers
             {
                 basketProducts.Add(db.Products.Find(basketEntries[i].ProductID));
             }
-            
+
             return View(basketProducts);
         }
 

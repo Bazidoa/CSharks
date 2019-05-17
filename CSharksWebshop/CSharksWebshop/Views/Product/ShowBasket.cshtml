@@ -1,7 +1,9 @@
 ﻿@model IEnumerable<CSharksWebshop.Models.Product>
-
+@using CSharksWebshop.DataModels;
+@using CSharksWebshop.Models;
 @{
     ViewBag.Title = "ShowBasket";
+    WebshopModel db = new WebshopModel();
     int BasketSum = 0;
 }
 <h2>Your Basket:</h2>
@@ -23,7 +25,7 @@
             @Html.DisplayNameFor(model => model.InStock)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UrlFriendlyName)
+            Darab
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Manufacturer)
@@ -32,37 +34,37 @@
     </tr>
 
     @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsAvailable)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InStock)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UrlFriendlyName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Manufacturer)
-            </td>
-            <td>
-                @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.ID }) |*@
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsAvailable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InStock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => db.BasketEntries.Find(Session.SessionID,item.ID).Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Manufacturer)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |*@
+            @*Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
 
-            </td>
-        </tr>
-        BasketSum += item.ProductPrice;
+        </td>
+    </tr>
+        BasketSum += item.ProductPrice * db.BasketEntries.Find(Session.SessionID, item.ID).Quantity;
     }
 
 </table>
