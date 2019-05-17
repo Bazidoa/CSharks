@@ -34,36 +34,36 @@
     </tr>
 
     @foreach (var item in Model)
-        {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsAvailable)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InStock)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => db.BasketEntries.Find(Session.SessionID,item.ID).Quantity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Manufacturer)
-        </td>
-        <td>
-            @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.ID }) |*@
-            @*Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAvailable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => db.BasketEntries.Find(Session.SessionID, item.ID).Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.ID }) |*@
+                @Html.ActionLink("Delete", "DeleteFromBasket", new { id = item.ID })
 
-        </td>
-    </tr>
+            </td>
+        </tr>
         BasketSum += item.ProductPrice * db.BasketEntries.Find(Session.SessionID, item.ID).Quantity;
     }
 
@@ -71,3 +71,5 @@
 
 <b>Total Sum of your Basket</b>
 @BasketSum $
+</p>
+@Html.ActionLink("Delete Basket Items", "ClearBasket")

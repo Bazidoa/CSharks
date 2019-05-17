@@ -14,8 +14,7 @@ namespace CSharksWebshop.Controllers
     public class ProductController : Controller
     {
         private WebshopModel db = new WebshopModel();
-        //megnézed az indexet, kapsz egy kosarat
-
+        
         Basket basket = new Basket();
 
         // GET: Product
@@ -23,9 +22,25 @@ namespace CSharksWebshop.Controllers
         {
             basket.UserID = Session.SessionID;
             // basket.BasketProducts = new List<Product>();
-            return View(db.Products.ToList());
+            List<Product> allProducts = db.Products.ToList();
+            List<Product> allProductRightOrder = allProducts.OrderBy(p => p.ProductName).ThenBy(m => m.Manufacturer).ToList();
+                        
+            return View(allProductRightOrder);
 
 
+        }
+
+        public ActionResult ClearBasket()
+        {
+            foreach (var item in db.BasketEntries)
+            {
+                if (item.UserID == Session.SessionID)
+                {
+                    db.BasketEntries.Remove(item);
+                }
+            }
+            db.SaveChanges();
+            return RedirectToAction("ShowBasket");
         }
 
         public ActionResult AddToBasket(int? id)
@@ -63,7 +78,8 @@ namespace CSharksWebshop.Controllers
             }
             db.SaveChanges();
 
-            return View(basket.BasketProducts);
+            return RedirectToAction("Index");
+            //return View(basket.BasketProducts);
         }
 
         //todo később ha mennyiségek vannak akkor majd figyelni kell hogy többet kell beletenni
@@ -83,6 +99,14 @@ namespace CSharksWebshop.Controllers
             return View(basketProducts);
         }
 
+        public ActionResult DeleteFromBasket(int id)
+        {
+            BasketEntry itemToRemove = db.BasketEntries.Find(Session.SessionID, id);
+
+            db.BasketEntries.Remove(itemToRemove);
+            db.SaveChanges();
+            return RedirectToAction("ShowBasket");
+        }
         //GET -ezt írtam Stackről
         /* public ActionResult CreateNewMyEntity(string default_value)
          {
