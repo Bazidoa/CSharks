@@ -5,7 +5,7 @@ using System.Web;
 
 namespace CSharksWebshop.Models
 {
-    public abstract class ItemContainer
+    public class ItemContainer
     {
         private string userId;
         private List<Product> products = new List<Product>();
@@ -30,14 +30,14 @@ namespace CSharksWebshop.Models
 
         public void RemoveContainerItem(int productId)
         {
-          /*  foreach (Product prod in Products)
+            foreach (Product prod in Products)
             {
                 if (productId == prod.ID)
                 {
                     products.Remove(prod);
                     break;
                 }
-            }*/
+            }
         }
 
         public void EmptyContainer()
