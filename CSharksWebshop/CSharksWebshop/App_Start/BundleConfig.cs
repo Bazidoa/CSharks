@@ -24,10 +24,9 @@ namespace CSharksWebshop
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
-
-            //bundles.Add(new StyleBundle("~/css/css").Include(
-            //            "~/css/heroic-features.css"));
+                      "~/Content/site.css",
+                      "~/Content/template-customize.css",
+                      "~/Content/signInCard.css"));
         }
     }
 }
