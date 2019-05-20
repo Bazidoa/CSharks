@@ -10,7 +10,7 @@ namespace CSharksWebshop.Test
     [TestClass]
     public class BasketTest
     {
-        [TestMethod]
+        /*[TestMethod]
         [ExpectedException(typeof(MissingProductException))]
         public void RemoveFromEmptyBasketTest()
         {
@@ -72,7 +72,7 @@ namespace CSharksWebshop.Test
             basket.AddProduct(new Product("Kiskacsa", 500, true, "leírás", 5, "Kacsa Kft"));
 
             Assert.AreEqual(14500, basket.SumBasketPrice());
-        }
+        }*/
 
 
         //Ezt még rövidíteni akarom, így nem tetszik!
