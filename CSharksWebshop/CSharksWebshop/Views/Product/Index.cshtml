@@ -70,7 +70,8 @@
 
                     @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
                     @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID }) |
+                    @Html.ActionLink("Deactivate Product", "Delete", new { id = item.ID }) |
+                    @*@Html.ActionLink("Activate Product", "Delete", new { id = item.ID }) |*@
                     @Html.ActionLink("Add To Basket", "AddToBasket", new { id = item.ID })
 
 
@@ -81,6 +82,5 @@
         }
     </tbody>
 </table>
-@Html.ActionLink("Show Basket", "ShowBasket")
-
+@Html.ActionLink("Show Basket", "ShowBasket", "Basket", null, null)
 

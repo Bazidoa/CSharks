@@ -9,6 +9,9 @@ namespace CSharksWebshop.Models
 
     public class Order : ItemContainer
     {
+
+        public int ID { get; set; }
+
         private Enum orderStatus;
         private string customerName;
         private DateTime orderDate;
