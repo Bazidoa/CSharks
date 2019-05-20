@@ -22,12 +22,12 @@ namespace CSharksWebshop.Models
 
         public int ProductPrice { get; set; }
 
-        public OrderEntry(string UserID, int ProductID, int Quantity)
+        public OrderEntry(string UserID, int ProductID, int Quantity, int ProductPrice)
         {
             this.UserID = UserID;
             this.ProductID = ProductID;
             this.Quantity = Quantity;
-            
+            this.ProductPrice = ProductPrice;
         }
 
         public OrderEntry()

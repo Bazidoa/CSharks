@@ -32,10 +32,16 @@ namespace CSharksWebshop.Controllers
 
             if (query != null)
             {
-                string currentTime = DateTime.Now.ToString();
+                //string currentTime = DateTime.Now.ToString();
+                string currentTime = db.Orders.Where(x => x.UserID == currentUser).OrderByDescending(x => x.ID).Select(x => x.OrderTime).FirstOrDefault();
+
+                List<Product> products = db.Products.ToList();
+
                 for (int i = 0; i < query.Count; i++)
                 {
-                    OrderEntry entryToAddToOrderEntries = new OrderEntry(currentUser, query[i].ProductID, query[i].Quantity);
+                    Product pPrice = products.Where(x => x.ID == query[i].ProductID).Select(x => x).FirstOrDefault();
+
+                    OrderEntry entryToAddToOrderEntries = new OrderEntry(currentUser, query[i].ProductID, query[i].Quantity, pPrice.ProductPrice);
                     entryToAddToOrderEntries.OrderTime = currentTime;
                     db.OrderEntries.Add(entryToAddToOrderEntries);
                     db.BasketEntries.Remove(query[i]);
