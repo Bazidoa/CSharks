@@ -7,7 +7,7 @@ namespace CSharksWebshop.Models
 {
     public class UserData
     {
-        public string FirstName { get; set; }
+        /*public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserName { get; set; }
         public List<Address> UserAddresses { get; set; }
@@ -38,5 +38,6 @@ namespace CSharksWebshop.Models
             //ahhoz ezt meg lehessen csinálni valami keresztül össze kell kapcsolni a userrel majd az orderekkel
             //userID adattag ide?
         }
+        */
     }
 }

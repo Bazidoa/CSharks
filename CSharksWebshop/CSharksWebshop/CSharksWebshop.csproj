@@ -218,6 +218,14 @@
     <Compile Include="Migrations\201905200927357_ProductsPictureURLupdate.Designer.cs">
       <DependentUpon>201905200927357_ProductsPictureURLupdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905201219500_OrderTableCreated.cs" />
+    <Compile Include="Migrations\201905201219500_OrderTableCreated.Designer.cs">
+      <DependentUpon>201905201219500_OrderTableCreated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905201241376_OrderEntriesTableAndModelCreated.cs" />
+    <Compile Include="Migrations\201905201241376_OrderEntriesTableAndModelCreated.Designer.cs">
+      <DependentUpon>201905201241376_OrderEntriesTableAndModelCreated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -226,7 +234,9 @@
     <Compile Include="Models\ItemContainer.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderEntry.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\UserAuthentication.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -377,6 +387,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905200927357_ProductsPictureURLupdate.resx">
       <DependentUpon>201905200927357_ProductsPictureURLupdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905201219500_OrderTableCreated.resx">
+      <DependentUpon>201905201219500_OrderTableCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905201241376_OrderEntriesTableAndModelCreated.resx">
+      <DependentUpon>201905201241376_OrderEntriesTableAndModelCreated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
