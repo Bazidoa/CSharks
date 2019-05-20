@@ -15,7 +15,7 @@ namespace CSharksWebshop.Controllers
     {
         private WebshopModel db = new WebshopModel();
         
-        Basket basket = new Basket();
+        //Basket basket = new Basket();
 
         public string WhoAmI()
         {
@@ -32,7 +32,7 @@ namespace CSharksWebshop.Controllers
         public ActionResult Index()
         {
             string currentUser = WhoAmI();
-            basket.UserID = currentUser;
+            //basket.UserID = currentUser;
             // basket.BasketProducts = new List<Product>();
             List<Product> allProducts = db.Products.ToList();
             List<Product> allProductRightOrder = allProducts.OrderBy(p => p.ProductName).ThenBy(m => m.Manufacturer).ToList();
@@ -84,7 +84,7 @@ namespace CSharksWebshop.Controllers
 
             else
             {
-                basket.AddProduct(product);
+                //basket.AddProduct(product);
                 entryToAddToBasket.Quantity = 1;
                 db.BasketEntries.Add(entryToAddToBasket);
                 
