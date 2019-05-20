@@ -180,6 +180,7 @@
     <Compile Include="Controllers\BasketEntryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="DataModels\WebshopModel.cs" />
     <Compile Include="Global.asax.cs">
@@ -224,6 +225,14 @@
     <Compile Include="Migrations\201905201241376_OrderEntriesTableAndModelCreated.cs" />
     <Compile Include="Migrations\201905201241376_OrderEntriesTableAndModelCreated.Designer.cs">
       <DependentUpon>201905201241376_OrderEntriesTableAndModelCreated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905201347376_OrderTableDateTimeString.cs" />
+    <Compile Include="Migrations\201905201347376_OrderTableDateTimeString.Designer.cs">
+      <DependentUpon>201905201347376_OrderTableDateTimeString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905201518542_DateTImetoString.cs" />
+    <Compile Include="Migrations\201905201518542_DateTImetoString.Designer.cs">
+      <DependentUpon>201905201518542_DateTImetoString.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -341,6 +350,8 @@
     <Content Include="vendor\jquery\jquery.min.map" />
     <Content Include="vendor\jquery\jquery.slim.min.map" />
     <Content Include="Views\Basket.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -388,6 +399,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905201241376_OrderEntriesTableAndModelCreated.resx">
       <DependentUpon>201905201241376_OrderEntriesTableAndModelCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905201347376_OrderTableDateTimeString.resx">
+      <DependentUpon>201905201347376_OrderTableDateTimeString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905201518542_DateTImetoString.resx">
+      <DependentUpon>201905201518542_DateTImetoString.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

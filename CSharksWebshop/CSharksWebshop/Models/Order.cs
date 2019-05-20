@@ -11,7 +11,7 @@ namespace CSharksWebshop.Models
     {
 
         public int ID { get; set; }
-        public DateTime OrderTime { get; set; }
+        public string OrderTime { get; set; }
         public string UserID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
