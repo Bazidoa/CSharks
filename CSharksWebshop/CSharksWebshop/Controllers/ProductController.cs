@@ -14,47 +14,30 @@ namespace CSharksWebshop.Controllers
     public class ProductController : Controller
     {
         private WebshopModel db = new WebshopModel();
-        
-        //Basket basket = new Basket();
 
         public string WhoAmI()
         {
-            if(User.Identity.Name != "")
+            if (User.Identity.IsAuthenticated)
             {
                 return User.Identity.Name;
-            }else
+            }
+            else
             {
                 return Session.SessionID;
             }
         }
-
         // GET: Product
         public ActionResult Index()
         {
             string currentUser = WhoAmI();
-            //basket.UserID = currentUser;
-            // basket.BasketProducts = new List<Product>();
             List<Product> allProducts = db.Products.ToList();
             List<Product> allProductRightOrder = allProducts.OrderBy(p => p.ProductName).ThenBy(m => m.Manufacturer).ToList();
                         
             return View(allProductRightOrder);
-
-
+            
         }
 
-        public ActionResult ClearBasket()
-        {
-            string currentUser = WhoAmI();
-            foreach (var item in db.BasketEntries)
-            {
-                if (item.UserID == currentUser)
-                {
-                    db.BasketEntries.Remove(item);
-                }
-            }
-            db.SaveChanges();
-            return RedirectToAction("ShowBasket");
-        }
+        
 
         public ActionResult AddToBasket(int? id)
         {
@@ -80,11 +63,9 @@ namespace CSharksWebshop.Controllers
                 result.Quantity++;
             }
 
-            //(db.BasketEntries.Contains(entryToAddToBasket))
 
             else
             {
-                //basket.AddProduct(product);
                 entryToAddToBasket.Quantity = 1;
                 db.BasketEntries.Add(entryToAddToBasket);
                 
@@ -92,36 +73,12 @@ namespace CSharksWebshop.Controllers
             db.SaveChanges();
 
             return RedirectToAction("Index");
-            //return View(basket.BasketProducts);
         }
 
         //todo később ha mennyiségek vannak akkor majd figyelni kell hogy többet kell beletenni
-        public ActionResult ShowBasket()
-        {
-            string currentUser = WhoAmI();
-            List<Product> basketProducts = new List<Product>();
-            List<BasketEntry> basketEntries = new List<BasketEntry>();
+        
 
-            
-
-            basketEntries = db.BasketEntries.Where(x => x.UserID == currentUser && x.OrderTime == null).ToList();
-            for (int i = 0; i < basketEntries.Count; i++)
-            {
-                basketProducts.Add(db.Products.Find(basketEntries[i].ProductID));
-            }
-
-            return View(basketProducts);
-        }
-
-        public ActionResult DeleteFromBasket(int id)
-        {
-            string currentUser = WhoAmI();
-            BasketEntry itemToRemove = db.BasketEntries.Find(currentUser, id);
-
-            db.BasketEntries.Remove(itemToRemove);
-            db.SaveChanges();
-            return RedirectToAction("ShowBasket");
-        }
+        
         //GET -ezt írtam Stackről
         /* public ActionResult CreateNewMyEntity(string default_value)
          {
@@ -224,7 +181,7 @@ namespace CSharksWebshop.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Product product = db.Products.Find(id);
-            db.Products.Remove(product);
+            product.IsAvailable = false;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
