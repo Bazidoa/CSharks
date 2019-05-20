@@ -16,18 +16,7 @@ namespace CSharksWebshop.Controllers
     {
         private WebshopModel db = new WebshopModel();
 
-        public string WhoAmI()
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                return User.Identity.Name;
-            }
-            else
-            {
-                return Session.SessionID;
-            }
-        }
-
+        
         // GET: Basket
         public ActionResult Index()
         {
@@ -36,7 +25,7 @@ namespace CSharksWebshop.Controllers
 
         public ActionResult ClearBasket()
         {
-            string currentUser = WhoAmI();
+            string currentUser = UserAuthentication.WhoAmI(User, Session);
             foreach (var item in db.BasketEntries)
             {
                 if (item.UserID == currentUser)
@@ -50,7 +39,7 @@ namespace CSharksWebshop.Controllers
 
         public ActionResult ShowBasket()
         {
-            string currentUser = WhoAmI();
+            string currentUser = UserAuthentication.WhoAmI(User, Session);
             List<Product> basketProducts = new List<Product>();
             List<BasketEntry> basketEntries = new List<BasketEntry>();
 
@@ -67,7 +56,7 @@ namespace CSharksWebshop.Controllers
 
         public ActionResult DeleteFromBasket(int id)
         {
-            string currentUser = WhoAmI();
+            string currentUser = UserAuthentication.WhoAmI(User, Session);
             BasketEntry itemToRemove = db.BasketEntries.Find(currentUser, id);
 
             db.BasketEntries.Remove(itemToRemove);
