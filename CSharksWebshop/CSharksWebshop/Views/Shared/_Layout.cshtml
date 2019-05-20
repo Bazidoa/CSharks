@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Retro Shop</title>
     @Styles.Render("~/Content/css")
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     @Scripts.Render("~/bundles/modernizr")
 
     @*<link href="css/template-customize.css" rel="stylesheet">*@
@@ -21,18 +21,18 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+                    @*<li class="nav-item active">
+            @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+        </li>*@
+                    <li class="nav-item">
+                        @Html.ActionLink("Shop", "Index", "Product", new { area = "" }, new { @class = "nav-link" })
                     </li>
                     <li class="nav-item">
                         @Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })
                     </li>
-                    <li class="nav-item">
-
-                        @Html.ActionLink("Products", "Index", "Product", new { area = "" }, new { @class = "nav-link" })
-                    </li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+                @Html.Partial("_LoginPartial") 
+                <i class="fas fa-shopping-cart"></i>
             </div>
         </div>
     </nav>
