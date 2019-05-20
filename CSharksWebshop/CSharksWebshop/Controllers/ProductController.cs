@@ -15,21 +15,11 @@ namespace CSharksWebshop.Controllers
     {
         private WebshopModel db = new WebshopModel();
 
-        public string WhoAmI()
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                return User.Identity.Name;
-            }
-            else
-            {
-                return Session.SessionID;
-            }
-        }
+        
         // GET: Product
         public ActionResult Index()
         {
-            string currentUser = WhoAmI();
+            string currentUser = UserAuthentication.WhoAmI(User,Session);
             List<Product> allProducts = db.Products.ToList();
             List<Product> allProductRightOrder = allProducts.OrderBy(p => p.ProductName).ThenBy(m => m.Manufacturer).ToList();
                         
@@ -41,7 +31,8 @@ namespace CSharksWebshop.Controllers
 
         public ActionResult AddToBasket(int? id)
         {
-            string currentUser = WhoAmI();
+            Session["dummy"] = "Dummy";
+            string currentUser = UserAuthentication.WhoAmI(User, Session);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
