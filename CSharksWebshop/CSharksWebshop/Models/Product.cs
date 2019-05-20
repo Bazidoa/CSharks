@@ -38,6 +38,7 @@ namespace CSharksWebshop.Models
         public string UrlFriendlyName { get; set; }
 
         public string Manufacturer { get; set; }
+        public string ProductPictureURL { get; set; } = "~/Images/defaultImg.jpg";
 
         public Product()
         {

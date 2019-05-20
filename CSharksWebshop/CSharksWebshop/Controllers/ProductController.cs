@@ -17,10 +17,22 @@ namespace CSharksWebshop.Controllers
         
         Basket basket = new Basket();
 
+        public string WhoAmI()
+        {
+            if(User.Identity.Name != "")
+            {
+                return User.Identity.Name;
+            }else
+            {
+                return Session.SessionID;
+            }
+        }
+
         // GET: Product
         public ActionResult Index()
         {
-            basket.UserID = Session.SessionID;
+            string currentUser = WhoAmI();
+            basket.UserID = currentUser;
             // basket.BasketProducts = new List<Product>();
             List<Product> allProducts = db.Products.ToList();
             List<Product> allProductRightOrder = allProducts.OrderBy(p => p.ProductName).ThenBy(m => m.Manufacturer).ToList();
@@ -32,9 +44,10 @@ namespace CSharksWebshop.Controllers
 
         public ActionResult ClearBasket()
         {
+            string currentUser = WhoAmI();
             foreach (var item in db.BasketEntries)
             {
-                if (item.UserID == Session.SessionID)
+                if (item.UserID == currentUser)
                 {
                     db.BasketEntries.Remove(item);
                 }
@@ -45,25 +58,25 @@ namespace CSharksWebshop.Controllers
 
         public ActionResult AddToBasket(int? id)
         {
-
+            string currentUser = WhoAmI();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Product product = db.Products.Find(id);
-            BasketEntry entryToAddToBasket = new BasketEntry(Session.SessionID, product.ID);
+            BasketEntry entryToAddToBasket = new BasketEntry(currentUser, product.ID);
             if (product == null)
             {
                 return HttpNotFound();
             }
             //TODo: if benne van már a termék(SessionID && ProductID && OrderTime==null alapján) akkor Quantity++
             var query = (from a in db.BasketEntries
-                         where a.UserID == Session.SessionID && a.ProductID == product.ID
+                         where a.UserID == currentUser && a.ProductID == product.ID
                          select a).FirstOrDefault();
 
             if (query != null)
             {
-                var result = db.BasketEntries.SingleOrDefault(b => b.UserID == Session.SessionID && b.ProductID == product.ID);
+                var result = db.BasketEntries.SingleOrDefault(b => b.UserID == currentUser && b.ProductID == product.ID);
                 result.Quantity++;
             }
 
@@ -85,12 +98,13 @@ namespace CSharksWebshop.Controllers
         //todo később ha mennyiségek vannak akkor majd figyelni kell hogy többet kell beletenni
         public ActionResult ShowBasket()
         {
+            string currentUser = WhoAmI();
             List<Product> basketProducts = new List<Product>();
             List<BasketEntry> basketEntries = new List<BasketEntry>();
 
-            string SessionID = Session.SessionID;
+            
 
-            basketEntries = db.BasketEntries.Where(x => x.UserID == SessionID && x.OrderTime == null).ToList();
+            basketEntries = db.BasketEntries.Where(x => x.UserID == currentUser && x.OrderTime == null).ToList();
             for (int i = 0; i < basketEntries.Count; i++)
             {
                 basketProducts.Add(db.Products.Find(basketEntries[i].ProductID));
@@ -101,7 +115,8 @@ namespace CSharksWebshop.Controllers
 
         public ActionResult DeleteFromBasket(int id)
         {
-            BasketEntry itemToRemove = db.BasketEntries.Find(Session.SessionID, id);
+            string currentUser = WhoAmI();
+            BasketEntry itemToRemove = db.BasketEntries.Find(currentUser, id);
 
             db.BasketEntries.Remove(itemToRemove);
             db.SaveChanges();

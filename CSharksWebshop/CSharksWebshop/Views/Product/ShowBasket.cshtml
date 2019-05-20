@@ -1,10 +1,20 @@
 ﻿@model IEnumerable<CSharksWebshop.Models.Product>
 @using CSharksWebshop.DataModels;
 @using CSharksWebshop.Models;
+@using CSharksWebshop.Controllers;
 @{
     ViewBag.Title = "ShowBasket";
     WebshopModel db = new WebshopModel();
     int BasketSum = 0;
+    string currentUser;
+    if (User.Identity.IsAuthenticated)
+    {
+        currentUser = User.Identity.Name;
+    }else
+    {
+        currentUser = Session.SessionID;
+    }
+
 }
 <h2>Your Basket:</h2>
 <table class="table">
@@ -52,7 +62,7 @@
                 @Html.DisplayFor(modelItem => item.InStock)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => db.BasketEntries.Find(Session.SessionID, item.ID).Quantity)
+                @Html.DisplayFor(modelItem => db.BasketEntries.Find(currentUser, item.ID).Quantity)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Manufacturer)
@@ -64,7 +74,7 @@
 
             </td>
         </tr>
-        BasketSum += item.ProductPrice * db.BasketEntries.Find(Session.SessionID, item.ID).Quantity;
+        BasketSum += item.ProductPrice * db.BasketEntries.Find(currentUser, item.ID).Quantity;
     }
 
 </table>
