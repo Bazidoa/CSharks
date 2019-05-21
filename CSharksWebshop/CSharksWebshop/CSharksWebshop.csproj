@@ -253,6 +253,10 @@
     <Compile Include="Migrations\201905211530378_UserDatasTableAddition.Designer.cs">
       <DependentUpon>201905211530378_UserDatasTableAddition.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905211605365_EnumChanged.cs" />
+    <Compile Include="Migrations\201905211605365_EnumChanged.Designer.cs">
+      <DependentUpon>201905211605365_EnumChanged.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -447,6 +451,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905211530378_UserDatasTableAddition.resx">
       <DependentUpon>201905211530378_UserDatasTableAddition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905211605365_EnumChanged.resx">
+      <DependentUpon>201905211605365_EnumChanged.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
