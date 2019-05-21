@@ -16,21 +16,21 @@ namespace CSharksWebshop.Controllers
         public ActionResult Index()
         {
             string userID =UserAuthentication.WhoAmI(User,Session);
-            List<Order> orders = db.Orders.Where(x => x.UserID == userID).ToList();
+            
+            List<Order> orders = db.Orders.Where(x => x.UserID == userID && x.OrderStatus != OrderStatusEnum.DELETED.ToString()).ToList();
             return View(orders);
         }
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    OrderEntry product = db.OrderEntries.Where(x => x.Order_ID == id)
-        //    if (product == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(product);
-        //}
+        public ActionResult Delete(int? id)
+        {
+            string userID = UserAuthentication.WhoAmI(User, Session);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Order order = db.Orders.Where(x => x.OrderID == id && x.UserID == userID).FirstOrDefault();
+            order.OrderStatus = OrderStatusEnum.DELETED.ToString();
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
