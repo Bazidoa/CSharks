@@ -257,6 +257,10 @@
     <Compile Include="Migrations\201905211605365_EnumChanged.Designer.cs">
       <DependentUpon>201905211605365_EnumChanged.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905211757087_UserDataEmail.cs" />
+    <Compile Include="Migrations\201905211757087_UserDataEmail.Designer.cs">
+      <DependentUpon>201905211757087_UserDataEmail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -454,6 +458,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905211605365_EnumChanged.resx">
       <DependentUpon>201905211605365_EnumChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905211757087_UserDataEmail.resx">
+      <DependentUpon>201905211757087_UserDataEmail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
