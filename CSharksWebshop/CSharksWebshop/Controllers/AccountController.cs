@@ -179,6 +179,8 @@ namespace CSharksWebshop.Controllers
                         newUser.HouseNumber = userData.HouseNumber;
                         newUser.PostCode = userData.PostCode;
                         newUser.UserID = user.Id;
+                        newUser.UserEmail = user.Email;
+
                         db.UserDatas.Add(newUser);
 
                         db.SaveChanges();

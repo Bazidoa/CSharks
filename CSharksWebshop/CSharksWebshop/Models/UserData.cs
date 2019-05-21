@@ -17,7 +17,7 @@ namespace CSharksWebshop.Models
         public string City { get; set; }
         public string PostCode { get; set; }
         public string HouseNumber { get; set; }
-        //public string UserEmail { get; set; }
+        public string UserEmail { get; set; }
 
 
          //paraméterként megkapja az összes ordert egy IEnumerable-ben
