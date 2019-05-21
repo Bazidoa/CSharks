@@ -18,7 +18,9 @@ namespace CSharksWebshop.Controllers
         // GET: Order
         public ActionResult Index()
         {
-            return View(db.Orders.ToList());
+            string currentUser = UserAuthentication.WhoAmI(User, Session);
+            List<Order> myOrders = db.Orders.Where(x=>x.UserID == currentUser).ToList();
+            return View();
         }
 
         public ActionResult AddToOrderEntries()
@@ -33,8 +35,11 @@ namespace CSharksWebshop.Controllers
             if (query != null)
             {
                 //string currentTime = DateTime.Now.ToString();
-                string currentTime = db.Orders.Where(x => x.UserID == currentUser).OrderByDescending(x => x.OrderID).Select(x => x.OrderTime).FirstOrDefault();
-
+                Order currentOrder = db.Orders.Where(x => x.UserID == currentUser).OrderByDescending(x => x.OrderID).Select(x => x).FirstOrDefault();
+                string currentTime = currentOrder.OrderTime;
+                    //db.Orders.Where(x => x.UserID == currentUser).OrderByDescending(x => x.OrderID).Select(x => x.OrderTime).FirstOrDefault();
+                int currentOrderID = currentOrder.OrderID;
+                    //db.Orders.Where(x => x.UserID == currentUser).OrderByDescending(x => x.OrderID).Select(x => x.OrderID).FirstOrDefault();
                 List<Product> products = db.Products.ToList();
 
                 for (int i = 0; i < query.Count; i++)
@@ -43,10 +48,14 @@ namespace CSharksWebshop.Controllers
 
                     OrderEntry entryToAddToOrderEntries = new OrderEntry(currentUser, query[i].ProductID, query[i].Quantity, pPrice.ProductPrice);
                     entryToAddToOrderEntries.OrderTime = currentTime;
+                    entryToAddToOrderEntries.Order_ID = currentOrderID;
+
                     db.OrderEntries.Add(entryToAddToOrderEntries);
                     db.BasketEntries.Remove(query[i]);
                 }
+                currentOrder.OrderStatus = 1;
             }
+            
             db.SaveChanges();
 
             return RedirectToAction("Index");

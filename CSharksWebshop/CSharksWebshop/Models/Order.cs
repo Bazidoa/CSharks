@@ -6,7 +6,7 @@ using System.Web;
 
 namespace CSharksWebshop.Models
 {
-    public enum OrderStatusEnum { ACTIVE = 1, DELETED, SHIPPING, SHIPPED }
+    public enum OrderStatusEnum { NOTCREATED,ACTIVE, DELETED, SHIPPING, SHIPPED }
 
     public class Order
     {
@@ -21,7 +21,7 @@ namespace CSharksWebshop.Models
         public string City { get; set; }
         public string HouseNumber { get; set; }
         public string UserEmail { get; set; }
-        public int OrderStatus { get; set; } = 1;
+        public int OrderStatus { get; set; } = 0;
 
 
 

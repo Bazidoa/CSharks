@@ -58,7 +58,8 @@
                             <div class="card-footer">
                                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
                                 <!--<small><i class="fas fa-cart-plus"></i></small>-->
-                                @Html.ActionLink("Add To Basket", "AddToBasket", new { id = item.ID })
+                                @Html.ActionLink("Add To Basket", "AddToBasket", new { id = item.ID }) |
+                                @Html.ActionLink("Edit", "Edit", new { id = item.ID })
                             </div>
                         </div>
 

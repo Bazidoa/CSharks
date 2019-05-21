@@ -1,0 +1,77 @@
+﻿@model IEnumerable<CSharksWebshop.Models.OrderEntry>
+@using CSharksWebshop.DataModels;
+@using CSharksWebshop.Models;
+@using CSharksWebshop.Controllers;
+
+
+@{
+    ViewBag.Title = "SendMyOrder";
+    WebshopModel db = new WebshopModel();
+    string userId = UserAuthentication.WhoAmI(User, Session);
+    List<OrderEntry> myOrderEntry = db.OrderEntries.Where(x => x.UserID == userId).Select(x => x).ToList();
+
+    List<Product> productList = new List<Product>();
+
+    
+
+    foreach (var item in myOrderEntry)
+    {
+        Product product = db.Products.Where(x => x.ID == item.ProductID).Select(x => x).FirstOrDefault();
+        productList.Add(product);
+    }
+}
+
+<h2>SendMyOrder</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            ProductName
+        </th>
+        <th>
+            ProductPrice
+        </th>
+        <th>
+            Quantity
+        </th>
+        <th>
+            Manufacturer
+        </th>
+        <th>
+            ProductDescription
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in productList)
+    {
+        OrderEntry orderEntry = myOrderEntry.Where(x => x.ProductID == item.ID).Select(x => x).FirstOrDefault();
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => orderEntry.ProductPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => orderEntry.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Manufacturer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductDescription)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+    }
+
+</table>
+

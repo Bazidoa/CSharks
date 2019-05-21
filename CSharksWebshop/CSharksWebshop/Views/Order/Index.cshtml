@@ -1,10 +1,27 @@
 ﻿@model IEnumerable<CSharksWebshop.Models.Order>
+@using CSharksWebshop.DataModels;
+@using CSharksWebshop.Models;
+@using CSharksWebshop.Controllers;
 
 @{
     ViewBag.Title = "Index";
+    WebshopModel db = new WebshopModel();
+    string userId = UserAuthentication.WhoAmI(User, Session);
+    Order currentOrder = db.Orders.Where(x => x.UserID == userId).OrderByDescending(x => x.OrderID).FirstOrDefault();
+    List<BasketEntry> myOrderEntry = db.BasketEntries.Where(x => x.UserID == userId).Select(x => x).ToList();
+    int orderPriceSum = 0;
+    string currentUser =  UserAuthentication.WhoAmI(User,Session);
+    
+    List<Product> productList = new List<Product>();
+
+    foreach (var item in myOrderEntry)
+    {
+        Product product = db.Products.Where(x => x.ID == item.ProductID).Select(x => x).FirstOrDefault();
+        productList.Add(product);
+    }
 }
 
-<h2>Index</h2>
+<h2>SendMyOrder</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,75 +29,57 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.OrderTime)
+            ProductName
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UserID)
+            ProductPrice
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
+            Quantity
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LastName)
+            Manufacturer
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PostCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Street)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.City)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HouseNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserEmail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OrderStatus)
+            ProductDescription
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Street)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HouseNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserEmail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderStatus)
-        </td>
-        <td>
-            @Html.ActionLink("Send Order", "AddToOrderEntries","Order", null,null) |
-           
-        </td>
-    </tr>
-}
+    @foreach (var item in productList)
+    {
+        orderPriceSum += item.ProductPrice * db.BasketEntries.Find(currentUser, item.ID).Quantity;
+        BasketEntry basketEntry = myOrderEntry.Where(x => x.ProductID == item.ID).Select(x => x).FirstOrDefault();
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductPrice)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => basketEntry.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductDescription)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                @* Delete maradhat csak át kell írni, hogy kivegye a "kosárból" *@
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
 
 </table>
+Total Price:
+@orderPriceSum
+</p>
+@Html.ActionLink("Send Order (no turning back)", "AddToOrderEntries", "Order", null, null)
+
+
