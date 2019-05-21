@@ -28,8 +28,8 @@ namespace CSharksWebshop.DataModels
         public virtual DbSet<OrderEntry> OrderEntries { get; set; }
         //public virtual DbSet<Basket> Baskets { get; set; }
         public virtual DbSet<BasketEntry> BasketEntries { get; set; }
+        public virtual DbSet<UserData> UserDatas { get; set; }
 
-  
     }
 
     //public class MyEntity

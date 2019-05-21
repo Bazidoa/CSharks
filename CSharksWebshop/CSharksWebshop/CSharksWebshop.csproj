@@ -179,8 +179,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BasketController.cs" />
     <Compile Include="Controllers\BasketEntryController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MyOrdersController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
@@ -243,6 +245,18 @@
     <Compile Include="Migrations\201905210828405_OrderEntryOrderIDFK.cs" />
     <Compile Include="Migrations\201905210828405_OrderEntryOrderIDFK.Designer.cs">
       <DependentUpon>201905210828405_OrderEntryOrderIDFK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905211414242_UserDatasTableCreated.cs" />
+    <Compile Include="Migrations\201905211414242_UserDatasTableCreated.Designer.cs">
+      <DependentUpon>201905211414242_UserDatasTableCreated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905211530378_UserDatasTableAddition.cs" />
+    <Compile Include="Migrations\201905211530378_UserDatasTableAddition.Designer.cs">
+      <DependentUpon>201905211530378_UserDatasTableAddition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905211605365_EnumChanged.cs" />
+    <Compile Include="Migrations\201905211605365_EnumChanged.Designer.cs">
+      <DependentUpon>201905211605365_EnumChanged.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -369,6 +383,8 @@
     <Content Include="Views\Shop\Details.cshtml" />
     <Content Include="Views\Shop\Edit.cshtml" />
     <Content Include="Views\Shop\Index.cshtml" />
+    <Content Include="Views\Dashboard\Details.cshtml" />
+    <Content Include="Views\MyOrders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -431,6 +447,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905210828405_OrderEntryOrderIDFK.resx">
       <DependentUpon>201905210828405_OrderEntryOrderIDFK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905211414242_UserDatasTableCreated.resx">
+      <DependentUpon>201905211414242_UserDatasTableCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905211530378_UserDatasTableAddition.resx">
+      <DependentUpon>201905211530378_UserDatasTableAddition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905211605365_EnumChanged.resx">
+      <DependentUpon>201905211605365_EnumChanged.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
