@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CSharksWebshop.Models;
+using CSharksWebshop.DataModels;
 
 namespace CSharksWebshop.Controllers
 {
@@ -147,24 +148,46 @@ namespace CSharksWebshop.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model, UserData userData)
         {
             if (ModelState.IsValid)
             {
+
+               
+
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
+                    using (WebshopModel db = new WebshopModel())
+                    {
+
+                        var newUser = db.UserDatas.Create();
+                        newUser.FirstName = userData.FirstName;
+                        newUser.LastName = userData.LastName;
+                        newUser.UserName = userData.UserName;
+                        newUser.City = userData.City;
+                        newUser.Street = userData.Street;
+                        newUser.HouseNumber = userData.HouseNumber;
+                        newUser.PostCode = userData.PostCode;
+                        newUser.UserID = user.Id;
+                        db.UserDatas.Add(newUser);
+
+                        db.SaveChanges();
+                    }
+
                     return RedirectToAction("Index", "Home");
                 }
+
+
                 AddErrors(result);
             }
 

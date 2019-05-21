@@ -244,6 +244,14 @@
     <Compile Include="Migrations\201905210828405_OrderEntryOrderIDFK.Designer.cs">
       <DependentUpon>201905210828405_OrderEntryOrderIDFK.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905211414242_UserDatasTableCreated.cs" />
+    <Compile Include="Migrations\201905211414242_UserDatasTableCreated.Designer.cs">
+      <DependentUpon>201905211414242_UserDatasTableCreated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905211530378_UserDatasTableAddition.cs" />
+    <Compile Include="Migrations\201905211530378_UserDatasTableAddition.Designer.cs">
+      <DependentUpon>201905211530378_UserDatasTableAddition.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -431,6 +439,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905210828405_OrderEntryOrderIDFK.resx">
       <DependentUpon>201905210828405_OrderEntryOrderIDFK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905211414242_UserDatasTableCreated.resx">
+      <DependentUpon>201905211414242_UserDatasTableCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905211530378_UserDatasTableAddition.resx">
+      <DependentUpon>201905211530378_UserDatasTableAddition.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

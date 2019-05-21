@@ -79,6 +79,27 @@ namespace CSharksWebshop.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "Firstname")]
+        public string FirstName { get; set; }
+
+        [Display(Name = "Lastname")]
+        public string LastName { get; set; }
+
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
+
+        [Display(Name = "City")]
+        public string City { get; set; }
+
+        [Display(Name = "Street")]
+        public string Street { get; set; }
+
+        [Display(Name = "PostCode")]
+        public string PostCode { get; set; }
+
+        [Display(Name = "HouseNumber")]
+        public string HouseNumber { get; set; }
     }
 
     public class ResetPasswordViewModel
