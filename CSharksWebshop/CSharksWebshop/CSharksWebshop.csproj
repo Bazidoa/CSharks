@@ -181,6 +181,7 @@
     <Compile Include="Controllers\BasketEntryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MyOrdersController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
@@ -369,6 +370,7 @@
     <Content Include="Views\Shop\Details.cshtml" />
     <Content Include="Views\Shop\Edit.cshtml" />
     <Content Include="Views\Shop\Index.cshtml" />
+    <Content Include="Views\MyOrders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
