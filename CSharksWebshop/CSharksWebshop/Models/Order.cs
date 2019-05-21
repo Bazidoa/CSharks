@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -9,8 +10,8 @@ namespace CSharksWebshop.Models
 
     public class Order
     {
-
-        public int ID { get; set; }
+        [Key]
+        public int OrderID { get; set; }
         public string OrderTime { get; set; }
         public string UserID { get; set; }
         public string FirstName { get; set; }

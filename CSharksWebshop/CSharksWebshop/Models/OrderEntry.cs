@@ -9,6 +9,9 @@ namespace CSharksWebshop.Models
 {
     public class OrderEntry
     {
+        [ForeignKey("Order")]
+        public int Order_ID { get; set; }
+        public Order Order { get; set; }
         [Key]
         [Column(Order = 1)]
         public string UserID { get; set; }
@@ -18,6 +21,8 @@ namespace CSharksWebshop.Models
 
         public int Quantity { get; set; }
 
+        [Key]
+        [Column(Order = 3)]
         public string OrderTime { get; set; }
 
         public int ProductPrice { get; set; }
