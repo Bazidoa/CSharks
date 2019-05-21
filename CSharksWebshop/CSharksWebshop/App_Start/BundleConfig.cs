@@ -25,9 +25,9 @@ namespace CSharksWebshop
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/template-customize.css",
                       "~/Content/registerCard.css",
-                      "~/Content/loginCard.css"));
+                      "~/Content/loginCard.css",
+                      "~/Content/template-customize.css"));
         }
     }
 }

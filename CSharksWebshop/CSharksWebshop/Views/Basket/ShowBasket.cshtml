@@ -76,6 +76,7 @@
             </td>
         </tr>
         BasketSum += item.ProductPrice * db.BasketEntries.Find(currentUser, item.ID).Quantity;
+       
     }
 
 </table>
@@ -83,5 +84,6 @@
 <b>Total Sum of your Basket</b>
 @BasketSum Jó magyar Forint.
 @Html.ActionLink("Starting Order","Create" ,"Order", null, null)
+
 <hr />
 @Html.ActionLink("Delete Basket Items", "ClearBasket")
