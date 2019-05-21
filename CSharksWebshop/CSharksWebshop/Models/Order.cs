@@ -21,7 +21,7 @@ namespace CSharksWebshop.Models
         public string City { get; set; }
         public string HouseNumber { get; set; }
         public string UserEmail { get; set; }
-        public int OrderStatus { get; set; } = 0;
+        public string OrderStatus { get; set; } = OrderStatusEnum.NOTCREATED.ToString();
 
 
 

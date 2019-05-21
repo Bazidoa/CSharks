@@ -25,6 +25,43 @@
 
                             <hr>
 
+                            @*//ezt adtam hozzá én*@
+                            <div class="form-label-group">
+                                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "Firstname" })
+                                <label for="FirstName">FirstName</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Firstname" })
+                                <label for="LastName">LastName</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "Firstname" })
+                                <label for="UserName">UserName</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                @Html.TextBoxFor(m => m.City, new { @class = "form-control", placeholder = "Firstname" })
+                                <label for="City">City</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                @Html.TextBoxFor(m => m.Street, new { @class = "form-control", placeholder = "Firstname" })
+                                <label for="Street">Street</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                @Html.TextBoxFor(m => m.HouseNumber, new { @class = "form-control", placeholder = "Firstname" })
+                                <label for="HouseNumber">HouseNumber</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                @Html.TextBoxFor(m => m.PostCode, new { @class = "form-control", placeholder = "Firstname" })
+                                <label for="PostCode">PostCode</label>
+                            </div>
+
+                            @*//////////////////////*@
                             <div class="form-label-group">
                                 @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
                                 <label for="Password">Password</label>

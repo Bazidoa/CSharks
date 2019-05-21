@@ -53,7 +53,7 @@ namespace CSharksWebshop.Controllers
                     db.OrderEntries.Add(entryToAddToOrderEntries);
                     db.BasketEntries.Remove(query[i]);
                 }
-                currentOrder.OrderStatus = 1;
+                currentOrder.OrderStatus = OrderStatusEnum.ACTIVE.ToString();
             }
             
             db.SaveChanges();

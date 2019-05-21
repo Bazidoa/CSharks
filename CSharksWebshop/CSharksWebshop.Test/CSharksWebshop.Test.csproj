@@ -56,11 +56,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddressTest.cs" />
-    <Compile Include="BasketControllerTest.cs" />
     <Compile Include="MissingProductException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="OrderTest.cs" />
     <Compile Include="ProductTest.cs" />
+    <Compile Include="UserAuthenticationTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
