@@ -1,28 +1,4 @@
-﻿@model IEnumerable<CSharksWebshop.Models.Product>
-@using CSharksWebshop.DataModels;
-@using CSharksWebshop.Models;
-
-@{ 
-    string userID = UserAuthentication.WhoAmI(User, Session);
-    WebshopModel db = new WebshopModel();
-    var basketQuantity=0;
-    try
-    {
-        basketQuantity= (from product in db.BasketEntries
-                        where userID == product.UserID
-                        select product.Quantity).Sum();
-    }
-    catch (Exception)
-    {
-        if (basketQuantity == null)
-        {
-            basketQuantity = 0;
-        }
-    }
-
-
-}
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -47,10 +23,13 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     @*<li class="nav-item active">
-                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
-            </li>*@
+            @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+        </li>*@
                     <li class="nav-item">
-                        @Html.ActionLink("Shop", "Index", "Product", new { area = "" }, new { @class = "nav-link" })
+                        @Html.ActionLink("Shop", "Index", "Shop", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Admin", "Index", "Product", new { area = "" }, new { @class = "nav-link" })
                     </li>
                     <li class="nav-item">
                         @Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })
@@ -60,7 +39,7 @@
                 
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-shopping-cart"></i><span class="badge badge-light badge-padding" style="margin-left: 0.5rem;">@basketQuantity</span>
+                        <i class="fas fa-shopping-cart"></i><span class="badge badge-light badge-padding" style="margin-left: 0.5rem;">0</span>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <div class="card border-light mb-3" style="width: 20rem;">
