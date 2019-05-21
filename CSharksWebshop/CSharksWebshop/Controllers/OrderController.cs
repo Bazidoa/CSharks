@@ -33,7 +33,7 @@ namespace CSharksWebshop.Controllers
             if (query != null)
             {
                 //string currentTime = DateTime.Now.ToString();
-                string currentTime = db.Orders.Where(x => x.UserID == currentUser).OrderByDescending(x => x.ID).Select(x => x.OrderTime).FirstOrDefault();
+                string currentTime = db.Orders.Where(x => x.UserID == currentUser).OrderByDescending(x => x.OrderID).Select(x => x.OrderTime).FirstOrDefault();
 
                 List<Product> products = db.Products.ToList();
 

@@ -235,6 +235,14 @@
     <Compile Include="Migrations\201905201518542_DateTImetoString.Designer.cs">
       <DependentUpon>201905201518542_DateTImetoString.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905210726334_OrderEntryOrderTimePK.cs" />
+    <Compile Include="Migrations\201905210726334_OrderEntryOrderTimePK.Designer.cs">
+      <DependentUpon>201905210726334_OrderEntryOrderTimePK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905210828405_OrderEntryOrderIDFK.cs" />
+    <Compile Include="Migrations\201905210828405_OrderEntryOrderIDFK.Designer.cs">
+      <DependentUpon>201905210828405_OrderEntryOrderIDFK.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -411,6 +419,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905201518542_DateTImetoString.resx">
       <DependentUpon>201905201518542_DateTImetoString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905210726334_OrderEntryOrderTimePK.resx">
+      <DependentUpon>201905210726334_OrderEntryOrderTimePK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905210828405_OrderEntryOrderIDFK.resx">
+      <DependentUpon>201905210828405_OrderEntryOrderIDFK.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
