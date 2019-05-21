@@ -288,6 +288,7 @@
     <Content Include="Images\defaultImg.jpg" />
     <Content Include="Images\how-to-boil-nintendo-repair-lede.jpg" />
     <Content Include="Images\nintendo.jpg" />
+    <Content Include="Images\retro-logo.jpg" />
     <Content Include="Images\signIn_polariod.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
