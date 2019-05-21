@@ -10,7 +10,8 @@
     if (User.Identity.IsAuthenticated)
     {
         currentUser = User.Identity.Name;
-    }else
+    }
+    else
     {
         currentUser = Session.SessionID;
     }
@@ -80,6 +81,7 @@
 </table>
 
 <b>Total Sum of your Basket</b>
-@BasketSum $
-</p>
+@BasketSum Jó magyar Forint.
+@Html.ActionLink("Starting Order","Create" ,"Order", null, null)
+<hr />
 @Html.ActionLink("Delete Basket Items", "ClearBasket")

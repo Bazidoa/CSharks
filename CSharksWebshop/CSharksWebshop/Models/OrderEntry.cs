@@ -18,14 +18,15 @@ namespace CSharksWebshop.Models
 
         public int Quantity { get; set; }
 
-        public DateTime OrderTime { get; set; }
+        public string OrderTime { get; set; }
 
         public int ProductPrice { get; set; }
 
-        public OrderEntry(string UserID, int ProductID)
+        public OrderEntry(string UserID, int ProductID, int Quantity)
         {
             this.UserID = UserID;
             this.ProductID = ProductID;
+            this.Quantity = Quantity;
             
         }
 
