@@ -18,7 +18,49 @@ namespace CSharksWebshop.Controllers
         // GET: Shop
         public ActionResult Index()
         {
-            return View(db.Products.ToList());
+            string currentUser = UserAuthentication.WhoAmI(User, Session);
+            List<Product> allProducts = db.Products.ToList();
+            List<Product> allProductRightOrder = allProducts.OrderBy(p => p.ProductName).ThenBy(m => m.Manufacturer).ToList();
+
+            return View(allProductRightOrder);
+
+        }
+
+        public ActionResult AddToBasket(int? id)
+        {
+            Session["dummy"] = "Dummy";
+            string currentUser = UserAuthentication.WhoAmI(User, Session);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Find(id);
+            BasketEntry entryToAddToBasket = new BasketEntry(currentUser, product.ID);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            //TODo: if benne van már a termék(SessionID && ProductID && OrderTime==null alapján) akkor Quantity++
+            var query = (from a in db.BasketEntries
+                         where a.UserID == currentUser && a.ProductID == product.ID
+                         select a).FirstOrDefault();
+
+            if (query != null)
+            {
+                var result = db.BasketEntries.SingleOrDefault(b => b.UserID == currentUser && b.ProductID == product.ID);
+                result.Quantity++;
+            }
+
+
+            else
+            {
+                entryToAddToBasket.Quantity = 1;
+                db.BasketEntries.Add(entryToAddToBasket);
+
+            }
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         // GET: Shop/Details/5
