@@ -300,6 +300,8 @@
     <Content Include="Images\nintendo.jpg" />
     <Content Include="Images\original1.jpg" />
     <Content Include="Images\pinkanyu_cukorka_limo_italpor_2.jpg" />
+    <Content Include="Images\retro-logo3.jpg" />
+    <Content Include="Images\retro-logo2.jpg" />
     <Content Include="Images\Retro-Tetris.jpg" />
     <Content Include="Images\signIn_polariod.jpg" />
     <Content Include="Scripts\bootstrap.js" />
