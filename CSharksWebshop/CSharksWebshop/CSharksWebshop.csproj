@@ -399,13 +399,13 @@
     <Content Include="Views\Shop\Index.cshtml" />
     <Content Include="Views\Dashboard\Details.cshtml" />
     <Content Include="Views\MyOrders\Index.cshtml" />
+    <Content Include="Views\Riports\RiportDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Views\Riports\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
