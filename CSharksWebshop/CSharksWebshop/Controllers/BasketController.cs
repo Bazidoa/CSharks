@@ -34,7 +34,7 @@ namespace CSharksWebshop.Controllers
                 }
             }
             db.SaveChanges();
-            return RedirectToAction("ShowBasket");
+            return RedirectToAction("Index", "Shop");
         }
 
         public ActionResult ShowBasket()
