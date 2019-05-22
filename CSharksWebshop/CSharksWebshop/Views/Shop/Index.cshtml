@@ -9,7 +9,24 @@
     string userID = UserAuthentication.WhoAmI(User, Session);
     WebshopModel db = new WebshopModel();
     var basketQuantity = 0;
+    var BasketSum = 0;
     string currentUser;
+    List<BasketEntry> myBasketEntries = (from basketEntries in db.BasketEntries
+                                         where userID == basketEntries.UserID
+                                         select basketEntries).ToList();
+
+    List<Product> currentProdNames = new List<Product>();
+    for (int i = 0; i < myBasketEntries.Count; i++)
+    {
+        foreach (var item in db.Products)
+        {
+            if (myBasketEntries[i].ProductID == item.ID)
+            {
+                currentProdNames.Add(item);
+            }
+        }
+    }
+
     if (User.Identity.IsAuthenticated)
     {
         currentUser = User.Identity.Name;
@@ -23,6 +40,8 @@
         basketQuantity = (from product in db.BasketEntries
                           where userID == product.UserID
                           select product.Quantity).Sum();
+
+
     }
     catch (Exception)
     {
@@ -43,34 +62,33 @@
             <div class="card mb-3" style="margin-top: 24px;">
                 <h5 class="card-header">Your basket <span class="badge badge-pill badge-secondary">@basketQuantity</span></h5>
                 @*<div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-                    </div>
+            <h5 class="card-title">Special title treatment</h5>
+            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+        </div>
 
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>*@
+        <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>*@
                 <ul class="list-group list-group-flush">
-                    @*@foreach (var item in )
+                    @foreach (var item in currentProdNames)
                     {
-                        if (User.Identity.IsAuthenticated)
-                        {
-                    <li class="list-group-item">@Html.DisplayFor(modelItem => item.ProductName)</li>
-                        }
-                        else
-                        {
-                            currentUser = Session.SessionID;
-                        }
-                        <li class="list-group-item">cras justo odio</li>
-                    }*@
-                    </ul>
 
+                    <li class="list-group-item">
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                        @item.ProductPrice
+                        
+                    </li>
+
+                        BasketSum += item.ProductPrice * db.BasketEntries.Find(currentUser, item.ID).Quantity;
+                    }
+                </ul>
                 <div class="card-body">
-                    @Html.ActionLink("Order", "ShowBasket", "Basket", null, new { @class = "card-link" }) | 
+                    @Html.ActionLink("Order", "ShowBasket", "Basket", null, new { @class = "card-link" }) |
                     @Html.ActionLink("Empty basket", "ClearBasket", "Basket")
                 </div>
                 <div class="card-footer text-muted">
-                    
+                     @BasketSum Ft
+
                 </div>
             </div>
 
