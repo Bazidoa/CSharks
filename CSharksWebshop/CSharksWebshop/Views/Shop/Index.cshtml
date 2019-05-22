@@ -113,7 +113,7 @@
                             <a href="#"><img class="card-img-top" src="~/Images/defaultImg.jpg" alt=""></a>
                             <div class="card-body">
                                 <h4 class="card-title">
-                                    <a href="#">@Html.DisplayFor(modelItem => item.ProductName)</a>
+                                    @Html.ActionLink(item.ProductName, "Details","Product", new { id = item.ID },null)
                                 </h4>
                                 <h5>@Html.DisplayFor(modelItem => item.ProductPrice)</h5>
                                 <p class="card-text">@Html.DisplayFor(modelItem => item.ProductDescription)</p>
