@@ -182,6 +182,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MyOrdersController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
@@ -245,6 +246,22 @@
     <Compile Include="Migrations\201905210828405_OrderEntryOrderIDFK.Designer.cs">
       <DependentUpon>201905210828405_OrderEntryOrderIDFK.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905211414242_UserDatasTableCreated.cs" />
+    <Compile Include="Migrations\201905211414242_UserDatasTableCreated.Designer.cs">
+      <DependentUpon>201905211414242_UserDatasTableCreated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905211530378_UserDatasTableAddition.cs" />
+    <Compile Include="Migrations\201905211530378_UserDatasTableAddition.Designer.cs">
+      <DependentUpon>201905211530378_UserDatasTableAddition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905211605365_EnumChanged.cs" />
+    <Compile Include="Migrations\201905211605365_EnumChanged.Designer.cs">
+      <DependentUpon>201905211605365_EnumChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905211757087_UserDataEmail.cs" />
+    <Compile Include="Migrations\201905211757087_UserDataEmail.Designer.cs">
+      <DependentUpon>201905211757087_UserDataEmail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -272,9 +289,18 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\10b9656aa96349216ad5287b427af549.jpg" />
+    <Content Include="Images\55105rr.jpg" />
+    <Content Include="Images\Cassette.jpg" />
+    <Content Include="Images\Commodore64.jpg" />
     <Content Include="Images\defaultImg.jpg" />
     <Content Include="Images\how-to-boil-nintendo-repair-lede.jpg" />
+    <Content Include="Images\keljfeljancsi.png" />
+    <Content Include="Images\letöltés.jpg" />
     <Content Include="Images\nintendo.jpg" />
+    <Content Include="Images\original1.jpg" />
+    <Content Include="Images\pinkanyu_cukorka_limo_italpor_2.jpg" />
+    <Content Include="Images\Retro-Tetris.jpg" />
     <Content Include="Images\signIn_polariod.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -371,6 +397,7 @@
     <Content Include="Views\Shop\Edit.cshtml" />
     <Content Include="Views\Shop\Index.cshtml" />
     <Content Include="Views\Dashboard\Details.cshtml" />
+    <Content Include="Views\MyOrders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -433,6 +460,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905210828405_OrderEntryOrderIDFK.resx">
       <DependentUpon>201905210828405_OrderEntryOrderIDFK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905211414242_UserDatasTableCreated.resx">
+      <DependentUpon>201905211414242_UserDatasTableCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905211530378_UserDatasTableAddition.resx">
+      <DependentUpon>201905211530378_UserDatasTableAddition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905211605365_EnumChanged.resx">
+      <DependentUpon>201905211605365_EnumChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905211757087_UserDataEmail.resx">
+      <DependentUpon>201905211757087_UserDataEmail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

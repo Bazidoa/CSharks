@@ -16,15 +16,15 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
         <div class="container">
-            @Html.ActionLink("W56", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("W56", "Index", "Shop", new { area = "" }, new { @class = "navbar-brand" })
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     @*<li class="nav-item active">
-            @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
-        </li>*@
+                            @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+                        </li>*@
                     <li class="nav-item">
                         @Html.ActionLink("Shop", "Index", "Shop", new { area = "" }, new { @class = "nav-link" })
                     </li>
@@ -39,30 +39,10 @@
                     </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
-                
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-shopping-cart"></i><span class="badge badge-light badge-padding" style="margin-left: 0.5rem;">0</span>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <div class="card border-light mb-3" style="width: 20rem;">
-                            <div class="card-header">Your shopping cart</div>
-                            <div class="card-body">
-                                <table class="table-striped">
-                                    <tr>
-                                        <td>Column</td>
-                                        <td>content</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Column content</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                @Html.ActionLink(" ", "ShowBasket", "Basket", null, new { @class = "fas fa-shopping-cart" })
+                
+
+                
             </div>
         </div>
     </nav>
