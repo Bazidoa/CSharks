@@ -17,9 +17,14 @@ namespace CSharksWebshop.Controllers
         {
             string userID =UserAuthentication.WhoAmI(User,Session);
             
-            List<Order> orders = db.Orders.Where(x => x.UserID == userID && x.OrderStatus != OrderStatusEnum.DELETED.ToString()).ToList();
+            List<Order> orders = db.Orders.Where(x => x.UserID == userID &&
+                                                    (x.OrderStatus != OrderStatusEnum.DELETED.ToString() &&
+                                                    x.OrderStatus != OrderStatusEnum.NOTCREATED.ToString())).ToList();
             return View(orders);
         }
+
+
+
         public ActionResult Delete(int? id)
         {
             string userID = UserAuthentication.WhoAmI(User, Session);
