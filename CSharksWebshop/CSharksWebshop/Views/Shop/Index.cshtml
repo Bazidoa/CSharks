@@ -125,13 +125,15 @@
             <div class="row">
                 @foreach (var item in Model)
                 {
+                    string currenturl = item.ProductPictureURL.Substring(1,item.ProductPictureURL.Length-1);
                     <div class="col-lg-4 col-md-6 mb-4">
 
                         <div class="card h-100">
-                            <a href="#"><img class="card-img-top" src="~/Images/defaultImg.jpg" alt=""></a>
+                            
+                            <a href="#"><img class="card-img-top" src="@currenturl" alt="" ></a>
                             <div class="card-body">
                                 <h4 class="card-title">
-                                    @Html.ActionLink(item.ProductName, "Details","Product", new { id = item.ID },null)
+                                    @Html.ActionLink(item.ProductName, "Details", "Product", new { id = item.ID }, null)
                                 </h4>
                                 <h5>@Html.DisplayFor(modelItem => item.ProductPrice)</h5>
                                 <p class="card-text">@Html.DisplayFor(modelItem => item.ProductDescription)</p>
@@ -139,7 +141,7 @@
                             <div class="card-footer">
                                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
                                 <!--<small><i class="fas fa-cart-plus"></i></small>-->
-                                @Html.ActionLink(" ", "AddToBasket", "Shop", new { id = item.ID }, new {@class= "fas fa-cart-plus" })
+                                @Html.ActionLink(" ", "AddToBasket", "Shop", new { id = item.ID }, new { @class = "fas fa-cart-plus" })
 
                             </div>
                         </div>
