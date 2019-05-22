@@ -75,11 +75,11 @@
 
                     <li class="list-group-item">
                         @Html.DisplayFor(modelItem => item.ProductName)
-                        @item.ProductPrice
-                        
+                        @item.ProductPrice Ft
+
                     </li>
 
-                        BasketSum += item.ProductPrice * db.BasketEntries.Find(currentUser, item.ID).Quantity;
+                        BasketSum += item.ProductPrice * db.BasketEntries.Find(currentUser, item.ID).Quantity; 
                     }
                 </ul>
                 <div class="card-body">
