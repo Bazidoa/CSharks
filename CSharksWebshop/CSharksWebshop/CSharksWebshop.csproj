@@ -185,6 +185,7 @@
     <Compile Include="Controllers\MyOrdersController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\RiportsController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="DataModels\WebshopModel.cs" />
     <Compile Include="Global.asax.cs">
@@ -404,6 +405,7 @@
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Views\Riports\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
