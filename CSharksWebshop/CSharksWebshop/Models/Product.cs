@@ -39,16 +39,14 @@ namespace CSharksWebshop.Models
 
         public string Manufacturer { get; set; }
         private string productPictureURL;
-        public string ProductPictureURL {
+        public string ProductPictureURL
+        {
             get { return productPictureURL; }
-            set { if(value == null)
-                {
-                    productPictureURL= "~/Images/defaultImg.jpg";
-                }else
-                {
-                    productPictureURL =  value;
-                }
-            } }
+            set
+            {
+                productPictureURL = value;
+            }
+        }
 
         public Product()
         {

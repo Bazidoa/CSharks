@@ -10,8 +10,8 @@
     Order currentOrder = db.Orders.Where(x => x.UserID == userId).OrderByDescending(x => x.OrderID).FirstOrDefault();
     List<BasketEntry> myOrderEntry = db.BasketEntries.Where(x => x.UserID == userId).Select(x => x).ToList();
     int orderPriceSum = 0;
-    string currentUser =  UserAuthentication.WhoAmI(User,Session);
-    
+    string currentUser = UserAuthentication.WhoAmI(User, Session);
+
     List<Product> productList = new List<Product>();
 
     foreach (var item in myOrderEntry)
@@ -24,7 +24,7 @@
 <h2>SendMyOrder</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @*@Html.ActionLink("Create New", "Create")*@
 </p>
 <table class="table">
     <tr>
@@ -71,7 +71,7 @@
                 @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                     @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
                 @* Delete maradhat csak át kell írni, hogy kivegye a "kosárból" *@
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+
             </td>
         </tr>
     }
@@ -80,6 +80,7 @@
 Total Price:
 @orderPriceSum
 </p>
-@Html.ActionLink("Send Order (no turning back)", "AddToOrderEntries", "Order", null, null)
+@Html.ActionLink("Back to Shop", "Index", "Shop", new { /* id=item.PrimaryKey */ }, null) |
+@Html.ActionLink("Confirm Order", "AddToOrderEntries", "Order", null, null)
 
 

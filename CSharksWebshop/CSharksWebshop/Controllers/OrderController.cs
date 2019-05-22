@@ -58,7 +58,7 @@ namespace CSharksWebshop.Controllers
             
             db.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "MyOrders");
         }
 
         // GET: Order/Create
