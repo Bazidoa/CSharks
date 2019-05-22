@@ -8,16 +8,15 @@
         <div class="col-lg-12">
             <h1 class="page-header">Dashboard</h1>
         </div>
-        <!-- /.col-lg-12 -->
     </div>
-    <!-- /.row -->
+    <br />
     <div class="row">
         <div class="col-lg-4 col-md-6">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-comments fa-5x"></i>
+                            <i class="fas fa-user fa-5x"></i>
                         </div>
                         <div><h4>Felhasználók száma: </h4></div>
                         <div class="col-xs-9 text-right">
@@ -39,24 +38,28 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-tasks fa-5x"></i>
+                            <i class="fas fa-cart-arrow-down fa-5x"></i>
                         </div>
                         <div><h4>Megrendelések száma: </h4></div>
                         <div class="col-xs-9 text-right">
                             <div class="huge" id="CountOrders">
-                                <span>
-                                    @if (ViewBag.CountOrders != null)
-                                    {
-                                        @ViewBag.CountOrders;
-                                    }
-                                </span>
+                                <div>
+                                    <h4>
+                                        @if (ViewBag.CountOrders != null)
+                                        {
+                                            @ViewBag.CountOrders;
+                                        }
+                                    </h4>
+
+                                </div>
                             </div>
 
                         </div>
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
+        <br />
         <div class="col-lg-4 col-md-6">
             <div class="panel panel-green">
                 <div class="panel-heading">
@@ -67,12 +70,12 @@
                         <div><h4>Megrendelt termékek száma: </h4></div>
                         <div class="col-xs-9 text-right">
                             <div class="huge" id="CountOrders">
-                                <span>
+                                <div>
                                     @if (ViewBag.CountOrderEntries != null)
                                     {
                                         @ViewBag.CountOrderEntries;
                                     }
-                                </span>
+                                </div>
                             </div>
 
                         </div>
@@ -85,7 +88,7 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-shopping-cart fa-5x"></i>
+                            <i class="fas fa-tags fa-5x"></i>
                         </div>
                         <div><h4>Termékek száma: </h4></div>
                         <div class="col-xs-9 text-right">
@@ -105,4 +108,3 @@
 
     </div>
 </div>
- 
