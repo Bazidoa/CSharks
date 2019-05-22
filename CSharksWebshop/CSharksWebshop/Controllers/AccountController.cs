@@ -186,7 +186,7 @@ namespace CSharksWebshop.Controllers
                         db.SaveChanges();
                     }
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Shop");
                 }
 
 
@@ -417,7 +417,7 @@ namespace CSharksWebshop.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Shop");
         }
 
         //
@@ -474,7 +474,7 @@ namespace CSharksWebshop.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Shop");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

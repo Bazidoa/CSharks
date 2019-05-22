@@ -22,7 +22,7 @@ namespace CSharksWebshop.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Retro - Warehouse 56";
 
             return View();
         }
