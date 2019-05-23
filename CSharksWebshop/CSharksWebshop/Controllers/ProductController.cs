@@ -62,14 +62,17 @@ namespace CSharksWebshop.Controllers
                 
             }
             db.SaveChanges();
-
+            if (Request.UrlReferrer.ToString().EndsWith("/ShowBasket"))
+            {
+               return RedirectToAction("ShowBasket", "Basket");
+            }
             return RedirectToAction("Index");
         }
 
         //todo később ha mennyiségek vannak akkor majd figyelni kell hogy többet kell beletenni
-        
 
-        
+
+
         //GET -ezt írtam Stackről
         /* public ActionResult CreateNewMyEntity(string default_value)
          {
@@ -78,6 +81,43 @@ namespace CSharksWebshop.Controllers
 
              return View(newMyEntity);
          }*/
+        public ActionResult RemoveFromBasket(int? id)
+        {
+            Session["dummy"] = "Dummy";
+            string currentUser = UserAuthentication.WhoAmI(User, Session);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Find(id);
+            BasketEntry entryToRemoveFromBasket = new BasketEntry(currentUser, product.ID);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            //TODo: if benne van már a termék(SessionID && ProductID && OrderTime==null alapján) akkor Quantity++
+            BasketEntry BasketEntryToLowerQuantity = (from a in db.BasketEntries
+                         where a.UserID == currentUser && a.ProductID == product.ID
+                         select a).FirstOrDefault();
+
+            if (BasketEntryToLowerQuantity != null)
+            {
+              BasketEntryToLowerQuantity.Quantity--;
+            }
+            if (BasketEntryToLowerQuantity.Quantity == 0)
+            {
+                db.BasketEntries.Remove(BasketEntryToLowerQuantity);
+            }
+            db.SaveChanges();
+
+            if (Request.UrlReferrer.ToString().EndsWith("/ShowBasket"))
+            {
+                return RedirectToAction("ShowBasket", "Basket");
+            }
+            return RedirectToAction("Index");
+        }
+
+
 
         // GET: Product/Details/5
         public ActionResult Details(int? id)
