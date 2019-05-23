@@ -23,6 +23,13 @@ namespace CSharksWebshop.DataModels
 
         // public virtual DbSet<MyEntity> MyEntities { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        //public virtual DbSet<Address> Addresses { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<OrderEntry> OrderEntries { get; set; }
+        //public virtual DbSet<Basket> Baskets { get; set; }
+        public virtual DbSet<BasketEntry> BasketEntries { get; set; }
+        public virtual DbSet<UserData> UserDatas { get; set; }
+
     }
 
     //public class MyEntity

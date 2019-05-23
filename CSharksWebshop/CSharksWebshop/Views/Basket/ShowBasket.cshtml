@@ -1,0 +1,89 @@
+﻿@model IEnumerable<CSharksWebshop.Models.Product>
+@using CSharksWebshop.DataModels;
+@using CSharksWebshop.Models;
+@using CSharksWebshop.Controllers;
+@{
+    ViewBag.Title = "ShowBasket";
+    WebshopModel db = new WebshopModel();
+    int BasketSum = 0;
+    string currentUser;
+    if (User.Identity.IsAuthenticated)
+    {
+        currentUser = User.Identity.Name;
+    }
+    else
+    {
+        currentUser = Session.SessionID;
+    }
+
+}
+<h2>Your Basket:</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsAvailable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InStock)
+        </th>
+        <th>
+            Darab
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAvailable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => db.BasketEntries.Find(currentUser, item.ID).Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.ID }) |*@
+                @Html.ActionLink("Delete", "DeleteFromBasket", new { id = item.ID })
+
+            </td>
+        </tr>
+        BasketSum += item.ProductPrice * db.BasketEntries.Find(currentUser, item.ID).Quantity;
+       
+    }
+
+</table>
+
+<b>Total Sum of your Basket</b>
+@BasketSum Ft.
+@Html.ActionLink("Starting Order","Create" ,"Order", null, null)
+
+<hr />
+@Html.ActionLink("Delete Basket Items", "ClearBasket")

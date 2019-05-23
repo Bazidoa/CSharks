@@ -175,22 +175,106 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BasketController.cs" />
+    <Compile Include="Controllers\BasketEntryController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MyOrdersController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\RiportsController.cs" />
+    <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="DataModels\WebshopModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905141234527_WebshopModel_Product_Created.cs" />
-    <Compile Include="Migrations\201905141234527_WebshopModel_Product_Created.Designer.cs">
-      <DependentUpon>201905141234527_WebshopModel_Product_Created.cs</DependentUpon>
+    <Compile Include="Migrations\201905160836546_ProductsRecreated.cs" />
+    <Compile Include="Migrations\201905160836546_ProductsRecreated.Designer.cs">
+      <DependentUpon>201905160836546_ProductsRecreated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905161228229_urlfriendlyNotRequired.cs" />
+    <Compile Include="Migrations\201905161228229_urlfriendlyNotRequired.Designer.cs">
+      <DependentUpon>201905161228229_urlfriendlyNotRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905161349469_BasketDBset_IDAdded.cs" />
+    <Compile Include="Migrations\201905161349469_BasketDBset_IDAdded.Designer.cs">
+      <DependentUpon>201905161349469_BasketDBset_IDAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905161424175_removeBasket.cs" />
+    <Compile Include="Migrations\201905161424175_removeBasket.Designer.cs">
+      <DependentUpon>201905161424175_removeBasket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905161434064_BasketEntryDB.cs" />
+    <Compile Include="Migrations\201905161434064_BasketEntryDB.Designer.cs">
+      <DependentUpon>201905161434064_BasketEntryDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905171002032_BasketEntryDateTime.cs" />
+    <Compile Include="Migrations\201905171002032_BasketEntryDateTime.Designer.cs">
+      <DependentUpon>201905171002032_BasketEntryDateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905171052013_BasketView_kerdojel.cs" />
+    <Compile Include="Migrations\201905171052013_BasketView_kerdojel.Designer.cs">
+      <DependentUpon>201905171052013_BasketView_kerdojel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905200927357_ProductsPictureURLupdate.cs" />
+    <Compile Include="Migrations\201905200927357_ProductsPictureURLupdate.Designer.cs">
+      <DependentUpon>201905200927357_ProductsPictureURLupdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905201219500_OrderTableCreated.cs" />
+    <Compile Include="Migrations\201905201219500_OrderTableCreated.Designer.cs">
+      <DependentUpon>201905201219500_OrderTableCreated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905201241376_OrderEntriesTableAndModelCreated.cs" />
+    <Compile Include="Migrations\201905201241376_OrderEntriesTableAndModelCreated.Designer.cs">
+      <DependentUpon>201905201241376_OrderEntriesTableAndModelCreated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905201347376_OrderTableDateTimeString.cs" />
+    <Compile Include="Migrations\201905201347376_OrderTableDateTimeString.Designer.cs">
+      <DependentUpon>201905201347376_OrderTableDateTimeString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905201518542_DateTImetoString.cs" />
+    <Compile Include="Migrations\201905201518542_DateTImetoString.Designer.cs">
+      <DependentUpon>201905201518542_DateTImetoString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905210726334_OrderEntryOrderTimePK.cs" />
+    <Compile Include="Migrations\201905210726334_OrderEntryOrderTimePK.Designer.cs">
+      <DependentUpon>201905210726334_OrderEntryOrderTimePK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905210828405_OrderEntryOrderIDFK.cs" />
+    <Compile Include="Migrations\201905210828405_OrderEntryOrderIDFK.Designer.cs">
+      <DependentUpon>201905210828405_OrderEntryOrderIDFK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905211414242_UserDatasTableCreated.cs" />
+    <Compile Include="Migrations\201905211414242_UserDatasTableCreated.Designer.cs">
+      <DependentUpon>201905211414242_UserDatasTableCreated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905211530378_UserDatasTableAddition.cs" />
+    <Compile Include="Migrations\201905211530378_UserDatasTableAddition.Designer.cs">
+      <DependentUpon>201905211530378_UserDatasTableAddition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905211605365_EnumChanged.cs" />
+    <Compile Include="Migrations\201905211605365_EnumChanged.Designer.cs">
+      <DependentUpon>201905211605365_EnumChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905211757087_UserDataEmail.cs" />
+    <Compile Include="Migrations\201905211757087_UserDataEmail.Designer.cs">
+      <DependentUpon>201905211757087_UserDataEmail.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\BasketEntry.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ItemContainer.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderEntry.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\UserAuthentication.cs" />
+    <Compile Include="Models\UserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -199,12 +283,31 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\loginCard.css" />
+    <Content Include="Content\template-customize.css" />
+    <Content Include="Content\registerCard.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\10b9656aa96349216ad5287b427af549.jpg" />
+    <Content Include="Images\55105rr.jpg" />
+    <Content Include="Images\Cassette.jpg" />
+    <Content Include="Images\Commodore64.jpg" />
+    <Content Include="Images\defaultImg.jpg" />
+    <Content Include="Images\how-to-boil-nintendo-repair-lede.jpg" />
+    <Content Include="Images\keljfeljancsi.png" />
+    <Content Include="Images\letöltés.jpg" />
+    <Content Include="Images\nintendo.jpg" />
+    <Content Include="Images\original1.jpg" />
+    <Content Include="Images\pinkanyu_cukorka_limo_italpor_2.jpg" />
+    <Content Include="Images\retro-logo3.jpg" />
+    <Content Include="Images\retro-logo2.jpg" />
+    <Content Include="Images\Retro-Tetris.jpg" />
+    <Content Include="Images\signIn_polariod.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Views\web.config" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -216,6 +319,20 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="vendor\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="vendor\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="vendor\jquery\jquery.js" />
+    <Content Include="vendor\jquery\jquery.min.js" />
+    <Content Include="vendor\jquery\jquery.slim.js" />
+    <Content Include="vendor\jquery\jquery.slim.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -250,9 +367,47 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\Delete.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\BasketEntry\Create.cshtml" />
+    <Content Include="Views\BasketEntry\Delete.cshtml" />
+    <Content Include="Views\BasketEntry\Details.cshtml" />
+    <Content Include="Views\BasketEntry\Edit.cshtml" />
+    <Content Include="Views\BasketEntry\Index.cshtml" />
+    <Content Include="Views\Product\AddToBasket.cshtml" />
+    <Content Include="Views\Basket\ShowBasket.cshtml" />
+    <Content Include="vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="vendor\bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="vendor\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="vendor\bootstrap\js\bootstrap.js.map" />
+    <Content Include="vendor\bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="vendor\jquery\jquery.min.map" />
+    <Content Include="vendor\jquery\jquery.slim.min.map" />
+    <Content Include="Views\Basket.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\Create.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Shop\Create.cshtml" />
+    <Content Include="Views\Shop\Delete.cshtml" />
+    <Content Include="Views\Shop\Details.cshtml" />
+    <Content Include="Views\Shop\Edit.cshtml" />
+    <Content Include="Views\Shop\Index.cshtml" />
+    <Content Include="Views\Dashboard\Details.cshtml" />
+    <Content Include="Views\MyOrders\Index.cshtml" />
+    <Content Include="Views\Riports\RiportDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -268,8 +423,59 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905141234527_WebshopModel_Product_Created.resx">
-      <DependentUpon>201905141234527_WebshopModel_Product_Created.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905160836546_ProductsRecreated.resx">
+      <DependentUpon>201905160836546_ProductsRecreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905161228229_urlfriendlyNotRequired.resx">
+      <DependentUpon>201905161228229_urlfriendlyNotRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905161349469_BasketDBset_IDAdded.resx">
+      <DependentUpon>201905161349469_BasketDBset_IDAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905161424175_removeBasket.resx">
+      <DependentUpon>201905161424175_removeBasket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905161434064_BasketEntryDB.resx">
+      <DependentUpon>201905161434064_BasketEntryDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905171002032_BasketEntryDateTime.resx">
+      <DependentUpon>201905171002032_BasketEntryDateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905171052013_BasketView_kerdojel.resx">
+      <DependentUpon>201905171052013_BasketView_kerdojel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905200927357_ProductsPictureURLupdate.resx">
+      <DependentUpon>201905200927357_ProductsPictureURLupdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905201219500_OrderTableCreated.resx">
+      <DependentUpon>201905201219500_OrderTableCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905201241376_OrderEntriesTableAndModelCreated.resx">
+      <DependentUpon>201905201241376_OrderEntriesTableAndModelCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905201347376_OrderTableDateTimeString.resx">
+      <DependentUpon>201905201347376_OrderTableDateTimeString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905201518542_DateTImetoString.resx">
+      <DependentUpon>201905201518542_DateTImetoString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905210726334_OrderEntryOrderTimePK.resx">
+      <DependentUpon>201905210726334_OrderEntryOrderTimePK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905210828405_OrderEntryOrderIDFK.resx">
+      <DependentUpon>201905210828405_OrderEntryOrderIDFK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905211414242_UserDatasTableCreated.resx">
+      <DependentUpon>201905211414242_UserDatasTableCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905211530378_UserDatasTableAddition.resx">
+      <DependentUpon>201905211530378_UserDatasTableAddition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905211605365_EnumChanged.resx">
+      <DependentUpon>201905211605365_EnumChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905211757087_UserDataEmail.resx">
+      <DependentUpon>201905211757087_UserDataEmail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
