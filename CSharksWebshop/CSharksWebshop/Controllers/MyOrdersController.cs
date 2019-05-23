@@ -15,11 +15,23 @@ namespace CSharksWebshop.Controllers
         // GET: MyOrders
         public ActionResult Index()
         {
-            string userID =UserAuthentication.WhoAmI(User,Session);
-            
+            string userID = UserAuthentication.WhoAmI(User, Session);
+
             List<Order> orders = db.Orders.Where(x => x.UserID == userID &&
                                                     (x.OrderStatus != OrderStatusEnum.DELETED.ToString() &&
                                                     x.OrderStatus != OrderStatusEnum.NOTCREATED.ToString())).ToList();
+
+            List<OrderEntry> usersOrderEntries = db.OrderEntries.Where(x => x.UserID == userID).ToList();
+
+            List<Product> usersOrdersProducts = new List<Product>();
+
+            foreach (OrderEntry item in usersOrderEntries)
+            {
+                Product currentProduct = db.Products.Find(item.ProductID);
+                usersOrdersProducts.Add(currentProduct);
+            }
+            ViewBag.UsersProducts = usersOrdersProducts;
+            ViewBag.UsersOrderEntries = usersOrderEntries;
             return View(orders);
         }
 

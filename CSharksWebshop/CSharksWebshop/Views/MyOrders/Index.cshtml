@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<CSharksWebshop.Models.Order>
-
+@using CSharksWebshop.Models;
 @{
     ViewBag.Title = "Index";
 }
@@ -15,8 +15,8 @@
             @Html.DisplayNameFor(model => model.OrderTime)
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.UserID)
-        </th>*@
+                @Html.DisplayNameFor(model => model.UserID)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
@@ -44,44 +44,84 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderTime)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.UserID)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Street)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HouseNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserEmail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderStatus)
-        </td>
-        <td>
-            @*@Html.ActionLink("Edit", "Edit", new { id=item.OrderID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.OrderID }) |*@
-            @Html.ActionLink("Delete", "Delete", new { id=item.OrderID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderTime)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.UserID)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Street)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HouseNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderStatus)
+            </td>
+
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.OrderID }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.OrderID }) |*@
+                @Html.ActionLink("Delete", "Delete", new { id = item.OrderID })
+            </td>
+        </tr>
+
+        <tr>
+            @{
+                int id = item.OrderID;
+
+
+                foreach (OrderEntry OrderEntry in ViewBag.UsersOrderEntries)
+                {
+                    Product currentProduct = (ViewBag.UsersProducts as List<Product>).Where(x => x.ID == OrderEntry.ProductID).FirstOrDefault();
+                    if (OrderEntry.Order_ID == id)
+                    {
+        <tr>
+            <td>
+                @Html.DisplayFor(ProductItem => currentProduct.ProductName)
+
+            </td>
+            <td>
+                @Html.DisplayFor(ProductItem => currentProduct.ProductDescription)
+
+            </td>
+            <td>
+                @Html.DisplayFor(OrderEntryItem => OrderEntry.Quantity) db
+
+            </td>
+        </tr>
+                        <tr>
+                            <td>
+
+                                @Html.DisplayFor(OrderEntryItem => OrderEntry.ProductPrice) Ft
+                                
+                            </td>
+                        </tr>
+
+                    }
+                }
+           
+            }
+            </tr>
+        }
 
 </table>
