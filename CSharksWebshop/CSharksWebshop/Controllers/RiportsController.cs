@@ -11,6 +11,7 @@ namespace CSharksWebshop.Controllers
     public class RiportsController : Controller
     {
         // GET: Riports
+        [Authorize(Roles = "Admin,RootAdmin")]
         public ActionResult RiportDetails()
         {
             using (WebshopModel _context = new WebshopModel())

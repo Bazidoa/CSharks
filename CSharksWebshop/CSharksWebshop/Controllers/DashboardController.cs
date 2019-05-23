@@ -11,6 +11,7 @@ namespace CSharksWebshop.Controllers
     public class DashboardController : Controller
     {
         // GET: Dashboard
+        [Authorize(Roles = "Admin,RootAdmin")]
         public ActionResult Details()
         {
             using (WebshopModel _context = new WebshopModel())
