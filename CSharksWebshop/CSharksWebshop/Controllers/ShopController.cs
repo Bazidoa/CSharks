@@ -22,7 +22,20 @@ namespace CSharksWebshop.Controllers
             List<Product> allProducts = db.Products.ToList();
             List<Product> allProductRightOrder = allProducts.OrderBy(p => p.ProductName).ThenBy(m => m.Manufacturer).ToList();
 
+            List<BasketEntry> CurrentUserBasketEntries = db.BasketEntries.Where(x => x.UserID == currentUser).ToList();
+            TempData["ProductNameAndCount"] = CurrentUserBasketEntries;
+
             return View(allProductRightOrder);
+
+        }
+
+
+        public ActionResult Name(string urlFriendlyName)
+        {
+            IEnumerable<Product> query = null;
+            query = db.Products.Where(p => p.UrlFriendlyName.Contains(urlFriendlyName)).Select(x => x);
+            //létre kéne hozni egy új view-t de már listázó view van -> nem kell 0 órál létrehozni -> Index
+            return View("Index", query.ToList());
 
         }
 

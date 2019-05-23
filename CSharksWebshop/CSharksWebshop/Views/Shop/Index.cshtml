@@ -73,19 +73,23 @@
                     @foreach (var item in currentProdNames)
                     {
 
-                        <li class="list-group-item">
-                            @Html.DisplayFor(modelItem => item.ProductName)
-                            @item.ProductPrice Ft
-
-                        </li>
-
-                        @*@{
-                                List<BasketEntry> UserBasketEntries = TempData["ProductNameAndCount"] as List<BasketEntry>;
+                    <li class="list-group-item">
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                        @item.ProductPrice Ft
+                        @{
+                            List<BasketEntry> UserBasketEntries = TempData["ProductNameAndCount"] as List<BasketEntry>;
+                            if (UserBasketEntries != null)
+                            {
                                 BasketEntry currentEntry = UserBasketEntries.Where(x => x.ProductID == item.ID).FirstOrDefault();
-                            }
-                            @currentEntry.Quantity db*@
 
-                        BasketSum += item.ProductPrice * db.BasketEntries.Find(currentUser, item.ID).Quantity;
+
+                                <span>@currentEntry.Quantity db</span>
+                                BasketSum += item.ProductPrice * db.BasketEntries.Find(currentUser, item.ID).Quantity;
+                            }
+                        }
+                    </li>
+
+
                     }
                 </ul>
                 <div class="card-body">
