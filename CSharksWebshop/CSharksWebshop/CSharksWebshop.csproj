@@ -179,6 +179,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BasketController.cs" />
     <Compile Include="Controllers\BasketEntryController.cs" />
+    <Compile Include="Controllers\CategoryNamesController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -263,10 +264,16 @@
     <Compile Include="Migrations\201905211757087_UserDataEmail.Designer.cs">
       <DependentUpon>201905211757087_UserDataEmail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905230857385_ProductCategories.cs" />
+    <Compile Include="Migrations\201905230857385_ProductCategories.Designer.cs">
+      <DependentUpon>201905230857385_ProductCategories.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\BasketEntry.cs" />
+    <Compile Include="Models\CategoryName.cs" />
+    <Compile Include="Models\CategoryProductSwitch.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ItemContainer.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -402,6 +409,11 @@
     <Content Include="Views\Dashboard\Details.cshtml" />
     <Content Include="Views\MyOrders\Index.cshtml" />
     <Content Include="Views\Riports\RiportDetails.cshtml" />
+    <Content Include="Views\CategoryNames\Create.cshtml" />
+    <Content Include="Views\CategoryNames\Delete.cshtml" />
+    <Content Include="Views\CategoryNames\Details.cshtml" />
+    <Content Include="Views\CategoryNames\Edit.cshtml" />
+    <Content Include="Views\CategoryNames\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -476,6 +488,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905211757087_UserDataEmail.resx">
       <DependentUpon>201905211757087_UserDataEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905230857385_ProductCategories.resx">
+      <DependentUpon>201905230857385_ProductCategories.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -66,6 +66,7 @@ namespace CSharksWebshop.Controllers
             return RedirectToAction("Index");
         }
 
+
         //todo később ha mennyiségek vannak akkor majd figyelni kell hogy többet kell beletenni
         
 
@@ -143,7 +144,7 @@ namespace CSharksWebshop.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
+                db.Entry(product).State = EntityState.Modified;                
                 db.SaveChanges();
                 //return RedirectToAction("Index");
             }
