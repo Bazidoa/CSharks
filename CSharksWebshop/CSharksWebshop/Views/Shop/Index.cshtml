@@ -62,22 +62,28 @@
             <div class="card mb-3" style="margin-top: 24px;">
                 <h5 class="card-header">Your basket <span class="badge badge-pill badge-secondary">@basketQuantity</span></h5>
                 @*<div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-        </div>
+                        <h5 class="card-title">Special title treatment</h5>
+                        <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                    </div>
 
-        <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>*@
+                    <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>*@
                 <ul class="list-group list-group-flush">
                     @foreach (var item in currentProdNames)
                     {
 
-                    <li class="list-group-item">
-                        @Html.DisplayFor(modelItem => item.ProductName)
-                        @item.ProductPrice
-                        
-                    </li>
+                        <li class="list-group-item">
+                            @Html.DisplayFor(modelItem => item.ProductName)
+                            @item.ProductPrice Ft
+
+                        </li>
+
+                        @*@{
+                                List<BasketEntry> UserBasketEntries = TempData["ProductNameAndCount"] as List<BasketEntry>;
+                                BasketEntry currentEntry = UserBasketEntries.Where(x => x.ProductID == item.ID).FirstOrDefault();
+                            }
+                            @currentEntry.Quantity db*@
 
                         BasketSum += item.ProductPrice * db.BasketEntries.Find(currentUser, item.ID).Quantity;
                     }
@@ -87,7 +93,7 @@
                     @Html.ActionLink("Empty basket", "ClearBasket", "Basket")
                 </div>
                 <div class="card-footer text-muted">
-                     @BasketSum Ft
+                    @Html.ActionLink("Show Basket", "ShowBasket", "Basket", null, null) |  @BasketSum Ft
 
                 </div>
             </div>
@@ -125,12 +131,12 @@
             <div class="row">
                 @foreach (var item in Model)
                 {
-                    string currenturl = item.ProductPictureURL.Substring(1,item.ProductPictureURL.Length-1);
+                    string currenturl = item.ProductPictureURL.Substring(1, item.ProductPictureURL.Length - 1);
                     <div class="col-lg-4 col-md-6 mb-4">
 
                         <div class="card h-100">
-                            
-                            <a href="#"><img class="card-img-top" src="@currenturl" alt="" ></a>
+
+                            <a href="#"><img class="card-img-top" src="@currenturl" alt=""></a>
                             <div class="card-body">
                                 <h4 class="card-title">
                                     @Html.ActionLink(item.ProductName, "Details", "Product", new { id = item.ID }, null)

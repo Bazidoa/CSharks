@@ -63,14 +63,19 @@
                 @Html.DisplayFor(modelItem => item.InStock)
             </td>
             <td>
+                @Html.ActionLink("-", "RemoveFromBasket", "Product", new { id = item.ID }, null)
                 @Html.DisplayFor(modelItem => db.BasketEntries.Find(currentUser, item.ID).Quantity)
+                @Html.ActionLink("+", "AddToBasket", "Product", new { id = item.ID }, null)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Manufacturer)
             </td>
             <td>
                 @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.ID }) |*@
+        @Html.ActionLink("Details", "Details", new { id=item.ID }) |*@
+                
+                |
+                @*@Html.ActionLink("-", "DeleteFromBasket", new { id = item.ID })*@
                 @Html.ActionLink("Delete", "DeleteFromBasket", new { id = item.ID })
 
             </td>
