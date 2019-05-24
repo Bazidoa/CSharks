@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace CSharksWebshop.Areas.Admin
+namespace CSharksWebshop.Areas.AdminPanel
 {
-    public class AdminAreaRegistration : AreaRegistration 
+    public class AdminPanelAreaRegistration : AreaRegistration 
     {
         public override string AreaName 
         {
             get 
             {
-                return "Admin";
+                return "AdminPanel";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "Admin_default",
-                "Admin/{controller}/{action}/{id}",
+                "AdminPanel_default",
+                "AdminPanel/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }
