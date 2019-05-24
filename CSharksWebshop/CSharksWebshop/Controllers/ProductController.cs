@@ -66,7 +66,7 @@ namespace CSharksWebshop.Controllers
             {
                return RedirectToAction("ShowBasket", "Basket");
             }
-            return RedirectToAction("Index");
+            return RedirectToAction(null);
         }
 
         //todo később ha mennyiségek vannak akkor majd figyelni kell hogy többet kell beletenni
