@@ -2,6 +2,7 @@
 @using CSharksWebshop.Models;
 @{
     ViewBag.Title = "Index";
+    int orderPriceSum = 0;
 }
 
 <h2>My Orders</h2>
@@ -12,28 +13,14 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.OrderTime)
-        </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.UserID)
-            </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
+            Order Time
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LastName)
+            Full name
         </th>
+
         <th>
-            @Html.DisplayNameFor(model => model.PostCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Street)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.City)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HouseNumber)
+            Full Address
         </th>
         <th>
             @Html.DisplayNameFor(model => model.UserEmail)
@@ -46,37 +33,28 @@
 
     @foreach (var item in Model)
     {
+
         <tr>
-            <td>
+            <th>
                 @Html.DisplayFor(modelItem => item.OrderTime)
-            </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.UserID)
-                </td>*@
-            <td>
+            </th>
+            <th>
                 @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PostCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Street)
-            </td>
-            <td>
+            </th>
+            <th>
                 @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
+                ,
+                @Html.DisplayFor(modelItem => item.Street)
                 @Html.DisplayFor(modelItem => item.HouseNumber)
-            </td>
-            <td>
+            </th>
+            <th>
                 @Html.DisplayFor(modelItem => item.UserEmail)
-            </td>
-            <td>
+            </th>
+
+            <th>
                 @Html.DisplayFor(modelItem => item.OrderStatus)
-            </td>
+            </th>
 
             <td>
                 @*@Html.ActionLink("Edit", "Edit", new { id=item.OrderID }) |
@@ -84,42 +62,49 @@
                 @Html.ActionLink("Delete", "Delete", new { id = item.OrderID })
             </td>
         </tr>
+        <tr>
+            <td>Product Name</td>
+            <td>Product Quantity</td>
+            <td>Price</td>
+        </tr>
 
         <tr>
             @{
                 int id = item.OrderID;
 
-
+                orderPriceSum = 0;
                 foreach (OrderEntry OrderEntry in ViewBag.UsersOrderEntries)
                 {
-                    Product currentProduct = (ViewBag.UsersProducts as List<Product>).Where(x => x.ID == OrderEntry.ProductID).FirstOrDefault();
+                    Product currentProduct = (ViewBag.UsersProducts as List
+                    <Product>
+                        ).Where(x => x.ID == OrderEntry.ProductID).FirstOrDefault();
                     if (OrderEntry.Order_ID == id)
                     {
-        <tr>
-            <td>
-                @Html.DisplayFor(ProductItem => currentProduct.ProductName)
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(ProductItem => currentProduct.ProductName)
 
-            </td>
-            <td>
-                @Html.DisplayFor(ProductItem => currentProduct.ProductDescription)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(OrderEntryItem => OrderEntry.Quantity) db
 
-            </td>
-            <td>
-                @Html.DisplayFor(OrderEntryItem => OrderEntry.Quantity) db
+                        </td>
+                        <td>
 
-            </td>
-        </tr>
-                        <tr>
-                            <td>
+                            @Html.DisplayFor(OrderEntryItem => OrderEntry.ProductPrice) Ft
 
-                                @Html.DisplayFor(OrderEntryItem => OrderEntry.ProductPrice) Ft
-                                
-                            </td>
-                        </tr>
+                        </td>
+                    </tr>
+                    orderPriceSum += OrderEntry.ProductPrice * OrderEntry.Quantity;
 
-                    }
                 }
-           
+            }
+            <tr>
+                <th>
+                    Total Price
+                </th>
+                <th>@orderPriceSum Ft</th>
+            </tr>
             }
             </tr>
         }

@@ -19,7 +19,7 @@ namespace CSharksWebshop.Controllers
 
             List<Order> orders = db.Orders.Where(x => x.UserID == userID &&
                                                     (x.OrderStatus != OrderStatusEnum.DELETED.ToString() &&
-                                                    x.OrderStatus != OrderStatusEnum.NOTCREATED.ToString())).ToList();
+                                                    x.OrderStatus != OrderStatusEnum.NOTCREATED.ToString())).OrderByDescending(x=>x.OrderTime).ToList();
 
             List<OrderEntry> usersOrderEntries = db.OrderEntries.Where(x => x.UserID == userID).ToList();
 
