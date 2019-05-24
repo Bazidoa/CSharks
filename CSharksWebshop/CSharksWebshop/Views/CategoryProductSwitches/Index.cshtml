@@ -1,0 +1,69 @@
+﻿@model List<CategoryProductSwitch>
+@using CSharksWebshop.Models;
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<!--                             /// READ ME ///
+    This whole view (+ it's model and controller) now not needed. 
+    We will only need it if we decide to implement multiple Category choices for a single product.
+    -->
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        @*<th>
+                @Html.DisplayNameFor(model => model.CategoryName.Category_Name)
+            </th>*@
+        <th>
+            @{
+                var name = (ViewBag.AllProducts as List<Product>)[0].ProductName;
+            }
+            @name
+        </th>
+    </tr>
+
+    @foreach (Product item in ViewBag.AllProducts)
+    {
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.CategoryName.Category_Name)
+                </td>*@
+            <td>
+                <div class="checkbox">
+
+                    <b>@Html.DisplayFor(modelItem => item.ProductName)</b>
+                    @Html.ValidationMessageFor(model => item.IsAvailable, "", new { @class = "text-danger" })
+                </div>
+
+                @foreach (CategoryName catName in ViewBag.Categories as List<CategoryName>)
+                {
+                    CategoryProductSwitch currentSwitch = (ViewBag.CatSwitchRecords as List<CategoryProductSwitch>)[0];
+                    <div>@catName.Category_Name</div>
+
+                    <div class="form-group">
+
+                        <div class="col-md-10">
+                            <div class="checkbox">
+
+                                @*@Html.EditorFor(model => model)*@
+                                @*@Html.ValidationMessageFor(model => model.IsAvailable, "", new { @class = "text-danger" })*@
+                            </div>
+                        </div>
+                    </div>
+                }
+            </td>
+
+
+
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+                </td>*@
+        </tr>
+    }
+
+</table>
