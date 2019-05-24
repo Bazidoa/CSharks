@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,35 +8,18 @@ namespace CSharksWebshop.Models
 {
     public class Address
     {
-        private string city;
-        private int zipCode;
-        private string street;
-        private int houseNumber;
+        [Key]
+        public int ID { get; set; }
+        public string UserId { get; set; }
+        public string City { get; set; }
+        public string Street { get; set; }
+        public int HouseNumber { get; set; }
+        public int ZipCode { get; set; }
 
-        public int HouseNumber
+        public Address()
         {
-            get { return houseNumber; }
-            set { houseNumber = value; }
-        }
 
-        public string Street
-        {
-            get { return street; }
-            set { street = value; }
         }
-
-        public int ZipCode
-        {
-            get { return zipCode; }
-            set { zipCode = value; }
-        }
-
-        public string City
-        {
-            get { return city; }
-            set { city = value; }
-        }
-
         public Address(string city, int zipCode, string street, int houseNumber)
         {
             this.City = city;

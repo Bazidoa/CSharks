@@ -177,6 +177,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AddressesController.cs" />
     <Compile Include="Controllers\BasketController.cs" />
     <Compile Include="Controllers\BasketEntryController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
@@ -262,6 +263,10 @@
     <Compile Include="Migrations\201905211757087_UserDataEmail.cs" />
     <Compile Include="Migrations\201905211757087_UserDataEmail.Designer.cs">
       <DependentUpon>201905211757087_UserDataEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905241243143_AddressAdded.cs" />
+    <Compile Include="Migrations\201905241243143_AddressAdded.Designer.cs">
+      <DependentUpon>201905241243143_AddressAdded.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -402,6 +407,11 @@
     <Content Include="Views\Dashboard\Details.cshtml" />
     <Content Include="Views\MyOrders\Index.cshtml" />
     <Content Include="Views\Riports\RiportDetails.cshtml" />
+    <Content Include="Views\Addresses\Create.cshtml" />
+    <Content Include="Views\Addresses\Delete.cshtml" />
+    <Content Include="Views\Addresses\Details.cshtml" />
+    <Content Include="Views\Addresses\Edit.cshtml" />
+    <Content Include="Views\Addresses\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -476,6 +486,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905211757087_UserDataEmail.resx">
       <DependentUpon>201905211757087_UserDataEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905241243143_AddressAdded.resx">
+      <DependentUpon>201905241243143_AddressAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
