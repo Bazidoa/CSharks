@@ -180,7 +180,6 @@
     <Compile Include="Controllers\BasketController.cs" />
     <Compile Include="Controllers\BasketEntryController.cs" />
     <Compile Include="Controllers\CategoryNamesController.cs" />
-    <Compile Include="Controllers\CategoryProductSwitchesController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -272,6 +271,14 @@
     <Compile Include="Migrations\201905240954124_catprodswithIsAvailableAdded.cs" />
     <Compile Include="Migrations\201905240954124_catprodswithIsAvailableAdded.Designer.cs">
       <DependentUpon>201905240954124_catprodswithIsAvailableAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905241250452_SwitchDBsetRemoved.cs" />
+    <Compile Include="Migrations\201905241250452_SwitchDBsetRemoved.Designer.cs">
+      <DependentUpon>201905241250452_SwitchDBsetRemoved.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905241253521_FKaddedToProduct_CategoryName.cs" />
+    <Compile Include="Migrations\201905241253521_FKaddedToProduct_CategoryName.Designer.cs">
+      <DependentUpon>201905241253521_FKaddedToProduct_CategoryName.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -419,11 +426,6 @@
     <Content Include="Views\CategoryNames\Details.cshtml" />
     <Content Include="Views\CategoryNames\Edit.cshtml" />
     <Content Include="Views\CategoryNames\Index.cshtml" />
-    <Content Include="Views\CategoryProductSwitches\Create.cshtml" />
-    <Content Include="Views\CategoryProductSwitches\Delete.cshtml" />
-    <Content Include="Views\CategoryProductSwitches\Details.cshtml" />
-    <Content Include="Views\CategoryProductSwitches\Edit.cshtml" />
-    <Content Include="Views\CategoryProductSwitches\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -504,6 +506,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905240954124_catprodswithIsAvailableAdded.resx">
       <DependentUpon>201905240954124_catprodswithIsAvailableAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905241250452_SwitchDBsetRemoved.resx">
+      <DependentUpon>201905241250452_SwitchDBsetRemoved.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905241253521_FKaddedToProduct_CategoryName.resx">
+      <DependentUpon>201905241253521_FKaddedToProduct_CategoryName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

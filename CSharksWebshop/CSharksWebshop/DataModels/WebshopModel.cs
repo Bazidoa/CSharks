@@ -29,7 +29,7 @@ namespace CSharksWebshop.DataModels
         //public virtual DbSet<Basket> Baskets { get; set; }
         public virtual DbSet<BasketEntry> BasketEntries { get; set; }
         public virtual DbSet<UserData> UserDatas { get; set; }
-        public virtual DbSet<CategoryProductSwitch> CategoryProductSwitches { get; set; }
+        //public virtual DbSet<CategoryProductSwitch> CategoryProductSwitches { get; set; }
         public virtual DbSet<CategoryName> CategoryNames { get; set; }
 
     }
