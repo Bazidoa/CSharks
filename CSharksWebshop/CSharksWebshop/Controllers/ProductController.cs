@@ -66,7 +66,7 @@ namespace CSharksWebshop.Controllers
             {
                return RedirectToAction("ShowBasket", "Basket");
             }
-            return RedirectToAction("Index");
+            return RedirectToAction(null);
         }
 
 

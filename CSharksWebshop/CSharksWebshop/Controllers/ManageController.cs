@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CSharksWebshop.Models;
+using CSharksWebshop.DataModels;
 
 namespace CSharksWebshop.Controllers
 {
@@ -72,7 +73,12 @@ namespace CSharksWebshop.Controllers
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
-            return View(model);
+            using (WebshopModel db = new WebshopModel())
+            {
+                ViewBag.OrderDb = db.Orders.ToList();
+                ViewBag.AddresDb = db.Addresses.Where(x => x.UserId == User.Identity.Name).ToList();
+            }
+                return View(model);
         }
 
         //
@@ -213,6 +219,8 @@ namespace CSharksWebshop.Controllers
             return RedirectToAction("Index", new { Message = ManageMessageId.RemovePhoneSuccess });
         }
 
+
+
         //
         // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
@@ -243,7 +251,7 @@ namespace CSharksWebshop.Controllers
             AddErrors(result);
             return View(model);
         }
-
+        
         //
         // GET: /Manage/SetPassword
         public ActionResult SetPassword()
