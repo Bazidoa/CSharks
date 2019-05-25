@@ -21,6 +21,28 @@ namespace CSharksWebshop.Controllers
             return View(db.Addresses.ToList());
         }
 
+        public ActionResult SetFirstAddress(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Address actualAddress = db.Addresses.Where(x => x.ID == id).FirstOrDefault();
+            UserData actualUserData = db.UserDatas.Where(y => y.UserName == User.Identity.Name).FirstOrDefault();
+            if (actualUserData == null || actualAddress == null)
+            {
+                return HttpNotFound();
+            }
+
+            actualUserData.PostCode = actualAddress.ZipCode.ToString();
+            actualUserData.City = actualAddress.City;
+            actualUserData.Street = actualAddress.Street;
+            actualUserData.HouseNumber = actualAddress.HouseNumber.ToString();
+
+            db.SaveChanges();
+            return RedirectToAction("Index", new { controller = "Manage", action = "Index" });
+        }
+
         // GET: Addresses/Details/5
         public ActionResult Details(int? id)
         {
