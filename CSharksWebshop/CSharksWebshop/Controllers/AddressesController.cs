@@ -53,7 +53,8 @@ namespace CSharksWebshop.Controllers
             {
                 db.Addresses.Add(address);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { controller = "Manage", action = "Index" });
+                //return RedirectToAction("Index");
             }
 
             return View(address);
@@ -85,7 +86,8 @@ namespace CSharksWebshop.Controllers
             {
                 db.Entry(address).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { controller = "Manage", action = "Index" });
+                //return RedirectToAction("Index");
             }
             return View(address);
         }
@@ -98,23 +100,16 @@ namespace CSharksWebshop.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Address address = db.Addresses.Find(id);
+            db.Addresses.Remove(address);
+            db.SaveChanges();
             if (address == null)
             {
                 return HttpNotFound();
             }
-            return View(address);
+            return RedirectToAction("Index", new { controller = "Manage", action = "Index" });
         }
 
-        // POST: Addresses/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Address address = db.Addresses.Find(id);
-            db.Addresses.Remove(address);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+       
 
         protected override void Dispose(bool disposing)
         {

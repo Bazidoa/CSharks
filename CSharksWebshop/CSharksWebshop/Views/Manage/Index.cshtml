@@ -63,15 +63,16 @@
             <dd>
                 Post Code:
                 @item.ZipCode
-            </dd>
-            //Ez még nem működik!!!!!!
-            @Html.ActionLink("Change Address", "Edit", "Addresses",new { id = 1 })
+            </dd>           
+            @Html.ActionLink("Change Address", "Edit", new { controller = "Addresses", action = "Edit", id = item.ID })
+                        <br/>
+            @Html.ActionLink("Delete", "Delete", new { controller = "Addresses", action = "Delete", id = item.ID })
         }
 
         <dt>Add new or Change Address:</dt>
         <dd>
             [
-            @Html.ActionLink("Add New Address", "AddNewAddress")
+            @Html.ActionLink("Add New Address", "Create", "Addresses")
             ]
 
         </dd>
