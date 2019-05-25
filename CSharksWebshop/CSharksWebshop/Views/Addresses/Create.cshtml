@@ -1,8 +1,9 @@
 ﻿@model CSharksWebshop.Models.Address
+    @using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "Create";
-    string UserId = User.Identity.Name;
+    string UserId = User.Identity.GetUserId();
 }
 
 <h2>Create</h2>
@@ -64,5 +65,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", "Manage")
 </div>

@@ -75,8 +75,10 @@ namespace CSharksWebshop.Controllers
             };
             using (WebshopModel db = new WebshopModel())
             {
-                ViewBag.UserDataDb = db.UserDatas.Where(x => x.UserName == User.Identity.Name).FirstOrDefault();
-                ViewBag.AddresDb = db.Addresses.Where(x => x.UserId == User.Identity.Name).ToList();
+                string uID = User.Identity.GetUserId();
+                
+                ViewBag.UserDataDb = db.UserDatas.Where(x => x.UserID == uID).FirstOrDefault();
+                ViewBag.AddresDb = db.Addresses.Where(x => x.UserId == uID).ToList();
             }
                 return View(model);
         }

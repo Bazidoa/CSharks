@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using CSharksWebshop.DataModels;
 using CSharksWebshop.Models;
+using Microsoft.AspNet.Identity;
 
 namespace CSharksWebshop.Controllers
 {
@@ -27,8 +28,9 @@ namespace CSharksWebshop.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            string userId = User.Identity.GetUserId();
             Address actualAddress = db.Addresses.Where(x => x.ID == id).FirstOrDefault();
-            UserData actualUserData = db.UserDatas.Where(y => y.UserName == User.Identity.Name).FirstOrDefault();
+            UserData actualUserData = db.UserDatas.Where(y => y.UserID == userId).FirstOrDefault();
             if (actualUserData == null || actualAddress == null)
             {
                 return HttpNotFound();
