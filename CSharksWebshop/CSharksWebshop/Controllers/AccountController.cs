@@ -183,6 +183,17 @@ namespace CSharksWebshop.Controllers
 
                         db.UserDatas.Add(newUser);
 
+                        Address newAddress = db.Addresses.Create();
+                        newAddress.UserId = user.Id;
+                        newAddress.City = userData.City;
+                        newAddress.Street = userData.Street;
+                        int.TryParse(userData.HouseNumber, out int hausNumber);
+                        newAddress.HouseNumber = hausNumber;
+                        int.TryParse(userData.PostCode, out int zipCode);
+                        newAddress.ZipCode = zipCode;
+
+                        db.Addresses.Add(newAddress);
+
                         db.SaveChanges();
                     }
 
