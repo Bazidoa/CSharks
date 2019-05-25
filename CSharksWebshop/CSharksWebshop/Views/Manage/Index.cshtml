@@ -1,10 +1,11 @@
 ﻿@model CSharksWebshop.Models.IndexViewModel
-    @using CSharksWebshop.Models;
+@using CSharksWebshop.Models;
 @{
     ViewBag.Title = "Manage";
     UserData user = ViewBag.UserDataDb as UserData;
     List<Address> addressDb = ViewBag.AddresDb as List<Address>;
-    
+
+
     int addressNumber = 1;
 }
 
@@ -63,11 +64,13 @@
                 Post Code:
                 @item.ZipCode
             </dd>
-            @Html.ActionLink("Change Address", "Edit", new { controller = "Addresses", action = "Edit", id = item.ID })
-            <br />
-            @Html.ActionLink("Delete", "Delete", new { controller = "Addresses", action = "Delete", id = item.ID })
-                        <br/>
-            @Html.ActionLink("Set as Firstly Address", "SetFirstAddress", new { controller = "Addresses", action = "SetFirstAddress", id = item.ID })
+            <div style="@Address.CanSee(item,User)">
+                @Html.ActionLink("Change Address", "Edit", new { controller = "Addresses", action = "Edit", id = item.ID })
+                <br />
+                @Html.ActionLink("Delete", "Delete", new { controller = "Addresses", action = "Delete", id = item.ID })
+                <br />
+                @Html.ActionLink("Set as Firstly Address", "SetFirstAddress", new { controller = "Addresses", action = "SetFirstAddress", id = item.ID })
+            </div>
         }
 
         <dt>Add new or Change Address:</dt>
@@ -91,10 +94,10 @@
             ]
         </dd>
         @*<dt>External Logins:</dt>
-        <dd>
-            @Model.Logins.Count [
-            @Html.ActionLink("Manage", "ManageLogins") ]
-        </dd>*@
+            <dd>
+                @Model.Logins.Count [
+                @Html.ActionLink("Manage", "ManageLogins") ]
+            </dd>*@
 
 
 

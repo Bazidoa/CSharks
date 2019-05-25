@@ -1,7 +1,10 @@
-﻿using System;
+﻿using CSharksWebshop.DataModels;
+using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.Principal;
 using System.Web;
 
 namespace CSharksWebshop.Models
@@ -26,6 +29,27 @@ namespace CSharksWebshop.Models
             this.ZipCode = zipCode;
             this.Street = street;
             this.HouseNumber = houseNumber;
+        }
+
+        public static string CanSee(Address address, IPrincipal user)
+        {
+            using (WebshopModel db = new WebshopModel())
+            {
+                string uID = user.Identity.GetUserId();
+                List<Address> addresses = db.Addresses.Where(x => x.UserId == uID).ToList();
+                UserData userData = db.UserDatas.Where(y => y.UserID == uID).FirstOrDefault();
+                if (address.City == userData.City &&
+                     address.HouseNumber.ToString() == userData.HouseNumber &&
+                     address.ZipCode.ToString() == userData.PostCode &&
+                     address.Street == userData.Street)
+                {
+                    return "display:none";
+                }
+                else
+                {
+                    return "";
+                }
+            }
         }
     }
 }
