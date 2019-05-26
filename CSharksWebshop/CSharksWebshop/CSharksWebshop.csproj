@@ -1922,6 +1922,7 @@
     <Content Include="Images\retro-logo2.jpg" />
     <Content Include="Images\Retro-Tetris.jpg" />
     <Content Include="Images\signIn_polariod.jpg" />
+    <Content Include="Images\tumblr_npk6c2KJJY1uv2d92o1_500.gif" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\bootstrap-grid.css.map" />
@@ -2113,6 +2114,11 @@
     <Content Include="Areas\AdminPanel\Views\AdminDashboard\Index.cshtml" />
     <Content Include="Areas\AdminPanel\Views\AdminHome\Products.cshtml" />
     <Content Include="Areas\AdminPanel\Views\AdminHome\Report.cshtml" />
+    <Content Include="fonts\Alectro.ttf" />
+    <Content Include="fonts\commando.ttf" />
+    <Content Include="fonts\Road_Rage.otf" />
+    <Content Include="fonts\Streamster.ttf" />
+    <Content Include="fonts\VCR_OSD_MONO_1.001.ttf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

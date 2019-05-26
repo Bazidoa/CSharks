@@ -53,14 +53,17 @@
 
 
 }
+
+
+
 <div class="container">
     <div class="row">
 
         <div class="col-lg-3">
 
             @*<h1 class="my-4">Shop Name</h1>*@
-            <div class="card mb-3" style="margin-top: 24px;">
-                <h5 class="card-header">Your basket <span class="badge badge-pill badge-secondary">@basketQuantity</span></h5>
+            <div class="card mb-3" >
+                <h5 id="h5font" class="card-header">Your basket <span class="badge badge-pill badge-secondary">@basketQuantity</span></h5>
                 @*<div class="card-body">
                         <h5 class="card-title">Special title treatment</h5>
                         <h6 class="card-subtitle text-muted">Support card subtitle</h6>
@@ -83,10 +86,12 @@
                                 BasketEntry currentEntry = UserBasketEntries.Where(x => x.ProductID == item.ID).FirstOrDefault();
 
 
-                                <span>@currentEntry.Quantity db</span>
+                                <span class="badge badge-success">@currentEntry.Quantity pcs</span>
                                 BasketSum += item.ProductPrice * db.BasketEntries.Find(currentUser, item.ID).Quantity;
                             }
+
                         }
+                      
                     </li>
 
 
@@ -97,7 +102,8 @@
                     @Html.ActionLink("Empty basket", "ClearBasket", "Basket")
                 </div>
                 <div class="card-footer text-muted">
-                    @Html.ActionLink("Show Basket", "ShowBasket", "Basket", null, null) |  @BasketSum Ft
+
+                    @Html.ActionLink("Show Basket", "ShowBasket", "Basket", null, new {@class="btn btn-info btn-sm" }) |  @BasketSum Ft
 
                 </div>
             </div>
@@ -105,7 +111,7 @@
         </div>
         <!-- /.col-lg-3 -->
         <div class="col-lg-9">
-            <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+            @*<div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -130,7 +136,7 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
-            </div>
+            </div>*@
 
             <div class="row">
                 @foreach (var item in Model)
@@ -154,7 +160,7 @@
                             <div class="card-footer">
                                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
                                 <!--<small><i class="fas fa-cart-plus"></i></small>-->
-                                @Html.ActionLink(" ", "AddToBasket", "Shop", new { id = item.ID }, new { @class = "fas fa-cart-plus" })
+                                @Html.ActionLink(" ", "AddToBasket", "Shop", new { id = item.ID }, new { @class = "fas fa-cart-plus", style="margin-left:7rem"})
 
                             </div>
                         </div>
@@ -168,5 +174,4 @@
     </div>
 </div>
 
-@Html.ActionLink("Show Basket", "ShowBasket", "Basket", null, null)
 
