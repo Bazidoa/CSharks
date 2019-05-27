@@ -37,6 +37,7 @@ namespace CSharksWebshop.Controllers
         }
 
         // GET: CategoryName/Create
+        [Authorize(Roles = "Admin,RootAdmin")]
         public ActionResult Create()
         {
             return View();
@@ -51,8 +52,11 @@ namespace CSharksWebshop.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (categoryName.CategoryNameValidator(categoryName.Category_Name))
+                {
                 db.CategoryNames.Add(categoryName);
                 db.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
 

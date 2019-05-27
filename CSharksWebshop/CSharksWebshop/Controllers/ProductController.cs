@@ -70,18 +70,7 @@ namespace CSharksWebshop.Controllers
         }
 
 
-        //todo később ha mennyiségek vannak akkor majd figyelni kell hogy többet kell beletenni
-
-
-
-        //GET -ezt írtam Stackről
-        /* public ActionResult CreateNewMyEntity(string default_value)
-         {
-             Product  newMyEntity = new Product();
-             newMyEntity.UrlFriendlyName = newMyEntity.UrlFriendlyNameConverter(newMyEntity.ProductName);
-
-             return View(newMyEntity);
-         }*/
+       
         public ActionResult RemoveFromBasket(int? id)
         {
             Session["dummy"] = "Dummy";
