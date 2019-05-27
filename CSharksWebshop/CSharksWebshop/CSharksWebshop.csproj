@@ -2208,11 +2208,9 @@
     <Content Include="Views\Basket.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\Create.cshtml" />
-    <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Shop\Create.cshtml" />
     <Content Include="Views\Shop\Delete.cshtml" />
     <Content Include="Views\Shop\Details.cshtml" />
-    <Content Include="Views\Shop\Edit.cshtml" />
     <Content Include="Views\Shop\Index.cshtml" />
     <Content Include="Views\Dashboard\Details.cshtml" />
     <Content Include="Views\MyOrders\Index.cshtml" />
@@ -2227,6 +2225,7 @@
     <Content Include="Views\CategoryName\Details.cshtml" />
     <Content Include="Views\CategoryName\Edit.cshtml" />
     <Content Include="Views\CategoryName\Index.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
