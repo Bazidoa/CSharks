@@ -16,18 +16,39 @@ namespace CSharksWebshop.Controllers
         private WebshopModel db = new WebshopModel();
 
         // GET: Shop
-        public ActionResult Index()
+        public ActionResult Index(FormCollection categoriesFC)
         {
+            List<Product> allProducts = new List<Product>();
+            if (categoriesFC.Count == 0)
+            {
+                allProducts = db.Products.ToList();
+            }
+            else
+            {
+                foreach (string key in categoriesFC.AllKeys)
+                {
+                    //string catName = "";
+                    allProducts = db.Products.Where(x => x.Category_Name == key).ToList();
+                }
+            }
             string currentUser = UserAuthentication.WhoAmI(User, Session);
-            List<Product> allProducts = db.Products.ToList();
             List<Product> allProductRightOrder = allProducts.OrderBy(p => p.ProductName).ThenBy(m => m.Manufacturer).ToList();
 
             List<BasketEntry> CurrentUserBasketEntries = db.BasketEntries.Where(x => x.UserID == currentUser).ToList();
             TempData["ProductNameAndCount"] = CurrentUserBasketEntries;
+            ViewBag.CategoriesChecked = categoriesFC.AllKeys.ToList();
+            ViewBag.ProdCategories = db.CategoryNames.Select(x => x.Category_Name).ToList();
 
             return View(allProductRightOrder);
 
+
         }
+
+        //public ActionResult Filter(List<string> catNames)
+        //{
+        //    ViewBag.CategoryID = catNames;
+        //    return RedirectToAction("Index");
+        //}
 
 
         public ActionResult Name(string urlFriendlyName)
