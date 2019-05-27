@@ -11,18 +11,18 @@ using CSharksWebshop.Models;
 
 namespace CSharksWebshop.Controllers
 {
-    public class CategoryNamesController : Controller
+    public class CategoryNameController : Controller
     {
         private WebshopModel db = new WebshopModel();
 
-        // GET: CategoryNames
+        // GET: CategoryName
         public ActionResult Index()
         {
             return View(db.CategoryNames.ToList());
         }
 
-        // GET: CategoryNames/Details/5
-        public ActionResult Details(int? id)
+        // GET: CategoryName/Details/5
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
@@ -36,18 +36,18 @@ namespace CSharksWebshop.Controllers
             return View(categoryName);
         }
 
-        // GET: CategoryNames/Create
+        // GET: CategoryName/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CategoryNames/Create
+        // POST: CategoryName/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Category_Name")] CategoryName categoryName)
+        public ActionResult Create([Bind(Include = "Category_Name")] CategoryName categoryName)
         {
             if (ModelState.IsValid)
             {
@@ -59,8 +59,8 @@ namespace CSharksWebshop.Controllers
             return View(categoryName);
         }
 
-        // GET: CategoryNames/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: CategoryName/Edit/5
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
@@ -74,12 +74,12 @@ namespace CSharksWebshop.Controllers
             return View(categoryName);
         }
 
-        // POST: CategoryNames/Edit/5
+        // POST: CategoryName/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Category_Name")] CategoryName categoryName)
+        public ActionResult Edit([Bind(Include = "Category_Name")] CategoryName categoryName)
         {
             if (ModelState.IsValid)
             {
@@ -90,8 +90,8 @@ namespace CSharksWebshop.Controllers
             return View(categoryName);
         }
 
-        // GET: CategoryNames/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: CategoryName/Delete/5
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
@@ -105,10 +105,10 @@ namespace CSharksWebshop.Controllers
             return View(categoryName);
         }
 
-        // POST: CategoryNames/Delete/5
+        // POST: CategoryName/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
             CategoryName categoryName = db.CategoryNames.Find(id);
             db.CategoryNames.Remove(categoryName);

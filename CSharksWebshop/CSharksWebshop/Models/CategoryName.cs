@@ -8,8 +8,8 @@ namespace CSharksWebshop.Models
 {
     public class CategoryName
     {
+        //public int ID { get; set; }
         [Key]
-        public int ID { get; set; }
-        public string Category_Name { get; set; }
+        public string Category_Name { get; set; } = "Other";
     }
 }

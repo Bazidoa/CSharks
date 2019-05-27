@@ -38,7 +38,7 @@ namespace CSharksWebshop.Models
         public string UrlFriendlyName { get; set; }
 
         [ForeignKey("CategoryName")]
-        public int Category_ID { get; set; }
+        public string Category_Name { get; set; }
         public CategoryName CategoryName{ get; set; }
         
 

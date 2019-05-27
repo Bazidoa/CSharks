@@ -140,7 +140,7 @@ namespace CSharksWebshop.Controllers
         public ActionResult Create()
         {
             ViewBag.AllCategoryNames = db.CategoryNames.Select(x => x.Category_Name).ToList();
-            ViewBag.AllCategoryIDs = db.CategoryNames.Select(x => x.ID).ToList();
+          //  ViewBag.AllCategoryIDs = db.CategoryNames.Select(x => x.ID).ToList();
             return View();
         }
 
@@ -149,10 +149,10 @@ namespace CSharksWebshop.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,ProductName,ProductPrice,IsAvailable,ProductDescription,InStock,UrlFriendlyName,Manufacturer,ProductPictureURL,Category_ID")] Product product)
+        public ActionResult Create([Bind(Include = "ID,ProductName,ProductPrice,IsAvailable,ProductDescription,InStock,UrlFriendlyName,Manufacturer,ProductPictureURL,Category_Name")] Product product)
         {
             ViewBag.AllCategoryNames = db.CategoryNames.Select(x => x.Category_Name).ToList();
-            ViewBag.AllCategoryIDs = db.CategoryNames.Select(x => x.ID).ToList();
+           // ViewBag.AllCategoryIDs = db.CategoryNames.Select(x => x.ID).ToList();
  
             if (ModelState.IsValid)
             {
