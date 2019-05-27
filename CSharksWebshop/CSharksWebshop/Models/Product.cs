@@ -37,6 +37,11 @@ namespace CSharksWebshop.Models
         //[Required]
         public string UrlFriendlyName { get; set; }
 
+        [ForeignKey("CategoryName")]
+        public string Category_Name { get; set; }
+        public CategoryName CategoryName{ get; set; }
+        
+
         public string Manufacturer { get; set; }
         private string productPictureURL;
         public string ProductPictureURL

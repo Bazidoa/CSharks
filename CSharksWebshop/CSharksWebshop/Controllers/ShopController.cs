@@ -22,7 +22,20 @@ namespace CSharksWebshop.Controllers
             List<Product> allProducts = db.Products.ToList();
             List<Product> allProductRightOrder = allProducts.OrderBy(p => p.ProductName).ThenBy(m => m.Manufacturer).ToList();
 
+            List<BasketEntry> CurrentUserBasketEntries = db.BasketEntries.Where(x => x.UserID == currentUser).ToList();
+            TempData["ProductNameAndCount"] = CurrentUserBasketEntries;
+
             return View(allProductRightOrder);
+
+        }
+
+
+        public ActionResult Name(string urlFriendlyName)
+        {
+            IEnumerable<Product> query = null;
+            query = db.Products.Where(p => p.UrlFriendlyName.Contains(urlFriendlyName)).Select(x => x);
+            //létre kéne hozni egy új view-t de már listázó view van -> nem kell 0 órál létrehozni -> Index
+            return View("Index", query.ToList());
 
         }
 
@@ -36,29 +49,30 @@ namespace CSharksWebshop.Controllers
             }
             Product product = db.Products.Find(id);
             BasketEntry entryToAddToBasket = new BasketEntry(currentUser, product.ID);
+
             if (product == null)
             {
                 return HttpNotFound();
             }
+
             //TODo: if benne van már a termék(SessionID && ProductID && OrderTime==null alapján) akkor Quantity++
-            var query = (from a in db.BasketEntries
-                         where a.UserID == currentUser && a.ProductID == product.ID
-                         select a).FirstOrDefault();
+            BasketEntry ProductAlreadyInBasket = (from a in db.BasketEntries
+                                                  where a.UserID == currentUser && a.ProductID == product.ID
+                                                  select a).FirstOrDefault();
 
-            if (query != null)
+            if (ProductAlreadyInBasket != null)
             {
-                var result = db.BasketEntries.SingleOrDefault(b => b.UserID == currentUser && b.ProductID == product.ID);
-                result.Quantity++;
+                ProductAlreadyInBasket.Quantity++;
             }
-
-
             else
             {
                 entryToAddToBasket.Quantity = 1;
                 db.BasketEntries.Add(entryToAddToBasket);
-
             }
+
             db.SaveChanges();
+            List<BasketEntry> CurrentUserBasketEntries = db.BasketEntries.Where(x => x.UserID == currentUser).ToList();
+            TempData["ProductNameAndCount"] = CurrentUserBasketEntries;
 
             return RedirectToAction("Index");
         }

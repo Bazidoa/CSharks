@@ -27,7 +27,7 @@ namespace CSharksWebshop.Controllers
             
         }
 
-        
+
 
         public ActionResult AddToBasket(int? id)
         {
@@ -62,14 +62,18 @@ namespace CSharksWebshop.Controllers
                 
             }
             db.SaveChanges();
-
-            return RedirectToAction("Index");
+            if (Request.UrlReferrer.ToString().EndsWith("/ShowBasket"))
+            {
+               return RedirectToAction("ShowBasket", "Basket");
+            }
+            return RedirectToAction(null);
         }
 
-        //todo később ha mennyiségek vannak akkor majd figyelni kell hogy többet kell beletenni
-        
 
-        
+        //todo később ha mennyiségek vannak akkor majd figyelni kell hogy többet kell beletenni
+
+
+
         //GET -ezt írtam Stackről
         /* public ActionResult CreateNewMyEntity(string default_value)
          {
@@ -78,6 +82,43 @@ namespace CSharksWebshop.Controllers
 
              return View(newMyEntity);
          }*/
+        public ActionResult RemoveFromBasket(int? id)
+        {
+            Session["dummy"] = "Dummy";
+            string currentUser = UserAuthentication.WhoAmI(User, Session);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Find(id);
+            BasketEntry entryToRemoveFromBasket = new BasketEntry(currentUser, product.ID);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            //TODo: if benne van már a termék(SessionID && ProductID && OrderTime==null alapján) akkor Quantity++
+            BasketEntry BasketEntryToLowerQuantity = (from a in db.BasketEntries
+                         where a.UserID == currentUser && a.ProductID == product.ID
+                         select a).FirstOrDefault();
+
+            if (BasketEntryToLowerQuantity != null)
+            {
+              BasketEntryToLowerQuantity.Quantity--;
+            }
+            if (BasketEntryToLowerQuantity.Quantity == 0)
+            {
+                db.BasketEntries.Remove(BasketEntryToLowerQuantity);
+            }
+            db.SaveChanges();
+
+            if (Request.UrlReferrer.ToString().EndsWith("/ShowBasket"))
+            {
+                return RedirectToAction("ShowBasket", "Basket");
+            }
+            return RedirectToAction("Index");
+        }
+
+
 
         // GET: Product/Details/5
         public ActionResult Details(int? id)
@@ -98,6 +139,8 @@ namespace CSharksWebshop.Controllers
         [Authorize(Roles = "Admin,RootAdmin")]
         public ActionResult Create()
         {
+            ViewBag.AllCategoryNames = db.CategoryNames.Select(x => x.Category_Name).ToList();
+          //  ViewBag.AllCategoryIDs = db.CategoryNames.Select(x => x.ID).ToList();
             return View();
         }
 
@@ -106,8 +149,11 @@ namespace CSharksWebshop.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,ProductName,ProductPrice,IsAvailable,ProductDescription,InStock,UrlFriendlyName,Manufacturer,ProductPictureURL")] Product product)
+        public ActionResult Create([Bind(Include = "ID,ProductName,ProductPrice,IsAvailable,ProductDescription,InStock,UrlFriendlyName,Manufacturer,ProductPictureURL,Category_Name")] Product product)
         {
+            ViewBag.AllCategoryNames = db.CategoryNames.Select(x => x.Category_Name).ToList();
+           // ViewBag.AllCategoryIDs = db.CategoryNames.Select(x => x.ID).ToList();
+ 
             if (ModelState.IsValid)
             {
                 db.Products.Add(product);
@@ -131,6 +177,7 @@ namespace CSharksWebshop.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.allCategories = db.CategoryNames.Select(x => x.Category_Name);
             return View(product);
         }
 
@@ -139,15 +186,16 @@ namespace CSharksWebshop.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,ProductName,ProductPrice,IsAvailable,ProductDescription,InStock,UrlFriendlyName,Manufacturer,ProductPictureURL")] Product product)
+        public ActionResult Edit([Bind(Include = "ID,ProductName,ProductPrice,IsAvailable,ProductDescription,InStock,UrlFriendlyName,Manufacturer,ProductPictureURL,Category_Name")] Product product)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
+                db.Entry(product).State = EntityState.Modified;                
                 db.SaveChanges();
                 //return RedirectToAction("Index");
             }
-            return View(product);
+            ViewBag.allCategories = db.CategoryNames.Select(x => x.Category_Name);
+            return RedirectToAction("Details", new { id = product.ID });
         }
 
         // GET: Product/Delete/5
