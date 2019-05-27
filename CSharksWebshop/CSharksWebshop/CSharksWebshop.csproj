@@ -1912,12 +1912,17 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\10b9656aa96349216ad5287b427af549.jpg" />
+    <Content Include="Images\1_vbGoBwW7ESZsuTOJ4MWMXw.gif" />
     <Content Include="Images\55105rr.jpg" />
+    <Content Include="Images\bglanding.jpg" />
     <Content Include="Images\Cassette.jpg" />
     <Content Include="Images\Commodore64.jpg" />
     <Content Include="Images\defaultImg.jpg" />
     <Content Include="Images\how-to-boil-nintendo-repair-lede.jpg" />
     <Content Include="Images\keljfeljancsi.png" />
+    <Content Include="Images\landingheader2.jpg" />
+    <Content Include="Images\landingheader3.jpg" />
+    <Content Include="Images\landingheader4.jpg" />
     <Content Include="Images\letöltés.jpg" />
     <Content Include="Images\nintendo.jpg" />
     <Content Include="Images\original1.jpg" />
