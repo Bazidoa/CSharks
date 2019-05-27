@@ -28,6 +28,7 @@ namespace CSharksWebshop.Controllers
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            
         }
 
         public ApplicationSignInManager SignInManager
@@ -52,6 +53,13 @@ namespace CSharksWebshop.Controllers
             {
                 _userManager = value;
             }
+        }
+
+        public ActionResult ListUsers()
+        {
+            ViewBag.Users = (UserManager.Users.ToList<ApplicationUser>());
+
+            return View();
         }
 
         //
