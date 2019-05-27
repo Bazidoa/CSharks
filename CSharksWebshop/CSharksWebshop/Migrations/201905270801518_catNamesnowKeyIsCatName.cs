@@ -13,8 +13,8 @@ namespace CSharksWebshop.Migrations
             DropPrimaryKey("dbo.CategoryNames");
             AlterColumn("dbo.CategoryNames", "Category_Name", c => c.String(nullable: false, maxLength: 128));
             AlterColumn("dbo.Products", "Category_Name", c => c.String(maxLength: 128));
-            AddPrimaryKey("dbo.CategoryNames", "Category_Name");
             CreateIndex("dbo.Products", "Category_Name");
+            AddPrimaryKey("dbo.CategoryNames", "Category_Name");
             AddForeignKey("dbo.Products", "Category_Name", "dbo.CategoryNames", "Category_Name");
             DropColumn("dbo.CategoryNames", "ID");
         }
