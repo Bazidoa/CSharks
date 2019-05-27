@@ -103,6 +103,7 @@ namespace CSharksWebshop.Controllers
             string currentDate = DateTime.Now.ToString();
             Order order = new Order();
 
+            order.UserID = userId;
             order.FirstName = userData.FirstName;
             order.LastName = userData.LastName;
             order.UserEmail = userData.UserEmail;

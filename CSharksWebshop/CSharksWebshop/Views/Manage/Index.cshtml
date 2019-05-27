@@ -17,7 +17,7 @@
     <hr />
     <dl class="dl-horizontal">
 
-        <b>
+        @*<b>
             <dd>
                 Firstly Address:
             </dd>
@@ -37,7 +37,7 @@
         <dd>
             Post Code:
             @user.PostCode;
-        </dd>
+        </dd>*@
 
         @foreach (Address item in addressDb)
         {
@@ -65,12 +65,12 @@
                 @item.ZipCode
             </dd>
             <div style="@Address.CanSee(item,User)">
-                @Html.ActionLink("Change Address", "Edit", new { controller = "Addresses", action = "Edit", id = item.ID })
-                <br />
+
                 @Html.ActionLink("Delete", "Delete", new { controller = "Addresses", action = "Delete", id = item.ID })
                 <br />
                 @Html.ActionLink("Set as Firstly Address", "SetFirstAddress", new { controller = "Addresses", action = "SetFirstAddress", id = item.ID })
             </div>
+            @Html.ActionLink("Change Address", "Edit", new { controller = "Addresses", action = "Edit", id = item.ID })
         }
 
         <dt>Add new or Change Address:</dt>
@@ -94,10 +94,10 @@
             ]
         </dd>
         @*<dt>External Logins:</dt>
-            <dd>
-                @Model.Logins.Count [
-                @Html.ActionLink("Manage", "ManageLogins") ]
-            </dd>*@
+        <dd>
+            @Model.Logins.Count [
+            @Html.ActionLink("Manage", "ManageLogins") ]
+        </dd>*@
 
 
 
