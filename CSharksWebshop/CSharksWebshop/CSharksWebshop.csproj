@@ -182,7 +182,7 @@
     <Compile Include="Controllers\AddressesController.cs" />
     <Compile Include="Controllers\BasketController.cs" />
     <Compile Include="Controllers\BasketEntryController.cs" />
-    <Compile Include="Controllers\CategoryNamesController.cs" />
+    <Compile Include="Controllers\CategoryNameController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -290,6 +290,10 @@
     <Compile Include="Migrations\201905241431340_test.cs" />
     <Compile Include="Migrations\201905241431340_test.Designer.cs">
       <DependentUpon>201905241431340_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905270801518_catNamesnowKeyIsCatName.cs" />
+    <Compile Include="Migrations\201905270801518_catNamesnowKeyIsCatName.Designer.cs">
+      <DependentUpon>201905270801518_catNamesnowKeyIsCatName.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -2209,11 +2213,9 @@
     <Content Include="Views\Basket.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\Create.cshtml" />
-    <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Shop\Create.cshtml" />
     <Content Include="Views\Shop\Delete.cshtml" />
     <Content Include="Views\Shop\Details.cshtml" />
-    <Content Include="Views\Shop\Edit.cshtml" />
     <Content Include="Views\Shop\Index.cshtml" />
     <Content Include="Views\Dashboard\Details.cshtml" />
     <Content Include="Views\MyOrders\Index.cshtml" />
@@ -2223,11 +2225,12 @@
     <Content Include="Views\Addresses\Details.cshtml" />
     <Content Include="Views\Addresses\Edit.cshtml" />
     <Content Include="Views\Addresses\Index.cshtml" />
-    <Content Include="Views\CategoryNames\Create.cshtml" />
-    <Content Include="Views\CategoryNames\Delete.cshtml" />
-    <Content Include="Views\CategoryNames\Details.cshtml" />
-    <Content Include="Views\CategoryNames\Edit.cshtml" />
-    <Content Include="Views\CategoryNames\Index.cshtml" />
+    <Content Include="Views\CategoryName\Create.cshtml" />
+    <Content Include="Views\CategoryName\Delete.cshtml" />
+    <Content Include="Views\CategoryName\Details.cshtml" />
+    <Content Include="Views\CategoryName\Edit.cshtml" />
+    <Content Include="Views\CategoryName\Index.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2320,6 +2323,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905241431340_test.resx">
       <DependentUpon>201905241431340_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905270801518_catNamesnowKeyIsCatName.resx">
+      <DependentUpon>201905270801518_catNamesnowKeyIsCatName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
