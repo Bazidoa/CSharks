@@ -26,8 +26,7 @@ namespace CSharksWebshop
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/registerCard.css",
-                      "~/Content/loginCard.css",
-                      "~/Content/template-customize.css"));
+                      "~/Content/loginCard.css"));
         }
     }
 }

@@ -62,37 +62,37 @@
         <div class="col-lg-3">
 
             @*<h1 class="my-4">Shop Name</h1>*@
-            <div class="card mb-3" >
+            <div class="card mb-3">
                 <h5 id="h5font" class="card-header">Your basket <span class="badge badge-pill badge-secondary">@basketQuantity</span></h5>
                 @*<div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-                    </div>
+            <h5 class="card-title">Special title treatment</h5>
+            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+        </div>
 
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>*@
+        <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>*@
                 <ul class="list-group list-group-flush">
                     @foreach (var item in currentProdNames)
                     {
 
-                    <li class="list-group-item">
-                        @Html.DisplayFor(modelItem => item.ProductName)
-                        @item.ProductPrice Ft
-                        @{
-                            List<BasketEntry> UserBasketEntries = TempData["ProductNameAndCount"] as List<BasketEntry>;
-                            if (UserBasketEntries != null)
-                            {
-                                BasketEntry currentEntry = UserBasketEntries.Where(x => x.ProductID == item.ID).FirstOrDefault();
+                        <li class="list-group-item">
+                            @Html.DisplayFor(modelItem => item.ProductName)
+                            @item.ProductPrice Ft
+                            @{
+                                List<BasketEntry> UserBasketEntries = TempData["ProductNameAndCount"] as List<BasketEntry>;
+                                if (UserBasketEntries != null)
+                                {
+                                    BasketEntry currentEntry = UserBasketEntries.Where(x => x.ProductID == item.ID).FirstOrDefault();
 
 
-                                <span class="badge badge-success">@currentEntry.Quantity pcs</span>
-                                BasketSum += item.ProductPrice * db.BasketEntries.Find(currentUser, item.ID).Quantity;
+                                    <span class="badge badge-success">@currentEntry.Quantity pcs</span>
+                                    BasketSum += item.ProductPrice * db.BasketEntries.Find(currentUser, item.ID).Quantity;
+                                }
+
                             }
 
-                        }
-                      
-                    </li>
+                        </li>
 
 
                     }
@@ -103,8 +103,19 @@
                 </div>
                 <div class="card-footer text-muted">
 
-                    @Html.ActionLink("Show Basket", "ShowBasket", "Basket", null, new {@class="btn btn-info btn-sm" }) |  @BasketSum Ft
+                    @Html.ActionLink("Show Basket", "ShowBasket", "Basket", null, new { @class = "btn btn-info btn-sm" }) |  @BasketSum Ft
 
+                </div>
+                <hr />
+                <div class="card border-light mb-3" style="max-width: 20rem; ">
+                    <div class="card-header">Filter</div>
+                    <div class="card-body">
+                        <h4 class="card-title">Light card title</h4>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1" checked="">
+                            <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+                        </div>
+                    </div>
                 </div>
             </div>
 
