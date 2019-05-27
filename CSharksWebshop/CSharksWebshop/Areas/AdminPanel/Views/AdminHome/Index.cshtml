@@ -21,6 +21,10 @@
                             @if (ViewBag.CountUsers != null)
                             {
                                 @ViewBag.CountUsers;
+                                <p></p>
+                                <h6>
+                                    @Html.ActionLink("Show Users", "ListUsers", "Account", new { area=""}, null)
+                                </h6>
                             }
                         </div>
                     </div>
@@ -235,7 +239,7 @@
             </div>
             <div class="col-lg-6 mb-4">
                 <div class="card bg-warning text-white shadow">
-                    <div class="card-body">
+                    <div class="card-body"> 
                         Warning
                         <div class="text-white-50 small">#f6c23e</div>
                     </div>
