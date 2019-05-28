@@ -98,12 +98,13 @@
                     }
                 </ul>
                 <div class="card-body">
-                    @Html.ActionLink("Order", "ShowBasket", "Basket", null, new { @class = "card-link" }) |
+                    
+                    @Html.ActionLink("Show Basket", "ShowBasket", "Basket", null, new { @class = "card-link" }) |
                     @Html.ActionLink("Empty basket", "ClearBasket", "Basket")
                 </div>
                 <div class="card-footer text-muted">
 
-                    @Html.ActionLink("Show Basket", "ShowBasket", "Basket", null, new { @class = "btn btn-info btn-sm" }) |  @BasketSum Ft
+                    @Html.ActionLink("Order", "ShowBasket", "Basket", null, new { @class = "btn btn-info btn-sm" }) |  @BasketSum Ft
 
                 </div>
                 <hr />
