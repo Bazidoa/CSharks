@@ -101,6 +101,20 @@ namespace CSharksWebshop.Controllers
             }
         }
 
+        public ActionResult PromoteToAdmin(string id)
+        {
+            UserManager.RemoveFromRole(id,"Customer");
+            UserManager.AddToRole(id, "Admin");
+            return RedirectToAction("ListUsers");
+        }
+
+        public ActionResult ChangeToUser(string id)
+        {
+            UserManager.RemoveFromRoles(id,new string[] {"Admin"});
+            UserManager.AddToRole(id, "Customer");
+                return RedirectToAction("ListUsers");
+        }
+      
         //
         // GET: /Account/VerifyCode
         [AllowAnonymous]

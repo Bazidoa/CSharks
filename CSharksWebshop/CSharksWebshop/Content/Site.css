@@ -11,6 +11,16 @@ body {
     background-size: cover;
 }
 
+
+@media print {
+    /* styles go here */
+    body {
+        margin: 0;
+        color: #000;
+        background-color: #fff;
+    }
+}
+
 @font-face {
     font-family: "alectric font";
     src: url(/fonts/Alectro.ttf) format("truetype");
@@ -31,6 +41,11 @@ body {
     src: url(/fonts/Streamster.ttf) format("truetype");
 }
 
+
+.productName {
+    text-decoration: none;
+    font-family: "commando";
+}
 
 #h5font {
     font-family: "VCR osd";
@@ -221,4 +236,19 @@ header.masthead {
         top: 0;
         left: 0;
         opacity: 0.3;
+    }
+
+.map-container-5 {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+}
+
+    .map-container-5 iframe {
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        position: absolute;
     }

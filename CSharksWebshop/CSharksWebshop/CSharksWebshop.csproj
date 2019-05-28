@@ -2119,8 +2119,6 @@
     <Content Include="Areas\AdminPanel\Views\OrderEntries\Details.cshtml" />
     <Content Include="Areas\AdminPanel\Views\OrderEntries\Edit.cshtml" />
     <Content Include="Areas\AdminPanel\Views\OrderEntries\Index.cshtml" />
-    <Content Include="Areas\AdminPanel\Views\Dashnoard\Index.cshtml" />
-    <Content Include="Areas\AdminPanel\Views\AdminDashboard\Index.cshtml" />
     <Content Include="Areas\AdminPanel\Views\AdminHome\Products.cshtml" />
     <Content Include="Areas\AdminPanel\Views\AdminHome\Report.cshtml" />
     <Content Include="fonts\Alectro.ttf" />
@@ -2237,7 +2235,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\AdminPanel\Models\" />
-    <Folder Include="Areas\AdminPanel\Views\Home\" />
     <Folder Include="Areas\AdminPanel\Views\UserData\" />
   </ItemGroup>
   <ItemGroup>
