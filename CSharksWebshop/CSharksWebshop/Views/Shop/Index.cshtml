@@ -118,15 +118,20 @@
                             {
 
                                 <div class="custom-control custom-checkbox">
-                                    @if ( ViewBag.CategoriesChecked.Count != 0)
+                                    @if (ViewBag.CategoriesChecked.Count != 0)
                                     {
-                                        if (ViewBag.CategoriesChecked.Contains(item)) { 
-                                        <input type="checkbox" class="custom-control-input" name=@item id=@item checked="">
+                                        if (ViewBag.CategoriesChecked.Contains(item))
+                                        {
+                                            <input type="checkbox" class="custom-control-input" name=@item id=@item checked="">
+                                        }
+                                        else
+                                        {
+                                            <input type="checkbox" class="custom-control-input" name=@item id=@item>
                                         }
                                     }
                                     else
                                     {
-                                        <input type="checkbox" class="custom-control-input" name=@item id=@item checked="">
+                                        <input type="checkbox" class="custom-control-input" name=@item id=@item>
                                     }
                                     <label class="custom-control-label" for=@item>@item</label>
 
@@ -136,12 +141,12 @@
                             }
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Save" class="btn btn-default" />
+                                    <input type="submit" value="Apply" class="btn btn-info btn-sm" />
+                                    @Html.ActionLink("Reset", "Index", null, new { @class = "btn btn-info btn-sm" })
                                 </div>
                             </div>
                         }
                     </div>
-                    @*@Html.ActionLink("Apply filters", "Filter", "Shop", new { id = tempCurrentCategory }, new { @class = "btn btn-info btn-sm" })*@
                 </div>
             </div>
 
