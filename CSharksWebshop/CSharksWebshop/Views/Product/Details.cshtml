@@ -171,7 +171,7 @@
                         @Html.ActionLink("Empty basket", "ClearBasket", "Basket")
                     </div>
                     <div class="card-footer text-muted">
-                        @Html.ActionLink("Show Basket", "ShowBasket", "Basket", null, null) |  @BasketSum Ft
+                        @Html.ActionLink("Show Basket", "ShowBasket", "Basket", null, null) |  @BasketSum €
 
                     </div>
                 </div>
@@ -187,7 +187,7 @@
                 <div class="col-md-4">
                     <h3 class="my-3">@Html.DisplayFor(model => model.ProductName) <small class="text-muted">@Html.DisplayFor(model => model.Manufacturer)</small></h3>
                     <p>@Html.DisplayFor(model => model.ProductDescription)</p>
-                    <h3 class="my-3">@Html.DisplayFor(model => model.ProductPrice) Ft @Html.ActionLink(" ", "AddToBasket", "Shop", new { id = Model.ID }, new { @class = "fas fa-cart-plus", style = "margin-left:7rem" })</h3>
+                    <h3 class="my-3">@Html.DisplayFor(model => model.ProductPrice) € @Html.ActionLink(" ", "AddToBasket", "Shop", new { id = Model.ID }, new { @class = "fas fa-cart-plus", style = "margin-left:7rem" })</h3>
                     <p>In stock: <span class="badge badge-success">@Html.DisplayFor(model => model.InStock) pcs</span></p>
                 </div>
 
