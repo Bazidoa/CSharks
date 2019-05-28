@@ -12,7 +12,14 @@ body {
 }
 
 
-
+@media print {
+    /* styles go here */
+    body {
+        margin: 0;
+        color: #000;
+        background-color: #fff;
+    }
+}
 
 @font-face {
     font-family: "alectric font";

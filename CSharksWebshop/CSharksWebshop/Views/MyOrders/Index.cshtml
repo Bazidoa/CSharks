@@ -11,7 +11,7 @@
         <p>
             @Html.ActionLink("Create New", "Create")
         </p>
-        <table class="table">
+        <table class="table table-hover">
             <tr>
                 <th>
                     Order Time
@@ -35,7 +35,7 @@
             @foreach (var item in Model)
             {
 
-                <tr>
+                <tr class="table-info">
                     <th>
                         @Html.DisplayFor(modelItem => item.OrderTime)
                     </th>
@@ -113,3 +113,11 @@
         </table>
 </div>  
 </div>
+
+
+@*<ul class="list-group">
+    <li class="list-group-item">@Html.DisplayFor(ProductItem => currentProduct.ProductName) @Html.DisplayFor(OrderEntryItem => OrderEntry.Quantity) db @Html.DisplayFor(OrderEntryItem => OrderEntry.ProductPrice) Ft</li>
+    <li class="list-group-item list-group-item-success">This is a success list group item</li>
+    <li class="list-group-item"></li>
+
+</ul>*@
