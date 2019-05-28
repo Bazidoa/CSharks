@@ -24,6 +24,14 @@ namespace CSharksWebshop.Controllers
             return View();
         }
 
+        public ActionResult ShowAllOrders()
+        {
+            List<Order> orders = db.Orders.Where(x => x.OrderStatus != OrderStatusEnum.NOTCREATED.ToString()).ToList();
+            return View(orders);
+        }
+
+        
+
         public ActionResult AddToOrderEntries()
         {
             Session["dummy"] = "Dummy";
