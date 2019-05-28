@@ -41,10 +41,14 @@ body {
     src: url(/fonts/Streamster.ttf) format("truetype");
 }
 
+@font-face {
+    font-family: "bellerose";
+    src: url(/fonts/Bellerose.ttf) format("truetype");
+}
 
 .productName {
     text-decoration: none;
-    font-family: "commando";
+    font-family: "bellerose";
 }
 
 #h5font {
