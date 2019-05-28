@@ -2126,6 +2126,7 @@
     <Content Include="fonts\Road_Rage.otf" />
     <Content Include="fonts\Streamster.ttf" />
     <Content Include="fonts\VCR_OSD_MONO_1.001.ttf" />
+    <Content Include="fonts\Bellerose.ttf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
