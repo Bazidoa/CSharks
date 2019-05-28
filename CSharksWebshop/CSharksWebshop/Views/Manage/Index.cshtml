@@ -8,98 +8,101 @@
 
     int addressNumber = 1;
 }
+<div class="container">
+    <div class="row">
+        <h2>@ViewBag.Title.</h2>
 
-<h2>@ViewBag.Title.</h2>
+        <p class="text-success">@ViewBag.StatusMessage</p>
+        <div>
+            <h4>Change your account settings</h4>
+            <hr />
+            <dl class="dl-horizontal">
 
-<p class="text-success">@ViewBag.StatusMessage</p>
-<div>
-    <h4>Change your account settings</h4>
-    <hr />
-    <dl class="dl-horizontal">
+                @*<b>
+                        <dd>
+                            Firstly Address:
+                        </dd>
+                    </b>
+                    <dd>
+                        City:
+                        @user.City;
+                    </dd>
+                    <dd>
+                        Street:
+                        @user.Street;
+                    </dd>
+                    <dd>
+                        House Number:
+                        @user.HouseNumber;
+                    </dd>
+                    <dd>
+                        Post Code:
+                        @user.PostCode;
+                    </dd>*@
 
-        @*<b>
-            <dd>
-                Firstly Address:
-            </dd>
-        </b>
-        <dd>
-            City:
-            @user.City;
-        </dd>
-        <dd>
-            Street:
-            @user.Street;
-        </dd>
-        <dd>
-            House Number:
-            @user.HouseNumber;
-        </dd>
-        <dd>
-            Post Code:
-            @user.PostCode;
-        </dd>*@
+                @foreach (Address item in addressDb)
+                {
+                    <b>
+                        <dd>
+                            Address:
+                            @addressNumber
+                            @{addressNumber += 1;}
+                        </dd>
+                    </b>
+                    <dd>
+                        City:
+                        @item.City
+                    </dd>
+                    <dd>
+                        Street:
+                        @item.Street
+                    </dd>
+                    <dd>
+                        House Number:
+                        @item.HouseNumber
+                    </dd>
+                    <dd>
+                        Post Code:
+                        @item.ZipCode
+                    </dd>
+                    <div style="@Address.CanSee(item,User)">
 
-        @foreach (Address item in addressDb)
-        {
-            <b>
+                        @Html.ActionLink("Delete", "Delete", new { controller = "Addresses", action = "Delete", id = item.ID })
+                        <br />
+                        @Html.ActionLink("Set as Firstly Address", "SetFirstAddress", new { controller = "Addresses", action = "SetFirstAddress", id = item.ID })
+                    </div>
+                    @Html.ActionLink("Change Address", "Edit", new { controller = "Addresses", action = "Edit", id = item.ID })
+                }
+
+                <dt>Add new or Change Address:</dt>
                 <dd>
-                    Address:
-                    @addressNumber
-                    @{addressNumber += 1;}
+                    [
+                    @Html.ActionLink("Add New Address", "Create", "Addresses")
+                    ]
+
                 </dd>
-            </b>
-            <dd>
-                City:
-                @item.City
-            </dd>
-            <dd>
-                Street:
-                @item.Street
-            </dd>
-            <dd>
-                House Number:
-                @item.HouseNumber
-            </dd>
-            <dd>
-                Post Code:
-                @item.ZipCode
-            </dd>
-            <div style="@Address.CanSee(item,User)">
-
-                @Html.ActionLink("Delete", "Delete", new { controller = "Addresses", action = "Delete", id = item.ID })
-                <br />
-                @Html.ActionLink("Set as Firstly Address", "SetFirstAddress", new { controller = "Addresses", action = "SetFirstAddress", id = item.ID })
-            </div>
-            @Html.ActionLink("Change Address", "Edit", new { controller = "Addresses", action = "Edit", id = item.ID })
-        }
-
-        <dt>Add new or Change Address:</dt>
-        <dd>
-            [
-            @Html.ActionLink("Add New Address", "Create", "Addresses")
-            ]
-
-        </dd>
-        <dt>Password:</dt>
-        <dd>
-            [
-            @if (Model.HasPassword)
-            {
-                @Html.ActionLink("Change your password", "ChangePassword")
-            }
-            else
-            {
-                @Html.ActionLink("Create", "SetPassword")
-            }
-            ]
-        </dd>
-        @*<dt>External Logins:</dt>
-        <dd>
-            @Model.Logins.Count [
-            @Html.ActionLink("Manage", "ManageLogins") ]
-        </dd>*@
+                <dt>Password:</dt>
+                <dd>
+                    [
+                    @if (Model.HasPassword)
+                    {
+                        @Html.ActionLink("Change your password", "ChangePassword")
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Create", "SetPassword")
+                    }
+                    ]
+                </dd>
+                @*<dt>External Logins:</dt>
+                    <dd>
+                        @Model.Logins.Count [
+                        @Html.ActionLink("Manage", "ManageLogins") ]
+                    </dd>*@
 
 
 
-    </dl>
+            </dl>
+        </div>
+        </div>
 </div>
