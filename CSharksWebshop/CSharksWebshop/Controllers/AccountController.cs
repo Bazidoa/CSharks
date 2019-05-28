@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CSharksWebshop.Models;
 using CSharksWebshop.DataModels;
+using System.Web.Security;
 
 namespace CSharksWebshop.Controllers
 {
@@ -27,6 +28,7 @@ namespace CSharksWebshop.Controllers
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            
         }
 
         public ApplicationSignInManager SignInManager
@@ -51,6 +53,13 @@ namespace CSharksWebshop.Controllers
             {
                 _userManager = value;
             }
+        }
+
+        public ActionResult ListUsers()
+        {
+            ViewBag.Users = (UserManager.Users.ToList<ApplicationUser>());
+
+            return View();
         }
 
         //
@@ -159,6 +168,7 @@ namespace CSharksWebshop.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    UserManager.AddToRole(user.Id, "Customer");
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

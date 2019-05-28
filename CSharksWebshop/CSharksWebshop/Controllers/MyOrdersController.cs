@@ -45,7 +45,10 @@ namespace CSharksWebshop.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Order order = db.Orders.Where(x => x.OrderID == id && x.UserID == userID).FirstOrDefault();
+            if(order.OrderStatus == OrderStatusEnum.ACTIVE.ToString())
+            {
             order.OrderStatus = OrderStatusEnum.DELETED.ToString();
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }

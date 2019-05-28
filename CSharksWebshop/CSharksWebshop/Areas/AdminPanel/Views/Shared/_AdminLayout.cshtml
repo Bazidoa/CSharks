@@ -53,10 +53,8 @@
             </li>
             <li class="nav-item">
 
-
-
-
                 @Html.ActionLink("Report", "Report", "AdminHome", new { area = "AdminPanel" }, new { @class = "nav-link" })
+                @Html.ActionLink("Create New Category", "Create", "CategoryName", new { area = "" }, new { @class = "nav-link" })
             </li>
             
 
@@ -86,28 +84,14 @@
                         @Html.ActionLink("My Orders", "Index", "MyOrders", new { area = "" }, new { @class = "collapse-item" })
                         @Html.ActionLink("Products", "Index", "Product", new { area = "" }, new { @class = "collapse-item" })
                         <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
+                        @*<h6 class="collapse-header">Other Pages:</h6>*@
+                        @*<a class="collapse-item" href="404.html">404 Page</a>
+                        <a class="collapse-item" href="blank.html">Blank Page</a>*@
                     </div>
                 </div>
             </li>
 
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span>
-                </a>
-            </li>
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span>
-                </a>
-            </li>
+            
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
