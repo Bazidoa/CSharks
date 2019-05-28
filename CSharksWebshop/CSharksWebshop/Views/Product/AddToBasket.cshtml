@@ -4,66 +4,72 @@
     ViewBag.Title = "AddToBasket";
 }
 
-<h2>AddToBasket</h2>
+<div class="container">
+    <div class="row">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductPrice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsAvailable)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.InStock)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UrlFriendlyName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Manufacturer)
-        </th>
-        <th></th>
-    </tr>
+        <h2>AddToBasket</h2>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsAvailable)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InStock)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UrlFriendlyName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Manufacturer)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsAvailable)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductDescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.InStock)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UrlFriendlyName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Manufacturer)
+                </th>
+                <th></th>
+            </tr>
 
-</table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsAvailable)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InStock)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UrlFriendlyName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Manufacturer)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </div>
+</div>

@@ -20,17 +20,25 @@
     @foreach (ApplicationUser item in ViewBag.Users as List<ApplicationUser>)
     {
 
-        <tr>
-            <td>
-                @item.UserName
-                </td>
+    <tr>
+        <td>
+            @item.UserName
 
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id })
-                @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
-            </td>
-        </tr>
+        </td>
+        
+        <td>
+            @if (item.Roles.SingleOrDefault(r => r.RoleId == "2" && r.UserId == item.Id) != null)
+            {
+                @Html.ActionLink("Change role to User", "ChangeToUser", new { id = item.Id })
+            }
+            else
+            {
+                @Html.ActionLink("Promote to Admin", "PromoteToAdmin", new { id = item.Id })
+            }
+            @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+        </td>
+    </tr>
     }
 
 </table>

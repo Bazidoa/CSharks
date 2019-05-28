@@ -27,8 +27,13 @@ namespace CSharksWebshop.Controllers
             {
                 foreach (string key in categoriesFC.AllKeys)
                 {
-                    //string catName = "";
-                    allProducts = db.Products.Where(x => x.Category_Name == key).ToList();
+                    foreach (var item in db.Products)
+                    {
+                        if (item.Category_Name == key)
+                        {
+                            allProducts.Add(item);
+                        }
+                    }
                 }
             }
             string currentUser = UserAuthentication.WhoAmI(User, Session);
