@@ -125,7 +125,16 @@
         for (int i = 0; i < addresses.Count; i++)
         {
             <div class="card bg-light mb-3" style="max-width: 20rem;">
-                <div class="card-header"><input type="radio" id="@addresses[i].ID" name="RegisteredUserCreate" value="@addresses[i].ID" /> Address @(i + 1)</div>
+                <div class="card-header">
+                    @if (i == 0)
+                    {
+                        <input type="radio" id="@addresses[i].ID" name="RegisteredUserCreate" value="@addresses[i].ID" checked/>
+                    }else
+                    {
+                         <input type="radio" id="@addresses[i].ID" name="RegisteredUserCreate" value="@addresses[i].ID" /> 
+                    }
+                    Address @(i + 1)
+                </div>
                 <div class="card-body">
                     <p class="card-text">Zip code: @addresses[i].ZipCode</p>
                     <p class="card-text">City: @addresses[i].City</p>
