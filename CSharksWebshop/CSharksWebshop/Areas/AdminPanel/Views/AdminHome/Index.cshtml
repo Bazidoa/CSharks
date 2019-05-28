@@ -46,6 +46,9 @@
                             @if (ViewBag.CountOrders != null)
                             {
                                 @ViewBag.CountOrders;
+                                <h6>
+                                    @Html.ActionLink("Show Users", "ShowAllOrders", "Order", new { area = "" }, null)
+                                </h6>
                             }
                         </div>
                     </div>
