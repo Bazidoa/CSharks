@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CSharksWebshop.Models;
+using System.Security.Principal;
+using CSharksWebshop.DataModels;
 
 namespace CSharksWebshop.Test
 {

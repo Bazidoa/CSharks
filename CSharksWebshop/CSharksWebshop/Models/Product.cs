@@ -69,6 +69,11 @@ namespace CSharksWebshop.Models
             this.UrlFriendlyName = UrlFriendlyNameConverter(ProductName);
 
         }
+        public Product(int ID, string ProductName, int ProductPrice, bool IsAvailable, string ProductDescription, int InStock, string Manufacturer) 
+            : this(ProductName,ProductPrice,IsAvailable,ProductDescription,InStock,Manufacturer)
+        {
+            this.ID = ID;
+        }
 
         public string UrlFriendlyNameConverter(string name)
         {
