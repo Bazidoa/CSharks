@@ -24,7 +24,7 @@
 <div class="container">
     <div class="row">
 
-  
+
 
         <p>
             @*@Html.ActionLink("Create New", "Create")*@
@@ -58,7 +58,7 @@
                         @Html.DisplayFor(modelItem => item.ProductName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ProductPrice)
+                        @Html.DisplayFor(modelItem => item.ProductPrice) €
 
                     </td>
                     <td>
@@ -72,7 +72,7 @@
                     </td>
                     <td>
                         @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
                         @* Delete maradhat csak át kell írni, hogy kivegye a "kosárból" *@
 
                     </td>
@@ -81,11 +81,11 @@
 
         </table>
         Total Price:
-        @orderPriceSum
+        @orderPriceSum €
         </p>
-        @Html.ActionLink("Back to Shop", "Index", "Shop", new { /* id=item.PrimaryKey */ }, null) |
-        @Html.ActionLink("Confirm Order", "AddToOrderEntries", "Order", null, null)
+        @*@Html.ActionLink("Back to Shop", "Index", "Shop", new { /* id=item.PrimaryKey */ }, null) |*@
+        &nbsp; &nbsp; @Html.ActionLink("Confirm Order", "AddToOrderEntries", "Order", null, new { @class = "btn btn-primary btn-sm" })
 
 
-        </div>
+    </div>
 </div>

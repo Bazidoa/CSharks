@@ -59,7 +59,7 @@
                     <td>
                         @*@Html.ActionLink("Edit", "Edit", new { id=item.OrderID }) |
                             @Html.ActionLink("Details", "Details", new { id=item.OrderID }) |*@
-                        @Html.ActionLink("Delete", "Delete", new { id = item.OrderID })
+                        @Html.ActionLink("Delete", "Delete", null, new { id = item.OrderID } , new { @class = "btn btn-danger btn-sm" })
                     </td>
                 </tr>
                 <tr>

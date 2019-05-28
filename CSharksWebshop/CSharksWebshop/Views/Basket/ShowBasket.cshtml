@@ -53,7 +53,7 @@
                         @Html.DisplayFor(modelItem => item.ProductName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ProductPrice)
+                        @Html.DisplayFor(modelItem => item.ProductPrice) €
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.IsAvailable)
@@ -74,11 +74,11 @@
                     </td>
                     <td>
                         @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-                            @Html.ActionLink("Details", "Details", new { id=item.ID }) |*@
+                        @Html.ActionLink("Details", "Details", new { id=item.ID }) |*@
 
-                        |
+                        
                         @*@Html.ActionLink("-", "DeleteFromBasket", new { id = item.ID })*@
-                        @Html.ActionLink("Delete", "DeleteFromBasket", new { id = item.ID })
+                        @Html.ActionLink("Delete", "DeleteFromBasket", new { id = item.ID } , new { @class = "btn btn-danger btn-sm" })
 
                     </td>
                 </tr>
@@ -88,11 +88,11 @@
 
         </table>
 
-        <b>Total Sum of your Basket</b>
-        @BasketSum €.
-        @Html.ActionLink("Starting Order", "Create", "Order", null, null)
+        <b>Total Sum of your Basket </b>
+        &nbsp;@BasketSum €.  &nbsp;
+        @Html.ActionLink("Starting Order", "Create", "Order", null, new { @class = "btn btn-primary btn-sm" })
 
         <hr />
-        @Html.ActionLink("Delete Basket Items", "ClearBasket")
+        @Html.ActionLink("Delete Basket Items", "ClearBasket" ,null, new { @class = "btn btn-danger btn-sm" })
     </div>
 </div>
