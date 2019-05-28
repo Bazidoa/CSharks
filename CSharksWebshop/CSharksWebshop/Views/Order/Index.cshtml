@@ -21,66 +21,71 @@
     }
 }
 
-<h2>SendMyOrder</h2>
+<div class="container">
+    <div class="row">
 
-<p>
-    @*@Html.ActionLink("Create New", "Create")*@
-</p>
-<table class="table">
-    <tr>
-        <th>
-            ProductName
-        </th>
-        <th>
-            ProductPrice
-        </th>
-        <th>
-            Quantity
-        </th>
-        <th>
-            Manufacturer
-        </th>
-        <th>
-            ProductDescription
-        </th>
-        <th></th>
-    </tr>
+        <h2>SendMyOrder</h2>
 
-    @foreach (var item in productList)
-    {
-        orderPriceSum += item.ProductPrice * db.BasketEntries.Find(currentUser, item.ID).Quantity;
-        BasketEntry basketEntry = myOrderEntry.Where(x => x.ProductID == item.ID).Select(x => x).FirstOrDefault();
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductPrice)
+        <p>
+            @*@Html.ActionLink("Create New", "Create")*@
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    ProductName
+                </th>
+                <th>
+                    ProductPrice
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Manufacturer
+                </th>
+                <th>
+                    ProductDescription
+                </th>
+                <th></th>
+            </tr>
 
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => basketEntry.Quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Manufacturer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductDescription)
-            </td>
-            <td>
-                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
-                @* Delete maradhat csak át kell írni, hogy kivegye a "kosárból" *@
+            @foreach (var item in productList)
+            {
+                orderPriceSum += item.ProductPrice * db.BasketEntries.Find(currentUser, item.ID).Quantity;
+                BasketEntry basketEntry = myOrderEntry.Where(x => x.ProductID == item.ID).Select(x => x).FirstOrDefault();
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductPrice)
 
-            </td>
-        </tr>
-    }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => basketEntry.Quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Manufacturer)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductDescription)
+                    </td>
+                    <td>
+                        @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                        @* Delete maradhat csak át kell írni, hogy kivegye a "kosárból" *@
 
-</table>
-Total Price:
-@orderPriceSum
-</p>
-@Html.ActionLink("Back to Shop", "Index", "Shop", new { /* id=item.PrimaryKey */ }, null) |
-@Html.ActionLink("Confirm Order", "AddToOrderEntries", "Order", null, null)
+                    </td>
+                </tr>
+            }
+
+        </table>
+        Total Price:
+        @orderPriceSum
+        </p>
+        @Html.ActionLink("Back to Shop", "Index", "Shop", new { /* id=item.PrimaryKey */ }, null) |
+        @Html.ActionLink("Confirm Order", "AddToOrderEntries", "Order", null, null)
 
 
+        </div>
+</div>
