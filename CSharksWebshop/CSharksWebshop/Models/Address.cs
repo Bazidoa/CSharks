@@ -31,17 +31,34 @@ namespace CSharksWebshop.Models
             this.HouseNumber = houseNumber;
         }
 
+        //public static string CanSee(Address address, IPrincipal user)
+        //{
+        //    using (WebshopModel db = new WebshopModel())
+        //    {
+        //        string uID = user.Identity.GetUserId();
+        //        List<Address> addresses = db.Addresses.Where(x => x.UserId == uID).ToList();
+        //        UserData userData = db.UserDatas.Where(y => y.UserID == uID).FirstOrDefault();
+        //        if (address.City == userData.City &&
+        //             address.HouseNumber.ToString() == userData.HouseNumber &&
+        //             address.ZipCode.ToString() == userData.PostCode &&
+        //             address.Street == userData.Street)
+        //        {
+        //            return "display:none";
+        //        }
+        //        else
+        //        {
+        //            return "";
+        //        }
+        //    }
+        //}
         public static string CanSee(Address address, IPrincipal user)
         {
             using (WebshopModel db = new WebshopModel())
             {
                 string uID = user.Identity.GetUserId();
                 List<Address> addresses = db.Addresses.Where(x => x.UserId == uID).ToList();
-                UserData userData = db.UserDatas.Where(y => y.UserID == uID).FirstOrDefault();
-                if (address.City == userData.City &&
-                     address.HouseNumber.ToString() == userData.HouseNumber &&
-                     address.ZipCode.ToString() == userData.PostCode &&
-                     address.Street == userData.Street)
+               
+                if (addresses.Count()<=1)
                 {
                     return "display:none";
                 }
