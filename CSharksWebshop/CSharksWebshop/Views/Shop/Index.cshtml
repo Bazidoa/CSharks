@@ -61,17 +61,8 @@
 
         <div class="col-lg-3">
 
-            @*<h1 class="my-4">Shop Name</h1>*@
             <div class="card mb-3">
                 <h5 id="h5font" class="card-header">Your basket <span class="badge badge-pill badge-secondary">@basketQuantity</span></h5>
-                @*<div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-                    </div>
-
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>*@
                 <ul class="list-group list-group-flush">
                     @foreach (var item in currentProdNames)
                     {
@@ -84,17 +75,11 @@
                                 if (UserBasketEntries != null)
                                 {
                                     BasketEntry currentEntry = UserBasketEntries.Where(x => x.ProductID == item.ID).FirstOrDefault();
-
-
                                     <span class="badge badge-success">@currentEntry.Quantity pcs</span>
                                     BasketSum += item.ProductPrice * db.BasketEntries.Find(currentUser, item.ID).Quantity;
                                 }
-
                             }
-
                         </li>
-
-
                     }
                 </ul>
                 <div class="card-body">
@@ -117,7 +102,6 @@
                         {
                             foreach (string item in ViewBag.ProdCategories)
                             {
-
                                 <div class="custom-control custom-checkbox">
                                     @if (ViewBag.CategoriesChecked.Count != 0)
                                     {
@@ -135,7 +119,6 @@
                                         <input type="checkbox" class="custom-control-input" name=@item id=@item>
                                     }
                                     <label class="custom-control-label" for=@item>@item</label>
-
                                 </div>
 
                                 tempCurrentCategory.Add(item);
@@ -159,34 +142,30 @@
             <div class="row">
                 @foreach (var item in Model)
                 {
-                    string currenturl = "";
-                    if (item.ProductPictureURL != null)
-                    {
-                        currenturl = item.ProductPictureURL.Substring(1, item.ProductPictureURL.Length - 1);
-                    }
-                    <div class="col-lg-4 col-md-6 mb-4">
+                    
+                        <div class="col-lg-4 col-md-6 mb-4">
 
-                        <div class="card h-100">
+                            <div class="card h-100">
 
-                            <a href="#"><img class="card-img-top" src="@currenturl" alt=""></a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    @Html.ActionLink(item.ProductName, "Details", "Product", new { id = item.ID }, new {@class="productName"})
-                                </h4>
-                                <h5>@Html.DisplayFor(modelItem => item.ProductPrice) €</h5>
-                                <p class="card-text">@Html.DisplayFor(modelItem => item.ProductDescription)</p>
+                                <a href="#"><img class="card-img-top" src="@item.ProductPictureURL.Substring(1, item.ProductPictureURL.Length - 1)" alt=""></a>
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        @Html.ActionLink(item.ProductName, "Details", "Product", new { id = item.ID }, new { @class = "productName" })
+                                    </h4>
+                                    <h5>@Html.DisplayFor(modelItem => item.ProductPrice) €</h5>
+                                    <p class="card-text">@Html.DisplayFor(modelItem => item.ProductDescription)</p>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                                    <!--<small><i class="fas fa-cart-plus"></i></small>-->
+                                    @Html.ActionLink(" ", "AddToBasket", "Shop", new { id = item.ID }, new { @class = "fas fa-cart-plus", style = "margin-left:7rem" })
+
+                                </div>
                             </div>
-                            <div class="card-footer">
-                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                <!--<small><i class="fas fa-cart-plus"></i></small>-->
-                                @Html.ActionLink(" ", "AddToBasket", "Shop", new { id = item.ID }, new { @class = "fas fa-cart-plus", style = "margin-left:7rem" })
 
-                            </div>
                         </div>
-
-                    </div>
-                }
-            </div>
+                        }
+                </div>
             <!-- /.row -->
         </div>
         <!-- /.col-lg-9 -->

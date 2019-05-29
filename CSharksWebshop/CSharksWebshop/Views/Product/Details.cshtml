@@ -149,7 +149,7 @@
 
                             <li class="list-group-item">
                                 @Html.DisplayFor(modelItem => item.ProductName)
-                                @item.ProductPrice Ft
+                                @item.ProductPrice €
                                 @{
                                     List<BasketEntry> UserBasketEntries = TempData["ProductNameAndCount"] as List<BasketEntry>;
                                     if (UserBasketEntries != null)
