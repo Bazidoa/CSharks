@@ -16,16 +16,8 @@ namespace CSharksWebshop.Models
 
         public bool CategoryNameValidator(string category)
         {
-            if (Regex.IsMatch(category, @"^[a-zA-Z]+$"))
-            {
-            return true;
-            }
-            else
-            {
-            return false;
-            }
+            return Regex.IsMatch(category, @"^[a-zA-Z]+$");
         }
     }
-
 
 }
