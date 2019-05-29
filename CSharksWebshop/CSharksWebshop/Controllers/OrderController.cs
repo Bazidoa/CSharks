@@ -73,6 +73,7 @@ namespace CSharksWebshop.Controllers
         // GET: Order/Create
         public ActionResult Create()
         {
+            ViewBag.CurrentUser = db.UserDatas.Where(x => x.UserEmail == User.Identity.Name).FirstOrDefault();
             return View();
         }
 
@@ -92,6 +93,9 @@ namespace CSharksWebshop.Controllers
                 if(User.Identity.IsAuthenticated)
                 {
                 order = RegisteredUserCreate(int.Parse(formCollection["RegisteredUserCreate"]));
+                }else
+                {
+                    order.UserID = Session.SessionID;
                 }
 
                 db.Orders.Add(order);
