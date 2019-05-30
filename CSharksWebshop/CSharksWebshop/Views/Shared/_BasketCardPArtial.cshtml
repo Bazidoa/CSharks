@@ -1,0 +1,93 @@
+﻿@model IEnumerable<CSharksWebshop.Models.Product>
+@using CSharksWebshop.DataModels;
+@using CSharksWebshop.Models;
+@using CSharksWebshop.Controllers;
+
+
+@{
+    ViewBag.Title = "ShopIndex";
+    string userID = UserAuthentication.WhoAmI(User, Session);
+    WebshopModel db = new WebshopModel();
+    var basketQuantity = 0;
+    var BasketSum = 0;
+    string currentUser;
+    List<BasketEntry> myBasketEntries = (from basketEntries in db.BasketEntries
+                                         where userID == basketEntries.UserID
+                                         select basketEntries).ToList();
+
+    List<Product> currentProdNames = new List<Product>();
+    for (int i = 0; i < myBasketEntries.Count; i++)
+    {
+        foreach (var item in db.Products)
+        {
+            if (myBasketEntries[i].ProductID == item.ID)
+            {
+                currentProdNames.Add(item);
+            }
+        }
+    }
+
+    if (User.Identity.IsAuthenticated)
+    {
+        currentUser = User.Identity.Name;
+    }
+    else
+    {
+        currentUser = Session.SessionID;
+    }
+    try
+    {
+        basketQuantity = (from product in db.BasketEntries
+                          where userID == product.UserID
+                          select product.Quantity).Sum();
+
+
+    }
+    catch (Exception)
+    {
+        if (basketQuantity == null)
+        {
+            basketQuantity = 0;
+        }
+    }
+
+
+}
+
+<h5 id="h5font" class="card-header">Your basket <span class="badge badge-pill badge-secondary">@basketQuantity</span></h5>
+
+<ul class="list-group list-group-flush">
+    @foreach (var item in currentProdNames)
+    {
+
+        <li class="list-group-item">
+            @Html.DisplayFor(modelItem => item.ProductName)
+            @item.ProductPrice €
+            @{
+                List<BasketEntry> UserBasketEntries = TempData["ProductNameAndCount"] as List<BasketEntry>;
+                if (UserBasketEntries != null)
+                {
+                    BasketEntry currentEntry = UserBasketEntries.Where(x => x.ProductID == item.ID).FirstOrDefault();
+
+
+                    <span class="badge badge-success">@currentEntry.Quantity pcs</span>
+                    BasketSum += item.ProductPrice * db.BasketEntries.Find(currentUser, item.ID).Quantity;
+                }
+
+            }
+
+        </li>
+
+
+    }
+</ul>
+<div class="card-body">
+
+    @Html.ActionLink("Show Basket", "ShowBasket", "Basket", null, new { @class = "card-link" }) |
+    @Html.ActionLink("Empty basket", "ClearBasket", "Basket")
+</div>
+<div class="card-footer text-muted">
+
+    @Html.ActionLink("Order", "ShowBasket", "Basket", null, new { @class = "btn btn-info btn-sm" }) |  @BasketSum €
+
+</div>

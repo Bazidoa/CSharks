@@ -61,111 +61,45 @@
 
         <div class="col-lg-3">
 
+            @*<h1 class="my-4">Shop Name</h1>*@
             <div class="card mb-3">
-                <h5 id="h5font" class="card-header">Your basket <span class="badge badge-pill badge-secondary">@basketQuantity</span></h5>
-                <ul class="list-group list-group-flush">
-                    @foreach (var item in currentProdNames)
-                    {
-
-                        <li class="list-group-item">
-                            @Html.DisplayFor(modelItem => item.ProductName)
-                            @item.ProductPrice €
-                            @{
-                                List<BasketEntry> UserBasketEntries = TempData["ProductNameAndCount"] as List<BasketEntry>;
-                                if (UserBasketEntries != null)
-                                {
-                                    BasketEntry currentEntry = UserBasketEntries.Where(x => x.ProductID == item.ID).FirstOrDefault();
-                                    <span class="badge badge-success">@currentEntry.Quantity pcs</span>
-                                    BasketSum += item.ProductPrice * db.BasketEntries.Find(currentUser, item.ID).Quantity;
-                                }
-                            }
-                        </li>
-                    }
-                </ul>
-                <div class="card-body">
-                    
-                    @Html.ActionLink("Show Basket", "ShowBasket", "Basket", null, new { @class = "card-link" }) |
-                    @Html.ActionLink("Empty basket", "ClearBasket", "Basket")
-                </div>
-                <div class="card-footer text-muted">
-
-                    @Html.ActionLink("Order", "ShowBasket", "Basket", null, new { @class = "btn btn-info btn-sm" }) |  @BasketSum €
-
-                </div>
+                @Html.Partial("_BasketCardPartial")
                 <hr />
-                <div class="card border-light mb-3" style="max-width: 20rem; ">
-                    <div class="card-header"><h5 class="card-title">Select categories</h5></div>
-                    <div class="card-body">
-
-                        @{List<string> tempCurrentCategory = new List<string>(); }
-                        @using (Html.BeginForm())
-                        {
-                            foreach (string item in ViewBag.ProdCategories)
-                            {
-                                <div class="custom-control custom-checkbox">
-                                    @if (ViewBag.CategoriesChecked.Count != 0)
-                                    {
-                                        if (ViewBag.CategoriesChecked.Contains(item))
-                                        {
-                                            <input type="checkbox" class="custom-control-input" name=@item id=@item checked="">
-                                        }
-                                        else
-                                        {
-                                            <input type="checkbox" class="custom-control-input" name=@item id=@item>
-                                        }
-                                    }
-                                    else
-                                    {
-                                        <input type="checkbox" class="custom-control-input" name=@item id=@item>
-                                    }
-                                    <label class="custom-control-label" for=@item>@item</label>
-                                </div>
-
-                                tempCurrentCategory.Add(item);
-                            }
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Apply" class="btn btn-info btn-sm" />
-                                    @Html.ActionLink("Reset", "Index",null, null, new { @class = "btn btn-info btn-sm" })
-                                </div>
-                            </div>
-                        }
-                    </div>
-                </div>
+                @Html.Partial("_SelectCategoriesPartial")
             </div>
 
         </div>
         <!-- /.col-lg-3 -->
         <div class="col-lg-9">
-            
+
 
             <div class="row">
                 @foreach (var item in Model)
                 {
-                    
-                        <div class="col-lg-4 col-md-6 mb-4">
 
-                            <div class="card h-100">
+                    <div class="col-lg-4 col-md-6 mb-4">
 
-                                <a href="#"><img class="card-img-top" src="@item.ProductPictureURL.Substring(1, item.ProductPictureURL.Length - 1)" alt=""></a>
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        @Html.ActionLink(item.ProductName, "Details", "Product", new { id = item.ID }, new { @class = "productName" })
-                                    </h4>
-                                    <h5>@Html.DisplayFor(modelItem => item.ProductPrice) €</h5>
-                                    <p class="card-text">@Html.DisplayFor(modelItem => item.ProductDescription)</p>
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                    <!--<small><i class="fas fa-cart-plus"></i></small>-->
-                                    @Html.ActionLink(" ", "AddToBasket", "Shop", new { id = item.ID }, new { @class = "fas fa-cart-plus", style = "margin-left:7rem" })
+                        <div class="card h-100">
 
-                                </div>
+                            <a href="#"><img class="card-img-top" src="@item.ProductPictureURL.Substring(1, item.ProductPictureURL.Length - 1)" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    @Html.ActionLink(item.ProductName, "Details", "Product", new { id = item.ID }, new { @class = "productName" })
+                                </h4>
+                                <h5>@Html.DisplayFor(modelItem => item.ProductPrice) €</h5>
+                                <p class="card-text">@Html.DisplayFor(modelItem => item.ProductDescription)</p>
                             </div>
+                            <div class="card-footer">
+                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                                <!--<small><i class="fas fa-cart-plus"></i></small>-->
+                                @Html.ActionLink(" ", "AddToBasket", "Shop", new { id = item.ID }, new { @class = "fas fa-cart-plus", style = "margin-left:7rem" })
 
+                            </div>
                         </div>
-                        }
-                </div>
+
+                    </div>
+                }
+            </div>
             <!-- /.row -->
         </div>
         <!-- /.col-lg-9 -->
