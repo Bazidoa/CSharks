@@ -56,72 +56,7 @@
 <div>
 
     <hr />
-    @*<dl class="dl-horizontal">
-                <dt>
-                    <img src="@Url.Content(Model.ProductPictureURL)" width="250" height="250" />
-                </dt>
-                <dt>
-                    @Html.DisplayNameFor(model => model.ProductName)
-                </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.ProductName)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.ProductPrice)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.ProductPrice)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.IsAvailable)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.IsAvailable)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.ProductDescription)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.ProductDescription)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.InStock)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.InStock)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.UrlFriendlyName)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.UrlFriendlyName)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Manufacturer)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Manufacturer)
-                </dd>
-
-            </dl>
-        </div>
-        <p>
-            @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-            @Html.ActionLink("Back to List", "Index")
-        </p>*@
 
 
     <!-- Page Content -->
@@ -130,71 +65,50 @@
 
         <!-- Portfolio Item Row -->
         <div class="row">
+
             <div class="col-lg-3">
-
-                @*<h1 class="my-4">Shop Name</h1>*@
                 <div class="card mb-3">
-                    <h5 id="h5font" class="card-header">Your basket <span class="badge badge-pill badge-secondary">@basketQuantity</span></h5>
-                    @*<div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-                        </div>
+                    @Html.Partial("_BasketCardPartial", currentProdNames)
+                </div>
+            </div>
 
+            @*<div>
+                    <div class="col-lg-10">
+                        <img class="img-fluid" src="@Url.Content(Model.ProductPictureURL)" alt="" width="250" height="250">
+                    </div>
+
+                    <div class="col-lg-6">
+                        <h3 class="my-3">@Html.DisplayFor(model => model.ProductName) <small class="text-muted">@Html.DisplayFor(model => model.Manufacturer)</small></h3>
+                        <p>@Html.DisplayFor(model => model.ProductDescription)</p>
+                        <h3 class="my-3">@Html.DisplayFor(model => model.ProductPrice) € @Html.ActionLink(" ", "AddToBasket", "Shop", new { id = Model.ID }, new { @class = "fas fa-cart-plus", style = "margin-left:7rem" })</h3>
+                        <p>In stock: <span class="badge badge-success">@Html.DisplayFor(model => model.InStock) pcs</span></p>
+                    </div>
+
+                </div>*@
+            <div class="col-lg-9">
+                <div class="card-group">
+                    <div>
+                        <img class="img-fluid" src="@Url.Content(Model.ProductPictureURL)" alt="" width="250" height="250">
+
+                    </div>
+                    <div class="col-lg-6">
                         <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>*@
-                    <ul class="list-group list-group-flush">
-                        @foreach (var item in currentProdNames)
-                        {
+                            <h3 class="my-3">@Html.DisplayFor(model => model.ProductName) <small class="text-muted">@Html.DisplayFor(model => model.Manufacturer)</small></h3>
+                            <p>@Html.DisplayFor(model => model.ProductDescription)</p>
+                            <h3 class="my-3">@Html.DisplayFor(model => model.ProductPrice) € @Html.ActionLink(" ", "AddToBasket", "Shop", new { id = Model.ID }, new { @class = "fas fa-cart-plus", style = "margin-left:7rem" })</h3>
 
-                            <li class="list-group-item">
-                                @Html.DisplayFor(modelItem => item.ProductName)
-                                @item.ProductPrice Ft
-                                @{
-                                    List<BasketEntry> UserBasketEntries = TempData["ProductNameAndCount"] as List<BasketEntry>;
-                                    if (UserBasketEntries != null)
-                                    {
-                                        BasketEntry currentEntry = UserBasketEntries.Where(x => x.ProductID == item.ID).FirstOrDefault();
-
-
-                                        <span class="badge badge-success">@currentEntry.Quantity db</span>
-                                        BasketSum += item.ProductPrice * db.BasketEntries.Find(currentUser, item.ID).Quantity;
-                                    }
-                                }
-                            </li>
-
-
-                        }
-                    </ul>
-                    <div class="card-body">
-                        @Html.ActionLink("Order", "ShowBasket", "Basket", null, new { @class = "card-link" }) |
-                        @Html.ActionLink("Empty basket", "ClearBasket", "Basket")
-                    </div>
-                    <div class="card-footer text-muted">
-                        @Html.ActionLink("Show Basket", "ShowBasket", "Basket", null, null) |  @BasketSum €
-
+                        </div>
+                        <div>
+                            <small class="text-muted">In stock: <span class="badge badge-success">@Html.DisplayFor(model => model.InStock) pcs</span> </small>
+                        </div>
                     </div>
                 </div>
 
             </div>
-
-            <div class="row">
-
-                <div class="col-md-8">
-                    <img class="img-fluid" src="@Url.Content(Model.ProductPictureURL)" alt="" width="250" height="250">
-                </div>
-
-                <div class="col-md-4">
-                    <h3 class="my-3">@Html.DisplayFor(model => model.ProductName) <small class="text-muted">@Html.DisplayFor(model => model.Manufacturer)</small></h3>
-                    <p>@Html.DisplayFor(model => model.ProductDescription)</p>
-                    <h3 class="my-3">@Html.DisplayFor(model => model.ProductPrice) € @Html.ActionLink(" ", "AddToBasket", "Shop", new { id = Model.ID }, new { @class = "fas fa-cart-plus", style = "margin-left:7rem" })</h3>
-                    <p>In stock: <span class="badge badge-success">@Html.DisplayFor(model => model.InStock) pcs</span></p>
-                </div>
-
-            </div>
-            <!-- /.row -->
         </div>
-
     </div>
     <!-- /.container -->
 </div>
+
+
+
