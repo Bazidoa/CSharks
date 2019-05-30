@@ -36,6 +36,17 @@ namespace CSharksWebshop.Controllers
                     }
                 }
             }
+
+            ViewBag.CurrentUrl = new List<string>();
+            foreach (Product item in allProducts)
+            {
+                if (item.ProductPictureURL != null)
+                {
+                    ViewBag.CurrentUrl.Add(item.ProductPictureURL.Substring(1, item.ProductPictureURL.Length - 1));
+                }
+            }
+            
+
             string currentUser = UserAuthentication.WhoAmI(User, Session);
             List<Product> allProductRightOrder = allProducts.OrderBy(p => p.ProductName).ThenBy(m => m.Manufacturer).ToList();
 

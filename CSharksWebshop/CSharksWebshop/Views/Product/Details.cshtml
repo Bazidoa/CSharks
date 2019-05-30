@@ -68,9 +68,44 @@
 
             <div class="col-lg-3">
                 <div class="card mb-3">
-                    @Html.Partial("_BasketCardPartial", currentProdNames)
-                </div>
-            </div>
+                    <h5 id="h5font" class="card-header">Your basket <span class="badge badge-pill badge-secondary">@basketQuantity</span></h5>
+                    @*<div class="card-body">
+                            <h5 class="card-title">Special title treatment</h5>
+                            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                        </div>
+
+                        <div class="card-body">
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>*@
+                    <ul class="list-group list-group-flush">
+                        @foreach (var item in currentProdNames)
+                        {
+
+                            <li class="list-group-item">
+                                @Html.DisplayFor(modelItem => item.ProductName)
+                                @item.ProductPrice Ft
+                                @{
+                                    List<BasketEntry> UserBasketEntries = TempData["ProductNameAndCount"] as List<BasketEntry>;
+                                    if (UserBasketEntries != null)
+                                    {
+                                        BasketEntry currentEntry = UserBasketEntries.Where(x => x.ProductID == item.ID).FirstOrDefault();
+
+
+                                        <span class="badge badge-success">@currentEntry.Quantity db</span>
+                                        BasketSum += item.ProductPrice * db.BasketEntries.Find(currentUser, item.ID).Quantity;
+                                    }
+                                }
+                            </li>
+
+
+                        }
+                    </ul>
+                    <div class="card-body">
+                        @Html.ActionLink("Order", "ShowBasket", "Basket", null, new { @class = "card-link" }) |
+                        @Html.ActionLink("Empty basket", "ClearBasket", "Basket")
+                    </div>
+                    <div class="card-footer text-muted">
+                        @Html.ActionLink("Show Basket", "ShowBasket", "Basket", null, null) |  @BasketSum €
 
             @*<div>
                     <div class="col-lg-10">
