@@ -1,10 +1,9 @@
-﻿
-@using CSharksWebshop.Models
+﻿@using CSharksWebshop.Models
 @{
     ViewBag.Title = "ListUsers";
 }
 
-<h2>ListUsers</h2>
+<h2>List Users</h2>
 
 <p>
     @*@Html.ActionLink("Create New", "Create")*@
@@ -22,10 +21,16 @@
 
     <tr>
         <td>
+            @item.Id
+
+
+        </td>
+        <td>
+            @item.Id
             @item.UserName
 
         </td>
-        
+
         <td>
             @if (item.Roles.SingleOrDefault(r => r.RoleId == "2" && r.UserId == item.Id) != null)
             {
@@ -36,7 +41,7 @@
                 @Html.ActionLink("Promote to Admin", "PromoteToAdmin", new { id = item.Id })
             }
             @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
         </td>
     </tr>
     }

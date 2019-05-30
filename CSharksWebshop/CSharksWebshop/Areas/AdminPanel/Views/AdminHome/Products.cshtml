@@ -65,9 +65,9 @@
                             </td>
                             <td>
 
-                                @Html.ActionLink("Edit", "Edit", "Product", null, new { id = item.ID }) |
-                                @Html.ActionLink("Details", "Details", "AdminHome", null, new { id = item.ID }) |
-                                @Html.ActionLink("Deactivate Product", "Delete", "Product", new { area = "" }, new { id = item.ID }) |
+                                @*@Html.ActionLink("Edit", "Edit", "Product", new { area = "" }, new { id = item.ID }) |
+                                @Html.ActionLink("Details", "Details", "Product", new { area = "" }, new { id = item.ID }) |
+                                @Html.ActionLink("Deactivate Product", "Delete", "Product", new { area = "" }, new { id = item.ID })*@ |
                                 @*@Html.ActionLink("Activate Product", "Delete", new { id = item.ID }) |*@
                                 @*@Html.ActionLink("Add To Basket", "AddToBasket", new { id = item.ID })*@
 

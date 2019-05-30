@@ -55,13 +55,6 @@ namespace CSharksWebshop.Controllers
             }
         }
 
-        public ActionResult ListUsers()
-        {
-            ViewBag.Users = (UserManager.Users.ToList<ApplicationUser>());
-
-            return View();
-        }
-
         //
         // GET: /Account/Login
         [AllowAnonymous]
@@ -100,7 +93,14 @@ namespace CSharksWebshop.Controllers
                     return View(model);
             }
         }
+        
+        public ActionResult ListUsers()
+        {
+            ViewBag.Users = (UserManager.Users.ToList<ApplicationUser>());
 
+            return View();
+        }
+        
         public ActionResult PromoteToAdmin(string id)
         {
             UserManager.RemoveFromRole(id,"Customer");
