@@ -16,6 +16,9 @@
                         Username
                     </th>
                     <th>
+                        Email
+                    </th>
+                    <th>
                         Role
                     </th>
 
@@ -39,11 +42,11 @@
         <td>
             @if (item.Roles.SingleOrDefault(r => r.RoleId == "2" && r.UserId == item.Id) != null)
             {
-                @Html.ActionLink("Change role to User", "ChangeToUser", new { id = item.Id })
+                @Html.ActionLink(" Change to User ", "ChangeToUser", new { id = item.Id }, new { @class ="btn btn-sm btn-warning", style= "padding-left:1em; padding-right:1em;" })
             }
             else
             {
-                @Html.ActionLink("Promote to Admin", "PromoteToAdmin", new { id = item.Id })
+                @Html.ActionLink("Change to Admin", "PromoteToAdmin", new { id = item.Id }, new { @class = "btn btn-sm btn-primary" })
             }
             @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
