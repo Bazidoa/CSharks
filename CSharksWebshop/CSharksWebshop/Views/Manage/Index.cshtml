@@ -1,87 +1,108 @@
 ﻿@model CSharksWebshop.Models.IndexViewModel
+@using CSharksWebshop.Models;
 @{
     ViewBag.Title = "Manage";
+    UserData user = ViewBag.UserDataDb as UserData;
+    List<Address> addressDb = ViewBag.AddresDb as List<Address>;
+
+
+    int addressNumber = 1;
 }
+<div class="container">
+    <div class="row">
 
-<h2>@ViewBag.Title.</h2>
 
-<p class="text-success">@ViewBag.StatusMessage</p>
-<div>
-    <h4>Change your account settings</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>Password:</dt>
-        <dd>
-            [
-            @if (Model.HasPassword)
-            {
-                @Html.ActionLink("Change your password", "ChangePassword")
-            }
-            else
-            {
-                @Html.ActionLink("Create", "SetPassword")
-            }
-            ]
-        </dd>
-        <dt>External Logins:</dt>
-        <dd>
-            @Model.Logins.Count [
-            @Html.ActionLink("Manage", "ManageLogins") ]
-        </dd>
-        @*
-            Phone Numbers can used as a second factor of verification in a two-factor authentication system.
-             
-             See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                for details on setting up this ASP.NET application to support two-factor authentication using SMS.
-             
-             Uncomment the following block after you have set up two-factor authentication
-        *@
-        @*  
-            <dt>Phone Number:</dt>
-            <dd>
-                @(Model.PhoneNumber ?? "None")
-                @if (Model.PhoneNumber != null)
+        <p class="text-success">@ViewBag.StatusMessage</p>
+        <div>
+            <h4>Change your account settings</h4>
+            <hr />
+            <dl class="dl-horizontal">
+
+                @*<b>
+                        <dd>
+                            Firstly Address:
+                        </dd>
+                    </b>
+                    <dd>
+                        City:
+                        @user.City;
+                    </dd>
+                    <dd>
+                        Street:
+                        @user.Street;
+                    </dd>
+                    <dd>
+                        House Number:
+                        @user.HouseNumber;
+                    </dd>
+                    <dd>
+                        Post Code:
+                        @user.PostCode;
+                    </dd>*@
+
+                @foreach (Address item in addressDb)
                 {
-                    <br />
-                    <text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>
-                    using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>[<input type="submit" value="Remove" class="btn-link" />]</text>
-                    }
+                    <b>
+                        <dd>
+                            Address:
+                            @addressNumber
+                            @{addressNumber += 1;}
+                        </dd>
+                    </b>
+                    <dd>
+                        City:
+                        @item.City
+                    </dd>
+                    <dd>
+                        Street:
+                        @item.Street
+                    </dd>
+                    <dd>
+                        House Number:
+                        @item.HouseNumber
+                    </dd>
+                    <dd>
+                        Post Code:
+                        @item.ZipCode
+                    </dd>
+                    <div style="@Address.CanSee(item,User)">
+
+                        @Html.ActionLink("Delete", "Delete", new { controller = "Addresses", action = "Delete", id = item.ID })
+                        @*<br />
+                        @Html.ActionLink("Set as Pirimary Address", "SetFirstAddress", new { controller = "Addresses", action = "SetFirstAddress", id = item.ID })*@
+                    </div>
+                    @Html.ActionLink("Change Address", "Edit", new { controller = "Addresses", action = "Edit", id = item.ID })
                 }
-                else
-                {
-                    <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")
-                }
-            </dd>
-        *@
-        <dt>Two-Factor Authentication:</dt>
-        <dd>
-            <p>
-                There are no two-factor authentication providers configured. See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                for details on setting up this ASP.NET application to support two-factor authentication.
-            </p>
-            @*@if (Model.TwoFactor)
-                {
-                    using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+
+                <dt>Add new or Change Address:</dt>
+                <dd>
+                    [
+                    @Html.ActionLink("Add New Address", "Create", "Addresses")
+                    ]
+
+                </dd>
+                <dt>Password:</dt>
+                <dd>
+                    [
+                    @if (Model.HasPassword)
                     {
-                        @Html.AntiForgeryToken()
-                        <text>Enabled
-                        <input type="submit" value="Disable" class="btn btn-link" />
-                        </text>
+                        @Html.ActionLink("Change your password", "ChangePassword")
                     }
-                }
-                else
-                {
-                    using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    else
                     {
-                        @Html.AntiForgeryToken()
-                        <text>Disabled
-                        <input type="submit" value="Enable" class="btn btn-link" />
-                        </text>
+                        @Html.ActionLink("Create", "SetPassword")
                     }
-                }*@
-        </dd>
-    </dl>
+                    ]
+                </dd>
+                @*<dt>External Logins:</dt>
+                    <dd>
+                        @Model.Logins.Count [
+                        @Html.ActionLink("Manage", "ManageLogins") ]
+                    </dd>*@
+
+
+
+            </dl>
+        </div>
+        </div>
 </div>

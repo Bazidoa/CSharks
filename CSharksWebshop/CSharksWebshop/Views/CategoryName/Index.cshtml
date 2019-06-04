@@ -1,0 +1,31 @@
+﻿@model IEnumerable<CSharksWebshop.Models.CategoryName>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>Category Name</th>
+    </tr>
+
+
+@foreach (var item in Model) {
+    <tr>
+        <th>
+            @item.Category_Name
+        </th>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Category_Name }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Category_Name }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Category_Name })
+        </td>
+    </tr>
+}
+
+</table>

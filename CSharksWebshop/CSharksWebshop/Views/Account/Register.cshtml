@@ -9,23 +9,38 @@
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-        <div class="row">
-            <div class="col-lg-10 col-xl-9 mx-auto">
-                <div class="card card-signin flex-row my-5">
-                    <div class="card-img-left d-none d-md-flex">
-                        <!-- Background image for card set in CSS! -->
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Register</h5>
-                        <form class="form-signin">
+    <div class="row">
+        <div class="col-lg-10 col-xl-5 mx-auto">
+            <div class="card card-signin flex-row my-5">
+                <div class="card-img-left d-none d-md-flex">
+                    <!-- Background image for card set in CSS! -->
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">Register</h5>
+                    <form class="form-signin">
+                        <div>
                             <div class="form-label-group">
                                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email address" })
                                 <label for="Email">Email address</label>
                             </div>
+                            <div class="form-label-group">
+                                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "Firstname" })
+                                <label for="UserName">UserName</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                                <label for="Password">Password</label>
+                            </div>
+                            <div class="form-label-group">
+                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Password" })
+                                <label for="Password">Confirm password</label>
+                            </div>
 
                             <hr>
-
-                            @*//ezt adtam hozzá én*@
+                        </div>
+                        @*//ezt adtam hozzá én*@
+                        <div>
                             <div class="form-label-group">
                                 @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "Firstname" })
                                 <label for="FirstName">FirstName</label>
@@ -36,10 +51,7 @@
                                 <label for="LastName">LastName</label>
                             </div>
 
-                            <div class="form-label-group">
-                                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "Firstname" })
-                                <label for="UserName">UserName</label>
-                            </div>
+
 
                             <div class="form-label-group">
                                 @Html.TextBoxFor(m => m.City, new { @class = "form-control", placeholder = "Firstname" })
@@ -60,25 +72,22 @@
                                 @Html.TextBoxFor(m => m.PostCode, new { @class = "form-control", placeholder = "Firstname" })
                                 <label for="PostCode">PostCode</label>
                             </div>
+                        </div>
+                        @*//////////////////////*@
 
-                            @*//////////////////////*@
-                            <div class="form-label-group">
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
-                                <label for="Password">Password</label>
-                            </div>
-                            <div class="form-label-group">
-                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Password" })
-                                <label for="Password">Confirm password</label>
-                            </div>
-                            <input type="submit" class="btn-lg btn-primary btn-block text-uppercase" value="Register" />
-                            <a class="d-block text-center mt-2 small" href="#">Sign In</a>
+                        <input type="submit" class="btn-lg btn-primary btn-block text-uppercase" value="Register" />
+                        <a class="d-block text-center mt-2 small" href="#">Sign In</a>
 
-                        </form>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
- 
+    </div>
+
+
+
+
+
 }
 
 @section Scripts {

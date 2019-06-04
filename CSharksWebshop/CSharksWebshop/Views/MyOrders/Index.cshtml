@@ -1,87 +1,122 @@
 ﻿@model IEnumerable<CSharksWebshop.Models.Order>
-
+@using CSharksWebshop.Models;
 @{
     ViewBag.Title = "Index";
+    int orderPriceSum = 0;
 }
+<div class="container">
+    <div class="row">
+        <h2>My Orders</h2>
 
-<h2>My Orders</h2>
+        <p>
+        </p>
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    Order Time
+                </th>
+                <th>
+                    Full name
+                </th>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.OrderTime)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.UserID)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PostCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Street)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.City)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HouseNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserEmail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OrderStatus)
-        </th>
-        <th></th>
-    </tr>
+                <th>
+                    Full Address
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserEmail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderStatus)
+                </th>
+                <th></th>
+            </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderTime)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.UserID)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Street)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HouseNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserEmail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderStatus)
-        </td>
-        <td>
-            @*@Html.ActionLink("Edit", "Edit", new { id=item.OrderID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.OrderID }) |*@
-            @Html.ActionLink("Delete", "Delete", new { id=item.OrderID })
-        </td>
-    </tr>
-}
+            @foreach (var item in Model)
+            {
 
-</table>
+                <tr class="table-info">
+                    <th>
+                        @Html.DisplayFor(modelItem => item.OrderTime)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.City)
+                        ,
+                        @Html.DisplayFor(modelItem => item.Street)
+                        @Html.DisplayFor(modelItem => item.HouseNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.UserEmail)
+                    </th>
+
+                    <th>
+                        @Html.DisplayFor(modelItem => item.OrderStatus)
+                    </th>
+
+                    <td>
+                        @*@Html.ActionLink("Edit", "Edit", new { id=item.OrderID }) |
+                            @Html.ActionLink("Details", "Details", new { id=item.OrderID }) |*@
+                        @Html.ActionLink("Delete", "Delete", null, new { id = item.OrderID } , new { @class = "btn btn-danger btn-sm" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>Product Name</td>
+                    <td>Product Quantity</td>
+                    <td>Price</td>
+                </tr>
+
+                <tr>
+                    @{
+                        int id = item.OrderID;
+
+                        orderPriceSum = 0;
+                        foreach (OrderEntry OrderEntry in ViewBag.UsersOrderEntries)
+                        {
+                            Product currentProduct = (ViewBag.UsersProducts as List
+                            <Product>
+                                ).Where(x => x.ID == OrderEntry.ProductID).FirstOrDefault();
+                            if (OrderEntry.Order_ID == id)
+                            {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(ProductItem => currentProduct.ProductName)
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(OrderEntryItem => OrderEntry.Quantity) db
+
+                                </td>
+                                <td>
+
+                                    @Html.DisplayFor(OrderEntryItem => OrderEntry.ProductPrice) €
+
+                                </td>
+                            </tr>
+                            orderPriceSum += OrderEntry.ProductPrice * OrderEntry.Quantity;
+
+                        }
+                    }
+                    <tr>
+                        <th>
+                            Total Price
+                        </th>
+                        <th>@orderPriceSum €</th>
+                    </tr>
+                    }
+                    </tr>
+                }
+
+        </table>
+</div>  
+</div>
+
+
+@*<ul class="list-group">
+    <li class="list-group-item">@Html.DisplayFor(ProductItem => currentProduct.ProductName) @Html.DisplayFor(OrderEntryItem => OrderEntry.Quantity) db @Html.DisplayFor(OrderEntryItem => OrderEntry.ProductPrice) Ft</li>
+    <li class="list-group-item list-group-item-success">This is a success list group item</li>
+    <li class="list-group-item"></li>
+
+</ul>*@

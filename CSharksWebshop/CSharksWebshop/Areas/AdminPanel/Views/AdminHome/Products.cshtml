@@ -1,0 +1,84 @@
+﻿@using CSharksWebshop.Models;
+@model IEnumerable<CSharksWebshop.Models.Product>
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Products</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.ProductName)</th>
+                        <th>@Html.DisplayNameFor(model => model.ProductPrice)</th>
+                        <th>@Html.DisplayNameFor(model => model.IsAvailable)</th>
+                        <th>@Html.DisplayNameFor(model => model.ProductDescription)</th>
+                        <th> @Html.DisplayNameFor(model => model.InStock)</th>
+                        <th>@Html.DisplayNameFor(model => model.UrlFriendlyName)</th>
+                        <th>@Html.DisplayNameFor(model => model.Manufacturer)</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.ProductName)</th>
+                        <th>@Html.DisplayNameFor(model => model.ProductPrice)</th>
+                        <th>@Html.DisplayNameFor(model => model.IsAvailable)</th>
+                        <th>@Html.DisplayNameFor(model => model.ProductDescription)</th>
+                        <th> @Html.DisplayNameFor(model => model.InStock))</th>
+                        <th>@Html.DisplayNameFor(model => model.UrlFriendlyName)</th>
+                        <th>@Html.DisplayNameFor(model => model.Manufacturer)</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProductName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProductPrice)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IsAvailable)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProductDescription)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.InStock)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UrlFriendlyName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Manufacturer)
+                            </td>
+                            <td>
+
+                                @*@Html.ActionLink("Edit", "Edit", "Product", new { area = "" }, new { id = item.ID }) |
+                                @Html.ActionLink("Details", "Details", "Product", new { area = "" }, new { id = item.ID }) |
+                                @Html.ActionLink("Deactivate Product", "Delete", "Product", new { area = "" }, new { id = item.ID })*@ |
+                                @*@Html.ActionLink("Activate Product", "Delete", new { id = item.ID }) |*@
+                                @*@Html.ActionLink("Add To Basket", "AddToBasket", new { id = item.ID })*@
+
+
+                                <!--<input type="button" onclick="ShowProductData();" name="@item.ID" value="Add to Basket" />-->
+                            </td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

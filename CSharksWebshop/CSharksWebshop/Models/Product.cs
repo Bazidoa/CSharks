@@ -37,6 +37,11 @@ namespace CSharksWebshop.Models
         //[Required]
         public string UrlFriendlyName { get; set; }
 
+        [ForeignKey("CategoryName")]
+        public string Category_Name { get; set; }
+        public CategoryName CategoryName{ get; set; }
+        
+
         public string Manufacturer { get; set; }
         private string productPictureURL;
         public string ProductPictureURL
@@ -63,6 +68,11 @@ namespace CSharksWebshop.Models
             this.Manufacturer = Manufacturer;
             this.UrlFriendlyName = UrlFriendlyNameConverter(ProductName);
 
+        }
+        public Product(int ID, string ProductName, int ProductPrice, bool IsAvailable, string ProductDescription, int InStock, string Manufacturer) 
+            : this(ProductName,ProductPrice,IsAvailable,ProductDescription,InStock,Manufacturer)
+        {
+            this.ID = ID;
         }
 
         public string UrlFriendlyNameConverter(string name)

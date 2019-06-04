@@ -1,0 +1,258 @@
+/*!
+ * Start Bootstrap - Heroic Features (https://startbootstrap.com/template-overviews/heroic-features)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-heroic-features/blob/master/LICENSE)
+ */
+body {
+    padding-top: 0px;
+    /*background-image: url(/Images/1_vbGoBwW7ESZsuTOJ4MWMXw.gif);*/
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+@media print {
+    /* styles go here */
+    body {
+        margin: 0;
+        color: #000;
+        background-color: #fff;
+    }
+}
+
+@font-face {
+    font-family: "alectric font";
+    src: url(/fonts/Alectro.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "commando";
+    src: url(/fonts/commando.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "VCR osd";
+    src: url(/fonts/VCR_OSD_MONO_1.001.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "steamster";
+    src: url(/fonts/Streamster.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "bellerose";
+    src: url(/fonts/Bellerose.ttf) format("truetype");
+}
+
+.productName {
+    text-decoration: none;
+    font-family: "bellerose";
+}
+
+#h5font {
+    font-family: "VCR osd";
+}
+
+
+nav {
+    font-family: "VCR osd";
+}
+
+#warehouseP {
+    text-align: center;
+    font-size:5rem;
+    margin: 0;
+}
+
+#warehouseA {
+    text-decoration: none;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+/*p:nth-child(1) a {
+    color: #fff;
+    font-family: "alectric font";
+    -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+    -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+    animation: neon1 1.5s ease-in-out infinite alternate;
+}
+
+    p:nth-child(1) a:hover {
+        color: #FF1177;
+        -webkit-animation: none;
+        -moz-animation: none;
+        animation: none;
+    }*/
+
+p a:hover {
+    color: #ffffff;
+}
+
+p:nth-child(1) a {
+    font-size: 1.5em;
+    color: #FF1177;
+    font-family: "alectric font";
+}
+
+    p:nth-child(1) a:hover {
+        -webkit-animation: neon2 1.5s ease-in-out infinite alternate;
+        -moz-animation: neon2 1.5s ease-in-out infinite alternate;
+        animation: neon2 1.5s ease-in-out infinite alternate;
+    }
+
+p a:hover {
+    color: #ffffff;
+}
+
+/*@-webkit-keyframes neon1 {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF1177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;
+    }
+
+    to {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
+    }
+}*/
+
+@-webkit-keyframes neon2 {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF1177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;
+    }
+
+    to {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
+    }
+}
+
+@keyframes neon2 {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF1177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;
+    }
+
+    to {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
+    }
+}
+
+header.masthead {
+    position: relative;
+    background-color: #343a40;
+    background: url("/Images/landingheader4.jpg") no-repeat bottom center;
+    background-size: cover;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+    header.masthead .overlay {
+        position: absolute;
+        background-color: #212529;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        opacity: 0.3;
+    }
+
+    header.masthead h1 {
+        font-size: 1rem;
+    }
+
+@media (min-width: 768px) {
+    header.masthead {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+        header.masthead h1 {
+            font-size: 3rem;
+        }
+}
+
+.showcase .showcase-text {
+    padding: 3rem;
+}
+
+.showcase .showcase-img {
+    min-height: 30rem;
+    background-size: cover;
+}
+
+@media (min-width: 768px) {
+    .showcase .showcase-text {
+        padding: 7rem;
+    }
+}
+
+.features-icons {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+}
+
+    .features-icons .features-icons-item {
+        max-width: 20rem;
+    }
+
+        .features-icons .features-icons-item .features-icons-icon {
+            height: 7rem;
+        }
+
+            .features-icons .features-icons-item .features-icons-icon i {
+                font-size: 4.5rem;
+            }
+
+        .features-icons .features-icons-item:hover .features-icons-icon i {
+            font-size: 5rem;
+        }
+
+.testimonials {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+}
+
+    .testimonials .testimonial-item {
+        max-width: 18rem;
+    }
+
+        .testimonials .testimonial-item img {
+            max-width: 12rem;
+            -webkit-box-shadow: 0px 5px 5px 0px #adb5bd;
+            box-shadow: 0px 5px 5px 0px #adb5bd;
+        }
+
+.call-to-action {
+    position: relative;
+    background-color: #343a40;
+    background: url("/Images/tumblr_npk6c2KJJY1uv2d92o1_500.gif") no-repeat center center;
+    background-size: cover;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+}
+
+    .call-to-action .overlay {
+        position: absolute;
+        background-color: #212529;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        opacity: 0.3;
+    }
+
+.map-container-5 {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+}
+
+    .map-container-5 iframe {
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+    }

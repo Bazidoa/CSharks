@@ -39,18 +39,5 @@ namespace CSharksWebshop.Test
             //Assert
             Assert.AreEqual(expected, actual);
         }
-
-        //[TestMethod]
-        //[ExpectedException(typeof(System.NullReferenceException))]
-        //public void TestWithNoUser()
-        //{
-        //    //Arrange
-        //    string expected = null;
-        //    string actual = null;
-        //    //Act        
-        //    actual = UserAuthentication.WhoAmI(null, null);
-        //    //Assert
-        //    Assert.AreEqual(expected, actual);
-        //}
     }
 }

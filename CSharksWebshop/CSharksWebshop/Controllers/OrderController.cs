@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using CSharksWebshop.DataModels;
 using CSharksWebshop.Models;
+using Microsoft.AspNet.Identity;
 
 namespace CSharksWebshop.Controllers
 {
@@ -19,15 +20,23 @@ namespace CSharksWebshop.Controllers
         public ActionResult Index()
         {
             string currentUser = UserAuthentication.WhoAmI(User, Session);
-            List<Order> myOrders = db.Orders.Where(x=>x.UserID == currentUser).ToList();
+            List<Order> myOrders = db.Orders.Where(x => x.UserID == currentUser).ToList();
             return View();
         }
+
+        public ActionResult ShowAllOrders()
+        {
+            List<Order> orders = db.Orders.Where(x => x.OrderStatus != OrderStatusEnum.NOTCREATED.ToString()).ToList();
+            return View(orders);
+        }
+
+        
 
         public ActionResult AddToOrderEntries()
         {
             Session["dummy"] = "Dummy";
             string currentUser = UserAuthentication.WhoAmI(User, Session);
-                     
+
             var query = (from a in db.BasketEntries
                          where a.UserID == currentUser
                          select a).ToList();
@@ -37,9 +46,9 @@ namespace CSharksWebshop.Controllers
                 //string currentTime = DateTime.Now.ToString();
                 Order currentOrder = db.Orders.Where(x => x.UserID == currentUser).OrderByDescending(x => x.OrderID).Select(x => x).FirstOrDefault();
                 string currentTime = currentOrder.OrderTime;
-                    //db.Orders.Where(x => x.UserID == currentUser).OrderByDescending(x => x.OrderID).Select(x => x.OrderTime).FirstOrDefault();
+                //db.Orders.Where(x => x.UserID == currentUser).OrderByDescending(x => x.OrderID).Select(x => x.OrderTime).FirstOrDefault();
                 int currentOrderID = currentOrder.OrderID;
-                    //db.Orders.Where(x => x.UserID == currentUser).OrderByDescending(x => x.OrderID).Select(x => x.OrderID).FirstOrDefault();
+                //db.Orders.Where(x => x.UserID == currentUser).OrderByDescending(x => x.OrderID).Select(x => x.OrderID).FirstOrDefault();
                 List<Product> products = db.Products.ToList();
 
                 for (int i = 0; i < query.Count; i++)
@@ -55,7 +64,7 @@ namespace CSharksWebshop.Controllers
                 }
                 currentOrder.OrderStatus = OrderStatusEnum.ACTIVE.ToString();
             }
-            
+
             db.SaveChanges();
 
             return RedirectToAction("Index", "MyOrders");
@@ -64,6 +73,7 @@ namespace CSharksWebshop.Controllers
         // GET: Order/Create
         public ActionResult Create()
         {
+            ViewBag.CurrentUser = db.UserDatas.Where(x => x.UserEmail == User.Identity.Name).FirstOrDefault();
             return View();
         }
 
@@ -72,7 +82,7 @@ namespace CSharksWebshop.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,OrderTime,UserID,FirstName,LastName,PostCode,Street,City,HouseNumber,UserEmail,OrderStatus")] Order order)
+        public ActionResult Create([Bind(Include = "ID,OrderTime,UserID,FirstName,LastName,PostCode,Street,City,HouseNumber,UserEmail,OrderStatus")] Order order, FormCollection formCollection)
         {
 
             string currentDate = DateTime.Now.ToString();
@@ -80,6 +90,14 @@ namespace CSharksWebshop.Controllers
             if (ModelState.IsValid)
             {
                 order.OrderTime = currentDate;
+                if(User.Identity.IsAuthenticated)
+                {
+                order = RegisteredUserCreate(int.Parse(formCollection["RegisteredUserCreate"]));
+                }else
+                {
+                    order.UserID = Session.SessionID;
+                }
+
                 db.Orders.Add(order);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -88,7 +106,30 @@ namespace CSharksWebshop.Controllers
             return View(order);
         }
 
-       
+        public Order RegisteredUserCreate(int? addressId)
+        {
+
+            string userId = User.Identity.GetUserId();
+            UserData userData = db.UserDatas.Where(x => x.UserID == userId).FirstOrDefault();
+            Address address = db.Addresses.Where(y => y.UserId == userId && y.ID == addressId).FirstOrDefault();
+            string currentDate = DateTime.Now.ToString();
+            Order order = new Order();
+
+            order.UserID = User.Identity.Name;
+            order.FirstName = userData.FirstName;
+            order.LastName = userData.LastName;
+            order.UserEmail = userData.UserEmail;
+            order.OrderTime = currentDate.ToString();
+
+            order.PostCode = address.ZipCode.ToString();
+            order.City = address.City;
+            order.Street = address.Street;
+            order.HouseNumber = address.HouseNumber.ToString();            
+
+            return order;
+        }
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

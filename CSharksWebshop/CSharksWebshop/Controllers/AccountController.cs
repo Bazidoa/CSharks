@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CSharksWebshop.Models;
 using CSharksWebshop.DataModels;
+using System.Web.Security;
 
 namespace CSharksWebshop.Controllers
 {
@@ -27,6 +28,7 @@ namespace CSharksWebshop.Controllers
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            
         }
 
         public ApplicationSignInManager SignInManager
@@ -91,7 +93,28 @@ namespace CSharksWebshop.Controllers
                     return View(model);
             }
         }
+        
+        public ActionResult ListUsers()
+        {
+            ViewBag.Users = (UserManager.Users.ToList<ApplicationUser>());
 
+            return View();
+        }
+        
+        public ActionResult PromoteToAdmin(string id)
+        {
+            UserManager.RemoveFromRole(id,"Customer");
+            UserManager.AddToRole(id, "Admin");
+            return RedirectToAction("ListUsers");
+        }
+
+        public ActionResult ChangeToUser(string id)
+        {
+            UserManager.RemoveFromRoles(id,new string[] {"Admin"});
+            UserManager.AddToRole(id, "Customer");
+                return RedirectToAction("ListUsers");
+        }
+      
         //
         // GET: /Account/VerifyCode
         [AllowAnonymous]
@@ -159,6 +182,7 @@ namespace CSharksWebshop.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    UserManager.AddToRole(user.Id, "Customer");
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
@@ -182,6 +206,17 @@ namespace CSharksWebshop.Controllers
                         newUser.UserEmail = user.Email;
 
                         db.UserDatas.Add(newUser);
+
+                        Address newAddress = db.Addresses.Create();
+                        newAddress.UserId = user.Id;
+                        newAddress.City = userData.City;
+                        newAddress.Street = userData.Street;
+                        int.TryParse(userData.HouseNumber, out int hausNumber);
+                        newAddress.HouseNumber = hausNumber;
+                        int.TryParse(userData.PostCode, out int zipCode);
+                        newAddress.ZipCode = zipCode;
+
+                        db.Addresses.Add(newAddress);
 
                         db.SaveChanges();
                     }
